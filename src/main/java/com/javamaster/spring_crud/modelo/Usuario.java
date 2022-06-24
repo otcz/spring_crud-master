@@ -48,8 +48,8 @@ public class Usuario {
 
 
     public void obetnerNombreUsuario(String token) {
-        try {
-            HttpClient httpClient = HttpClient.newBuilder().version(HttpClient.Version.HTTP_2).build();
+     /*    try {
+           HttpClient httpClient = HttpClient.newBuilder().version(HttpClient.Version.HTTP_2).build();
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(new URI("https://api.verifik.co/v2/co/runt/consultarConductor?documentType=CC&documentNumber=" + getIdentificacion()))
                     .headers("Authorization", "jwt " + token)
@@ -63,7 +63,7 @@ public class Usuario {
 
         } catch (JSONException | InterruptedException | URISyntaxException | IOException e) {
             throw new RuntimeException(e);
-        }
+        }*/
 
 
     }

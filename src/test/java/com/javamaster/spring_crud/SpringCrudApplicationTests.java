@@ -1,13 +1,13 @@
-package TaosBackend.Taos;
+package com.javamaster.spring_crud;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TaosApplicationTests {
+class SpringCrudApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void contextLoads() {
+    }
 
 }

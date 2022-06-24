@@ -75,7 +75,12 @@
             <version>6.19.1</version>
         </dependency>
 
-
+        <!-- https://mvnrepository.com/artifact/com.twilio.sdk/twilio -->
+        <dependency>
+            <groupId>com.twilio.sdk</groupId>
+            <artifactId>twilio</artifactId>
+            <version>8.31.0</version>
+        </dependency>
     </dependencies>
 
     <build>

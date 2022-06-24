@@ -1,6 +1,6 @@
 package Taos.dao;
 
-import Taos.Modelo.Usuario;
+import TaosBackend.Taos.Modelo.Usuario;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 

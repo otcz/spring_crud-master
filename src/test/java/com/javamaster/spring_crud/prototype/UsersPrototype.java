@@ -1,7 +1,6 @@
 package com.javamaster.spring_crud.prototype;
 
 import com.javamaster.spring_crud.dto.UsersDto;
-import com.javamaster.spring_crud.entity.Users;
 
 public class UsersPrototype {
 

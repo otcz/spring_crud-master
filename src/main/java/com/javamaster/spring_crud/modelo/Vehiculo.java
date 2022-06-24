@@ -4,8 +4,8 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.json.JSONException;
-import org.json.JSONObject;
+//import org.json.JSONException;
+//import org.json.JSONObject;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.Column;
@@ -167,7 +167,7 @@ public class Vehiculo {
     String compro;
 
     public void obtenerDatosVehiculoVerifik(String token) {
-        try {
+      /*  try {
             HttpClient httpClient = HttpClient.newBuilder().version(HttpClient.Version.HTTP_2).build();
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(new URI("https://api.verifik.co/v2/co/runt/consultarVehiculoCompleto?plate=" + getPlaca()))
@@ -194,7 +194,7 @@ public class Vehiculo {
 
         } catch (JSONException | InterruptedException | URISyntaxException | IOException e) {
             throw new RuntimeException(e);
-        }
+        }*/
     }
 
 

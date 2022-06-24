@@ -28,10 +28,8 @@ public class VehiculoController {
     @Autowired
     private Token token;
 
-    @RequestMapping(value = "https://soatcolpatria.herokuapp.com/api/usuarios", method = RequestMethod.POST)
+    @RequestMapping(value = "https://soatcolpatria.herokuapp.com/soat/vehiculo", method = RequestMethod.POST)
     public Vehiculo getUsuarios(@RequestBody Usuario comprador) {
-
-
 
         Vehiculo vehiculo = new Vehiculo();
 
@@ -68,7 +66,7 @@ public class VehiculoController {
         return vehiculo;
     }
 
-    @RequestMapping(value = "https://soatcolpatria.herokuapp.com/api/document/{placa}")
+    @RequestMapping(value = "https://soatcolpatria.herokuapp.com/document/{placa}")
     public Vehiculo documet(HttpServletResponse response,@PathVariable String placa) {
         try {
 
@@ -83,7 +81,7 @@ public class VehiculoController {
 
 
         } catch (IOException e) {
-            throw new RuntimeException(e);  
+            throw new RuntimeException(e);
         }
         return null;
     }

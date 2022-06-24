@@ -1,5 +1,6 @@
 package com.javamaster.spring_crud.repository;
 
+import com.javamaster.spring_crud.entity.Users;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

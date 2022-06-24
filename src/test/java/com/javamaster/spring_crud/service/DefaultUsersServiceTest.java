@@ -2,6 +2,7 @@ package com.javamaster.spring_crud.service;
 
 import com.javamaster.spring_crud.dto.UsersDto;
 import com.javamaster.spring_crud.exception.ValidationException;
+import com.javamaster.spring_crud.repository.UsersRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

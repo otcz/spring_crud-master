@@ -1,6 +1,6 @@
 package Taos.Utils;
 
-import TaosBackend.Taos.Modelo.Vehiculo;
+import Taos.Modelo.Vehiculo;
 import lombok.Getter;
 import lombok.Setter;
 import net.sf.jasperreports.engine.*;

@@ -1,6 +1,6 @@
 package Taos.dao;
 
-import TaosBackend.Taos.Modelo.Vehiculo;
+import Taos.Modelo.Vehiculo;
 
 public interface VehiculoDAO {
     void registrar(Vehiculo vehiculo);

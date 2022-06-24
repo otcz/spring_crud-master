@@ -1,6 +1,6 @@
 package Taos.dao;
 
-import TaosBackend.Taos.Modelo.Vehiculo;
+import Taos.Modelo.Vehiculo;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 

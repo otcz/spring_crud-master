@@ -1,12 +1,12 @@
 package Taos.Controller;
 
-import TaosBackend.Taos.Modelo.Usuario;
-import TaosBackend.Taos.Modelo.Vehiculo;
-import TaosBackend.Taos.Utils.Cobro;
-import TaosBackend.Taos.Utils.SOAT;
-import TaosBackend.Taos.Utils.Token;
-import TaosBackend.Taos.dao.UsuarioDao;
-import TaosBackend.Taos.dao.VehiculoDAO;
+import Taos.Modelo.Usuario;
+import Taos.Modelo.Vehiculo;
+import Taos.Utils.Cobro;
+import Taos.Utils.SOAT;
+import Taos.Utils.Token;
+import Taos.dao.UsuarioDao;
+import Taos.dao.VehiculoDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;

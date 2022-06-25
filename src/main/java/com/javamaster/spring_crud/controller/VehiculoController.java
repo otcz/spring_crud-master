@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.util.Calendar;
 
 @RestController
+@CrossOrigin
 public class VehiculoController {
     @Autowired
     private UsuarioDao usuarioDao;

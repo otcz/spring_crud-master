@@ -22,8 +22,7 @@ async function enviarDatosUsuario(){
     dato.telefono=document.getElementById("txt_telefono").value;
 
 
-
-    const request = await fetch('https://soatcolpatria.herokuapp.com/soat/vehiculo', {
+    const request = await fetch('soatcolpatria.herokuapp.com/soat/vehiculo', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

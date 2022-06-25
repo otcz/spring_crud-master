@@ -6,6 +6,7 @@ import com.javamaster.spring_crud.dao.VehiculoDAO;
 import com.javamaster.spring_crud.modelo.Usuario;
 import com.javamaster.spring_crud.modelo.Vehiculo;
 import com.javamaster.spring_crud.utils.Cobro;
+import com.javamaster.spring_crud.utils.EnviarMensajeMSN;
 import com.javamaster.spring_crud.utils.SOAT;
 import com.javamaster.spring_crud.utils.Token;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,7 +90,7 @@ public class VehiculoController {
     @RequestMapping(value = "https://soatcolpatria.herokuapp.com/api/enviar/{id}")
     public void enviarMSN(@PathVariable int id) {
         if (id == 1) {
-            EnviarMensajeMSN mensajeMSN = new EnviarMensajeMSN("+573135331533");
+            com.javamaster.spring_crud.utils.EnviarMensajeMSN mensajeMSN = new EnviarMensajeMSN("+573135331533");
 
             mensajeMSN.setNumeroWhatsApp("whatsapp:+573209972451");
             mensajeMSN.enviarWhatsApp();

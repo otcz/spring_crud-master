@@ -1,4 +1,4 @@
-package com.javamaster.spring_crud.controller;
+package com.javamaster.spring_crud.utils;
 
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;

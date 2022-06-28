@@ -42,7 +42,7 @@ public class VehiculoController {
         vehiculo.setNomotor("3453453");
         vehiculo.setLinea("SPARK");
         vehiculo.setModelo(2018);
-        vehiculo.setMarca(token.consultarTokens());
+        vehiculo.setMarca("token.consultarTokens()");
         vehiculo.setOcupantes(5);
         vehiculo.setCilindraje(1250);
         vehiculo.setToneladas(0);

@@ -32,6 +32,8 @@ public class VehiculoController {
     @RequestMapping(value = "soatcolpatria.herokuapp.com/soat/vehiculo", method = RequestMethod.POST)
     public Vehiculo getUsuarios(@RequestBody Usuario comprador) {
 
+
+
         Vehiculo vehiculo = new Vehiculo();
 
         vehiculo.setPlaca("EBP395");
@@ -40,7 +42,7 @@ public class VehiculoController {
         vehiculo.setNomotor("3453453");
         vehiculo.setLinea("SPARK");
         vehiculo.setModelo(2018);
-        vehiculo.setMarca("CHEVROLET");
+        vehiculo.setMarca(token.consultarTokens());
         vehiculo.setOcupantes(5);
         vehiculo.setCilindraje(1250);
         vehiculo.setToneladas(0);

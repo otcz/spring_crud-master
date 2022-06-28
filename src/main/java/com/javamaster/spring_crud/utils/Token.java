@@ -54,7 +54,7 @@ public class Token {
         } catch (IOException e) {
 
         }
-        return null;
+        return "null";
     }
 
 

@@ -200,7 +200,7 @@ public class Vehiculo {
            }
 
           // HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-           // JSONObject json = new JSONObject(response.body());
+           //JSONObject json = new JSONObject(response.body());
           // setPlaca(String.valueOf(json.getJSONObject("data").get("plate")));
           // setTipo(String.valueOf(json.getJSONObject("data").getJSONObject("vehicle").get("tipoServicio")));
           // setClase(String.valueOf(json.getJSONObject("data").getJSONObject("vehicle").get("claseVehiculo")));

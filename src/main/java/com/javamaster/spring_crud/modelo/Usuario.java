@@ -1,5 +1,7 @@
 package com.javamaster.spring_crud.modelo;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,6 +14,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 //import java.io.IOException;
 //import java.net.URI;
 //import java.net.URISyntaxException;
@@ -47,25 +54,31 @@ public class Usuario {
     private String placa;
 
 
-    public void obetnerNombreUsuario(String token) {
-     /*    try {
-           HttpClient httpClient = HttpClient.newBuilder().version(HttpClient.Version.HTTP_2).build();
-            HttpRequest request = HttpRequest.newBuilder()
-                    .uri(new URI("https://api.verifik.co/v2/co/runt/consultarConductor?documentType=CC&documentNumber=" + getIdentificacion()))
-                    .headers("Authorization", "jwt " + token)
-                    .GET().build();
+    public void completarNombreUsuario(String token) {
+        try {
+            URL obj = new URL("https://api.verifik.co/v2/co/runt/consultarConductor?documentType=CC&documentNumber=" + getIdentificacion());
+            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+            con.setRequestMethod("GET");
+            con.setRequestProperty("Content-Type", "application/json");
+            con.setRequestProperty("autenticacion", token);
+            int responseCode = con.getResponseCode();
 
-            HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                String inputLine;
+                StringBuffer response = new StringBuffer();
 
-            JSONObject json = new JSONObject(response.body());
-
-            setNombres(json.getJSONObject("data").getString("fullName"));
-
-        } catch (JSONException | InterruptedException | URISyntaxException | IOException e) {
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+                ObjectMapper mapper = new ObjectMapper();
+                JsonNode node = mapper.readTree(response.toString());
+                setNombres(node.get("fullName").asText());
+            }
+        } catch (IOException e) {
             throw new RuntimeException(e);
-        }*/
-
-
+        }
     }
 
 

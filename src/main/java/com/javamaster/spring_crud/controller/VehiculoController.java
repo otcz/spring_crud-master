@@ -31,30 +31,11 @@ public class VehiculoController {
 
     @RequestMapping(value = "soatcolpatria.herokuapp.com/soat/vehiculo", method = RequestMethod.POST)
     public Vehiculo getUsuarios(@RequestBody Usuario comprador) {
-
-
+        String sToken = token.obtenerToken();
+        comprador.completarNombreUsuario(sToken);
 
         Vehiculo vehiculo = new Vehiculo();
-
-        vehiculo.setPlaca("EBP395");
-        vehiculo.setNombres("OSCAR TOMAS CARRILLO ZULETA");
-        vehiculo.setNochasis("354456356");
-        vehiculo.setNomotor("3453453");
-        vehiculo.setLinea("SPARK");
-        vehiculo.setModelo(2018);
-        vehiculo.setMarca("token.consultarTokens()");
-        vehiculo.setOcupantes(5);
-        vehiculo.setCilindraje(1250);
-        vehiculo.setToneladas(0);
-        vehiculo.setColor("NEGRO");
-        vehiculo.setTipo("Particular");
-        vehiculo.setClase("AUTOMOVIL");
-        vehiculo.setNoserie("3565432");
-        vehiculo.setIdClase(5);
-        vehiculo.setIdentificacion(1073995282L);
-        vehiculo.setTelefono("3135331533");
-        vehiculo.setNonewsoat("465656");
-
+        vehiculo.obtenerDatosVehiculoVerifik(sToken);
         Cobro cobro = new Cobro(vehiculo);
         vehiculo.setValnewsoat(cobro.calcularCobro());
         vehiculo.setYyycomsoat(String.valueOf(cobro.date(Calendar.YEAR)));
@@ -70,7 +51,7 @@ public class VehiculoController {
     }
 
     @RequestMapping(value = "https://soatcolpatria.herokuapp.com/document/{placa}")
-    public Vehiculo documet(HttpServletResponse response,@PathVariable String placa) {
+    public Vehiculo documet(HttpServletResponse response, @PathVariable String placa) {
         try {
 
             SOAT soat = new SOAT(vehiculoDAO.buscarVehiculoPlaca(placa));

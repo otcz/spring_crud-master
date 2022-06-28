@@ -1,5 +1,7 @@
 package com.javamaster.spring_crud.modelo;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -175,48 +177,41 @@ public class Vehiculo {
     String compro;
 
     public void obtenerDatosVehiculoVerifik(String token) {
-       try {
-           URL obj = new URL("https://api.verifik.co/v2/co/runt/consultarVehiculoCompleto?plate=" + getPlaca());
-           HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-           con.setRequestMethod("GET");
-           con.setRequestProperty("User-Agent", USER_AGENT);
-           int responseCode = con.getResponseCode();
+        try {
+            URL obj = new URL("https://api.verifik.co/v2/co/runt/consultarVehiculoCompleto?plate=" + getPlaca());
+            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+            con.setRequestMethod("GET");
+            con.setRequestProperty("Content-Type", "application/json");
+            con.setRequestProperty("autenticacion", token);
+            int responseCode = con.getResponseCode();
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                String inputLine;
+                StringBuffer response = new StringBuffer();
 
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+                ObjectMapper mapper = new ObjectMapper();
+                JsonNode node = mapper.readTree(response.toString());
+                setPlaca(node.get("data").get("plate").asText());
+                setTipo(node.get("data").get("vehicle").get("tipoServicio").asText());
+                setMarca(node.get("data").get("vehicle").get("marca").asText());
+                setClase(node.get("data").get("vehicle").get("claseVehiculo").asText());
+                setIdClase(Integer.parseInt(node.get("data").get("vehicle").get("codClaseSise").asText()));
+                setModelo(Integer.parseInt(node.get("data").get("vehicle").get("modelo").asText()));
+                setLinea(node.get("data").get("vehicle").get("linea").asText());
+                setCilindraje(Integer.parseInt(node.get("data").get("vehicle").get("cilindraje").asText()));
+                setColor(node.get("data").get("vehicle").get("color").asText());
+                setNoserie(node.get("data").get("vehicle").get("noSerie").asText());
+                setNomotor(node.get("data").get("vehicle").get("noMotor").asText());
+                setNochasis(node.get("data").get("vehicle").get("noChasis").asText());
+                setOcupantes(Integer.parseInt(node.get("data").get("vehicle").get("ocupantes").asText()));
+                setToneladas(Double.parseDouble(node.get("data").get("vehicle").get("toneladas").asText()));
 
-
-           if (responseCode == HttpURLConnection.HTTP_OK) { // success
-               BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-               String inputLine;
-               StringBuffer response = new StringBuffer();
-
-               while ((inputLine = in.readLine()) != null) {
-                   response.append(inputLine);
-               }
-               in.close();
-
-               System.out.println(response.toString());
-           } else {
-               System.out.println("GET request not worked");
-           }
-
-          // HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-           //JSONObject json = new JSONObject(response.body());
-          // setPlaca(String.valueOf(json.getJSONObject("data").get("plate")));
-          // setTipo(String.valueOf(json.getJSONObject("data").getJSONObject("vehicle").get("tipoServicio")));
-          // setClase(String.valueOf(json.getJSONObject("data").getJSONObject("vehicle").get("claseVehiculo")));
-          // setIdClase(Integer.parseInt(json.getJSONObject("data").getJSONObject("vehicle").get("codClaseSise").toString()));
-          // setMarca(String.valueOf(json.getJSONObject("data").getJSONObject("vehicle").get("marca")));
-          // setModelo(Integer.parseInt(json.getJSONObject("data").getJSONObject("vehicle").get("modelo").toString()));
-          // setLinea(String.valueOf(json.getJSONObject("data").getJSONObject("vehicle").get("linea")));
-          // setCilindraje(Integer.parseInt(json.getJSONObject("data").getJSONObject("vehicle").get("cilindraje").toString()));
-          // setColor(String.valueOf(json.getJSONObject("data").getJSONObject("vehicle").get("color")));
-          // setNoserie(String.valueOf(json.getJSONObject("data").getJSONObject("vehicle").get("noSerie")));
-          // setNomotor(String.valueOf(json.getJSONObject("data").getJSONObject("vehicle").get("noMotor")));
-          // setNochasis(String.valueOf(json.getJSONObject("data").getJSONObject("vehicle").get("noChasis")));
-          // setOcupantes(Integer.parseInt(json.getJSONObject("data").getJSONObject("vehicle").get("ocupantes").toString()));
-          // setToneladas(Double.parseDouble(json.getJSONObject("data").getJSONObject("vehicle").get("toneladas").toString()));
-
-        } catch ( IOException e) {
+            }
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }

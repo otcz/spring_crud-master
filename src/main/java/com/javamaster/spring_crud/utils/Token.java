@@ -49,14 +49,14 @@ public class Token {
                 in.close();
                 ObjectMapper mapper = new ObjectMapper();
                 JsonNode node = mapper.readTree(response.toString());
-                return node.get("accessToken").asText();
+
+                return response.toString();
             }
         } catch (IOException e) {
-
+            e.printStackTrace();
         }
         return "VERIFIK NO RESPONDE";
     }
-
 
 
 }

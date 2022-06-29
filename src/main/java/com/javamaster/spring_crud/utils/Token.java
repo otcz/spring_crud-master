@@ -28,7 +28,7 @@ public class Token {
 
         try {
             String POST_PARAMS = "userName=Pankaj";
-            URL obj = new URL("https://api.verifik.co/v2/auth/login?phone=3016466824&password=Idhuejeuduhed*/");
+            URL obj = new URL("https://api.verifik.co/v2/auth/login?phone=3016466824&password=qWERT12345-");
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
             con.setRequestMethod("POST");
             con.setRequestProperty("Content-Type", "application/json");

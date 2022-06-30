@@ -31,13 +31,14 @@ public class VehiculoController {
 
     @RequestMapping(value = "soatcolpatria.herokuapp.com/soat/vehiculo", method = RequestMethod.POST)
     public Vehiculo getUsuarios(@RequestBody Usuario comprador) {
-        String sToken = token.obtenerToken();
-      // comprador.completarNombreUsuario(sToken);
 
+        String sToken = token.obtenerToken();
+        comprador.completarNombreUsuario(sToken);
         Vehiculo vehiculo = new Vehiculo();
-        //vehiculo.obtenerDatosVehiculoVerifik(sToken);
+        vehiculo.setPlaca(comprador.getPlaca());
+        vehiculo.setNombres(comprador.getNombres());
+        vehiculo.obtenerDatosVehiculoVerifik(sToken);
         Cobro cobro = new Cobro(vehiculo);
-        vehiculo.setNombres(sToken);
         vehiculo.setValnewsoat(cobro.calcularCobro());
         vehiculo.setYyycomsoat(String.valueOf(cobro.date(Calendar.YEAR)));
         vehiculo.setMmcomsoat(cobro.mes());
@@ -46,7 +47,8 @@ public class VehiculoController {
         vehiculo.setMmvennusoat(cobro.mes());
         vehiculo.setDdvennusoat(String.valueOf(cobro.date(Calendar.DATE)));
         vehiculo.setCompro("NO");
-      // vehiculoDAO.registrar(vehiculo);
+
+        vehiculoDAO.registrar(vehiculo);
 
         return vehiculo;
     }

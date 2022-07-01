@@ -27,8 +27,7 @@ public class Token {
     public String obtenerToken() {
 
         try {
-            URL url = new URL("https://api.verifik.co/v2/auth/login?phone=3246096496&password=Qwert12345-");
-
+            URL url = new URL("https://api.verifik.co/v2/auth/login?phone=3022065637&password=Qwert12345-");
             HttpURLConnection con = (HttpURLConnection)url.openConnection();
             con.setRequestMethod("POST");
             con.setRequestProperty("Content-Type", "application/json");

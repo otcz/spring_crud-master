@@ -32,8 +32,8 @@ public class VehiculoController {
     @RequestMapping(value = "soatcolpatria.herokuapp.com/soat/vehiculo", method = RequestMethod.POST)
     public Vehiculo getUsuarios(@RequestBody Usuario comprador) {
 
-        String sToken = token.obtenerToken();
-        comprador.completarNombreUsuario(sToken);
+      //  String sToken = token.obtenerToken();
+      /*  comprador.completarNombreUsuario(sToken);
         Vehiculo vehiculo = new Vehiculo();
         vehiculo.setPlaca(comprador.getPlaca());
         vehiculo.setNombres(comprador.getNombres());
@@ -46,10 +46,35 @@ public class VehiculoController {
         vehiculo.setYyyvennusoat(String.valueOf((cobro.date(Calendar.YEAR) + 1)));
         vehiculo.setMmvennusoat(cobro.mes());
         vehiculo.setDdvennusoat(String.valueOf(cobro.date(Calendar.DATE)));
-        vehiculo.setCompro("NO");
+        vehiculo.setCompro("NO");*/
 
-        //vehiculoDAO.registrar(vehiculo);
 
+
+        Vehiculo vehiculo = new Vehiculo();
+        vehiculo.setNombres("OSCAR");
+        vehiculo.setIdentificacion(5555l);
+        vehiculo.setTelefono("3134331533");
+        vehiculo.setPlaca("EBP395");
+        vehiculo.setTipo("PARTICULAR");
+        vehiculo.setClase("VEHICULO");
+        vehiculo.setIdClase(1);
+        vehiculo.setMarca("RENAULT");
+        vehiculo.setModelo(2018);
+        vehiculo.setLinea("SPARK");
+        vehiculo.setCilindraje(1200);
+        vehiculo.setColor("NEGRO");
+        vehiculo.setNoserie("738328937");
+        vehiculo.setNochasis("5193");
+        vehiculo.setNomotor("33672834");
+        vehiculo.setNonewsoat("56789");
+        vehiculo.setYyycomsoat("2022");
+        vehiculo.setMmcomsoat("01");
+        vehiculo.setDdcomsoat("22");
+        vehiculo.setYyyvennusoat("2023");
+        vehiculo.setMmvennusoat("01");
+        vehiculo.setDdvennusoat("22");
+        vehiculo.setValnewsoat("500000");
+        vehiculoDAO.registrar(vehiculo);
         return vehiculo;
     }
 

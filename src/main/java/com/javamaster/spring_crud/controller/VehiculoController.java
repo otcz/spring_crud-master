@@ -74,6 +74,9 @@ public class VehiculoController {
         vehiculo.setMmvennusoat("01");
         vehiculo.setDdvennusoat("22");
         vehiculo.setValnewsoat("500000");
+        vehiculo.setToneladas(2500);
+        vehiculo.setOcupantes(2);
+        vehiculo.setCompro("NO");
         vehiculoDAO.registrar(vehiculo);
         return vehiculo;
     }

@@ -54,7 +54,7 @@ public class VehiculoController {
         vehiculo.setNombres("OSCAR");
         vehiculo.setIdentificacion(5555l);
         vehiculo.setTelefono("3134331533");
-        vehiculo.setPlaca("EBP395");
+        vehiculo.setPlaca("EBP396");
         vehiculo.setTipo("PARTICULAR");
         vehiculo.setClase("VEHICULO");
         vehiculo.setIdClase(1);

@@ -38,7 +38,7 @@ public class Vehiculo {
     @Setter
     @Nullable
     @Column(name = "nombres")
-    private String nombres;
+    private String nombres="ERROR AL CONSULTAR DATA RUT";
 
     @Getter
     @Setter

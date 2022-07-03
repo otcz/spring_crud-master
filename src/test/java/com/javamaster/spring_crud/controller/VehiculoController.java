@@ -33,7 +33,6 @@ public class VehiculoController {
     public Vehiculo getUsuarios(@RequestBody Usuario comprador) {
 
         Vehiculo vehiculo = new Vehiculo();
-
         vehiculo.setPlaca("EBP399");
         vehiculo.setNombres("OSCAR TOMAS CARRILLO ZULETA");
         vehiculo.setNochasis("354456356");

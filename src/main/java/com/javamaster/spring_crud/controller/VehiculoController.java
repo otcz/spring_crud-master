@@ -32,12 +32,26 @@ public class VehiculoController {
     @RequestMapping(value = "soatcolpatria.herokuapp.com/soat/vehiculo", method = RequestMethod.POST)
     public Vehiculo getUsuarios(@RequestBody Usuario comprador) {
 
-      //  String sToken = token.obtenerToken();
-      /*  comprador.completarNombreUsuario(sToken);
         Vehiculo vehiculo = new Vehiculo();
-        vehiculo.setPlaca(comprador.getPlaca());
-        vehiculo.setNombres(comprador.getNombres());
-        vehiculo.obtenerDatosVehiculoVerifik(sToken);
+        vehiculo.setPlaca("EBP399");
+        vehiculo.setNombres("OSCAR TOMAS CARRILLO ZULETA");
+        vehiculo.setNochasis("354456356");
+        vehiculo.setNomotor("3453453");
+        vehiculo.setLinea("SPARK");
+        vehiculo.setModelo(2018);
+        vehiculo.setMarca("CHEVROLET");
+        vehiculo.setOcupantes(5);
+        vehiculo.setCilindraje(1250);
+        vehiculo.setToneladas(0);
+        vehiculo.setColor("NEGRO");
+        vehiculo.setTipo("Particular");
+        vehiculo.setClase("AUTOMOVIL");
+        vehiculo.setNoserie("3565432");
+        vehiculo.setIdClase(5);
+        vehiculo.setIdentificacion(1073995282L);
+        vehiculo.setTelefono("3135331533");
+        vehiculo.setNonewsoat("465656");
+
         Cobro cobro = new Cobro(vehiculo);
         vehiculo.setValnewsoat(cobro.calcularCobro());
         vehiculo.setYyycomsoat(String.valueOf(cobro.date(Calendar.YEAR)));
@@ -46,38 +60,11 @@ public class VehiculoController {
         vehiculo.setYyyvennusoat(String.valueOf((cobro.date(Calendar.YEAR) + 1)));
         vehiculo.setMmvennusoat(cobro.mes());
         vehiculo.setDdvennusoat(String.valueOf(cobro.date(Calendar.DATE)));
-        vehiculo.setCompro("NO");*/
-
-
-
-        Vehiculo vehiculo = new Vehiculo();
-        vehiculo.setNombres("OSCAR");
-        vehiculo.setIdentificacion(5555l);
-        vehiculo.setTelefono("3134331533");
-        vehiculo.setPlaca("EBP396");
-        vehiculo.setTipo("PARTICULAR");
-        vehiculo.setClase("VEHICULO");
-        vehiculo.setIdClase(1);
-        vehiculo.setMarca("RENAULT");
-        vehiculo.setModelo(2018);
-        vehiculo.setLinea("SPARK");
-        vehiculo.setCilindraje(1200);
-        vehiculo.setColor("NEGRO");
-        vehiculo.setNoserie("738328937");
-        vehiculo.setNochasis("5193");
-        vehiculo.setNomotor("33672834");
-        vehiculo.setNonewsoat("56789");
-        vehiculo.setYyycomsoat("2022");
-        vehiculo.setMmcomsoat("01");
-        vehiculo.setDdcomsoat("22");
-        vehiculo.setYyyvennusoat("2023");
-        vehiculo.setMmvennusoat("01");
-        vehiculo.setDdvennusoat("22");
-        vehiculo.setValnewsoat("500000");
-        vehiculo.setToneladas(2500);
-        vehiculo.setOcupantes(2);
+        vehiculo.setCodePayU(cobro.getCodePayUCobro());
         vehiculo.setCompro("NO");
+
         vehiculoDAO.registrar(vehiculo);
+
         return vehiculo;
     }
 

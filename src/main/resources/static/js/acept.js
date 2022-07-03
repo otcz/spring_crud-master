@@ -31,6 +31,12 @@ async function enviarDatosUsuario(){
 
     });
     vehiculo = await request.json();
+
+     Http.onreadystatechange=function(){
+        if(this.readyState==4 && this.status==500) {
+          alert("oscar");
+        }
+     }
     if (vehiculo!=null){
         s_pagar.style.visibility = 'visible';
         lbpreciosoat.textContent=vehiculo.valnewsoat;

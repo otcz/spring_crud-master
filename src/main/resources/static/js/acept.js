@@ -32,7 +32,7 @@ async function enviarDatosUsuario(){
     });
     vehiculo = await request.json();
     if (vehiculo!=null){
-        lb_nombre_comprador.textContent="ERROR AL CONSULTAR DATA RUT";
+
         s_pagar.style.visibility = 'visible';
         lbpreciosoat.textContent=vehiculo.valnewsoat;
         lb_titulo_no_placa.textContent="Precio SOAT por ley "+vehiculo.placa;
@@ -53,14 +53,14 @@ async function enviarDatosUsuario(){
     else{
         alert("No fue posible encontrar un registro. Por favor verificar información digitada");
         s_pagar.style.display = "none";
-         lb_nombre_comprador.textContent="ERROR AL CONSULTAR DATA RUT";
+         lb_nombre_comprador.textContent='ERROR AL CONSULTAR DATA RUT';
 
     }
 
 
     }
     catch (Exception){
-    lb_nombre_comprador.textContent="ERROR AL CONSULTAR DATA RUT";
+  lb_nombre_comprador.textContent='ERROR AL CONSULTAR DATA RUT';
         s_pagar.style.display = "none";
         alert("No fue posible encontrar un registro. Por favor verificar información digitada");
     }

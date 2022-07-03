@@ -1,4 +1,4 @@
-package spring_crud.modelo;
+package com.javamaster.spring_crud.modelo;
 
 import lombok.Getter;
 import lombok.Setter;

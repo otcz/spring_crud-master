@@ -1,17 +1,17 @@
-package spring_crud.controller;
+package com.javamaster.spring_crud.controller;
 
 
+import com.javamaster.spring_crud.dao.UsuarioDao;
+import com.javamaster.spring_crud.dao.VehiculoDAO;
+import com.javamaster.spring_crud.modelo.Usuario;
+import com.javamaster.spring_crud.modelo.Vehiculo;
+import com.javamaster.spring_crud.utils.Cobro;
+import com.javamaster.spring_crud.utils.EnviarMensajeMSN;
+import com.javamaster.spring_crud.utils.SOAT;
+import com.javamaster.spring_crud.utils.Token;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
-import spring_crud.dao.UsuarioDao;
-import spring_crud.dao.VehiculoDAO;
-import spring_crud.modelo.Usuario;
-import spring_crud.modelo.Vehiculo;
-import spring_crud.utils.Cobro;
-import spring_crud.utils.EnviarMensajeMSN;
-import spring_crud.utils.SOAT;
-import spring_crud.utils.Token;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;

@@ -1,4 +1,4 @@
-package spring_crud.utils;
+package com.javamaster.spring_crud.utils;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -9,8 +9,13 @@ import org.springframework.stereotype.Component;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
+
+import static org.springframework.http.HttpHeaders.USER_AGENT;
 
 @Component
 public class Token {

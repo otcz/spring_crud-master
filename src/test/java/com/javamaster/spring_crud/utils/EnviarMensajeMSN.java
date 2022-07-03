@@ -1,4 +1,4 @@
-package spring_crud.utils;
+package com.javamaster.spring_crud.utils;
 
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
@@ -37,8 +37,8 @@ public class EnviarMensajeMSN {
     public void enviarWhatsApp(String numeroWhatsApp) {
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
         Message message = Message.creator(
-                        new PhoneNumber(numeroWhatsApp),
-                        new PhoneNumber("whatsapp:+14155238886"),
+                        new com.twilio.type.PhoneNumber(numeroWhatsApp),
+                        new com.twilio.type.PhoneNumber("whatsapp:+14155238886"),
                         "OSCAR TCZ")
                 .create();
 
@@ -48,8 +48,8 @@ public class EnviarMensajeMSN {
     public void enviarWhatsApp() {
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
         Message message = Message.creator(
-                        new PhoneNumber(getNumeroWhatsApp()),
-                        new PhoneNumber("whatsapp:+14155238886"),
+                        new com.twilio.type.PhoneNumber(getNumeroWhatsApp()),
+                        new com.twilio.type.PhoneNumber("whatsapp:+14155238886"),
                         "OSCAR TCZ")
                 .create();
 

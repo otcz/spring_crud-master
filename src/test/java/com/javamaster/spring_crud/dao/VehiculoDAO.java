@@ -1,7 +1,7 @@
-package spring_crud.dao;
+package com.javamaster.spring_crud.dao;
 
 
-import spring_crud.modelo.Vehiculo;
+import com.javamaster.spring_crud.modelo.Vehiculo;
 
 public interface VehiculoDAO {
     void registrar(Vehiculo vehiculo);

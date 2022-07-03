@@ -170,8 +170,8 @@ public class Vehiculo {
 
     @Getter
     @Setter
-    @Column(name = "codePayU")
-    String codePayU;
+    @Column(name = "cobro")
+    String cobro;
     public void obtenerDatosVehiculoVerifik(String token) {
 
         try {

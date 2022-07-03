@@ -47,11 +47,10 @@ async function enviarDatosUsuario(){
         lb_fecha_vencimiento_soat.textContent=vehiculo.yyyvennusoat+"-"+vehiculo.mmvennusoat+"-"+vehiculo.ddvennusoat;
         s_pagar.style.display = "block";
 
-        document.getElementById('enlace').setAttribute('href', baseUrl+'/id/'+id);
+        s_pagar.setAttribute('href', 'https://biz.payulatam.com/'+vehiculo.cobro);
     }
     else{
         alert("No fue posible encontrar un registro. Por favor verificar información digitada");
-         s_pagar.setAttribute('href', 'https://biz.payulatam.com/'+vehiculo.cobro);
         s_pagar.style.display = "none";
 
     }

@@ -1,9 +1,9 @@
-package com.javamaster.spring_crud.utils;
+package spring_crud.utils;
 
 
-import com.javamaster.spring_crud.modelo.Vehiculo;
 import lombok.Getter;
 import lombok.Setter;
+import spring_crud.modelo.Vehiculo;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -13,7 +13,6 @@ import java.util.List;
 
 
 public class Cobro {
-
 
 
     @Getter

@@ -1,11 +1,11 @@
-package com.javamaster.spring_crud.utils;
+package spring_crud.utils;
 
 
-import com.javamaster.spring_crud.modelo.Vehiculo;
 import lombok.Getter;
 import lombok.Setter;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import spring_crud.modelo.Vehiculo;
 
 import java.io.File;
 import java.io.FileInputStream;

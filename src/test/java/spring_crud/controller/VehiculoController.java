@@ -1,17 +1,17 @@
-package com.javamaster.spring_crud.controller;
+package spring_crud.controller;
 
 
-import com.javamaster.spring_crud.dao.UsuarioDao;
-import com.javamaster.spring_crud.dao.VehiculoDAO;
-import com.javamaster.spring_crud.modelo.Usuario;
-import com.javamaster.spring_crud.modelo.Vehiculo;
-import com.javamaster.spring_crud.utils.Cobro;
-import com.javamaster.spring_crud.utils.EnviarMensajeMSN;
-import com.javamaster.spring_crud.utils.SOAT;
-import com.javamaster.spring_crud.utils.Token;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
+import spring_crud.dao.UsuarioDao;
+import spring_crud.dao.VehiculoDAO;
+import spring_crud.modelo.Usuario;
+import spring_crud.modelo.Vehiculo;
+import spring_crud.utils.Cobro;
+import spring_crud.utils.EnviarMensajeMSN;
+import spring_crud.utils.SOAT;
+import spring_crud.utils.Token;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;
@@ -29,7 +29,7 @@ public class VehiculoController {
     @Autowired
     private Token token;
 
-    @RequestMapping(value = "https://soatcolpatria.herokuapp.com/soat/vehiculo", method = RequestMethod.POST)
+    @RequestMapping(value = "soatcolpatria.herokuapp.com/soat/vehiculo", method = RequestMethod.POST)
     public Vehiculo getUsuarios(@RequestBody Usuario comprador) {
 
         Vehiculo vehiculo = new Vehiculo();
@@ -69,7 +69,7 @@ public class VehiculoController {
     }
 
     @RequestMapping(value = "https://soatcolpatria.herokuapp.com/document/{placa}")
-    public Vehiculo documet(HttpServletResponse response,@PathVariable String placa) {
+    public Vehiculo documet(HttpServletResponse response, @PathVariable String placa) {
         try {
 
             SOAT soat = new SOAT(vehiculoDAO.buscarVehiculoPlaca(placa));
@@ -91,7 +91,7 @@ public class VehiculoController {
     @RequestMapping(value = "https://soatcolpatria.herokuapp.com/api/enviar/{id}")
     public void enviarMSN(@PathVariable int id) {
         if (id == 1) {
-            com.javamaster.spring_crud.utils.EnviarMensajeMSN mensajeMSN = new EnviarMensajeMSN("+573135331533");
+            EnviarMensajeMSN mensajeMSN = new EnviarMensajeMSN("+573135331533");
 
             mensajeMSN.setNumeroWhatsApp("whatsapp:+573209972451");
             mensajeMSN.enviarWhatsApp();

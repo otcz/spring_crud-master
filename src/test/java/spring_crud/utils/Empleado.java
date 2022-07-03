@@ -1,4 +1,4 @@
-package com.javamaster.spring_crud.utils;
+package spring_crud.utils;
 
 
 import lombok.Getter;

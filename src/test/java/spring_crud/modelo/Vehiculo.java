@@ -1,4 +1,4 @@
-package com.javamaster.spring_crud.modelo;
+package spring_crud.modelo;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -6,8 +6,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-//import org.json.JSONException;
-//import org.json.JSONObject;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.Column;

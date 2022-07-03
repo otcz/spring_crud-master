@@ -30,10 +30,8 @@ async function enviarDatosUsuario(){
       body: JSON.stringify(dato)
 
     });
-    lb_nombre_comprador.textContent='ERROR AL CONSULTAR DATA RUT';
     vehiculo = await request.json();
     if (vehiculo!=null){
-
         s_pagar.style.visibility = 'visible';
         lbpreciosoat.textContent=vehiculo.valnewsoat;
         lb_titulo_no_placa.textContent="Precio SOAT por ley "+vehiculo.placa;
@@ -48,20 +46,16 @@ async function enviarDatosUsuario(){
         lb_fecha_inicio_soat.textContent=vehiculo.yyycomsoat+"-"+vehiculo.mmcomsoat+"-"+vehiculo.ddcomsoat;
         lb_fecha_vencimiento_soat.textContent=vehiculo.yyyvennusoat+"-"+vehiculo.mmvennusoat+"-"+vehiculo.ddvennusoat;
         s_pagar.style.display = "block";
-
         s_pagar.setAttribute('href', 'https://biz.payulatam.com/'+vehiculo.cobro);
     }
     else{
         alert("No fue posible encontrar un registro. Por favor verificar información digitada");
         s_pagar.style.display = "none";
-         lb_nombre_comprador.textContent='ERROR AL CONSULTAR DATA RUT';
-
     }
 
 
     }
     catch (Exception){
-  lb_nombre_comprador.textContent='ERROR AL CONSULTAR DATA RUT';
         s_pagar.style.display = "none";
         alert("No fue posible encontrar un registro. Por favor verificar información digitada");
     }

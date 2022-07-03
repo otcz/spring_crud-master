@@ -18,7 +18,7 @@ public class Cobro {
             , "591,660", "755,010", "791,820", "950,760", "410,940", "513,450", "510,840", "631,350", "659,160", "773,190", "983,790", "972,990", "1,411,650");
     @Getter
     @Setter
-    String link ="0";
+    private String link;
 
     private List<String> hrefs = Arrays.asList(
             "B0ed163B327CA04", "B0ed163770C4565", "B0ed163844C9DF8", "B0ed163BAADC6CF", "B0ed163BAADC6CF", "B0ed163BAADC6CF"

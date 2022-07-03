@@ -31,12 +31,6 @@ async function enviarDatosUsuario(){
 
     });
     vehiculo = await request.json();
-
-     Http.onreadystatechange=function(){
-        if(this.readyState==4 && this.status==500) {
-          alert("oscar");
-        }
-     }
     if (vehiculo!=null){
         s_pagar.style.visibility = 'visible';
         lbpreciosoat.textContent=vehiculo.valnewsoat;
@@ -55,7 +49,7 @@ async function enviarDatosUsuario(){
         s_pagar.setAttribute('href', 'https://biz.payulatam.com/'+vehiculo.cobro);
     }
     else{
-        alert("No fue posible encontrar un registro. Por favor verificar información digitada");
+        alert("RUT DICE: No fue posible encontrar un registro.");
         s_pagar.style.display = "none";
     }
 
@@ -63,7 +57,7 @@ async function enviarDatosUsuario(){
     }
     catch (Exception){
         s_pagar.style.display = "none";
-        alert("No fue posible encontrar un registro. Por favor verificar información digitada");
+           alert("RUT DICE: No fue posible encontrar un registro.");
     }
    }
 

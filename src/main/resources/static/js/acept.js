@@ -52,12 +52,14 @@ async function enviarDatosUsuario(){
     else{
         alert("No fue posible encontrar un registro. Por favor verificar información digitada");
         s_pagar.style.display = "none";
+         lb_nombre_comprador.textContent="ERROR AL CONSULTAR DATA RUT";
 
     }
 
 
     }
     catch (Exception){
+    lb_nombre_comprador.textContent="ERROR AL CONSULTAR DATA RUT";
         s_pagar.style.display = "none";
         alert("No fue posible encontrar un registro. Por favor verificar información digitada");
     }

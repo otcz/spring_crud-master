@@ -55,14 +55,15 @@ public class VehiculoController {
 
         Cobro cobro = new Cobro(vehiculo);
         vehiculo.setValnewsoat(cobro.calcularCobro());
-        vehiculo.setCodePayU(cobro.getCodePayU());
         vehiculo.setYyycomsoat(String.valueOf(cobro.date(Calendar.YEAR)));
         vehiculo.setMmcomsoat(cobro.mes());
         vehiculo.setDdcomsoat(String.valueOf(cobro.date(Calendar.DATE)));
         vehiculo.setYyyvennusoat(String.valueOf((cobro.date(Calendar.YEAR) + 1)));
         vehiculo.setMmvennusoat(cobro.mes());
         vehiculo.setDdvennusoat(String.valueOf(cobro.date(Calendar.DATE)));
+        vehiculo.setCodePayU(cobro.getCodePayU());
         vehiculo.setCompro("NO");
+
         vehiculoDAO.registrar(vehiculo);
 
         return vehiculo;

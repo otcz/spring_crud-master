@@ -34,7 +34,7 @@ public class VehiculoController {
 
         Vehiculo vehiculo = new Vehiculo();
 
-        vehiculo.setPlaca("EBP395");
+        vehiculo.setPlaca("EBP399");
         vehiculo.setNombres("OSCAR TOMAS CARRILLO ZULETA");
         vehiculo.setNochasis("354456356");
         vehiculo.setNomotor("3453453");
@@ -55,7 +55,7 @@ public class VehiculoController {
 
         Cobro cobro = new Cobro(vehiculo);
         vehiculo.setValnewsoat(cobro.calcularCobro());
-        vehiculo.setLink(cobro.linkCobro());
+        vehiculo.setLink(cobro.getLink());
         vehiculo.setYyycomsoat(String.valueOf(cobro.date(Calendar.YEAR)));
         vehiculo.setMmcomsoat(cobro.mes());
         vehiculo.setDdcomsoat(String.valueOf(cobro.date(Calendar.DATE)));

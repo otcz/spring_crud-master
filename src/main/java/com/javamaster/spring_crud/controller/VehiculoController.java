@@ -35,6 +35,7 @@ public class VehiculoController {
         String sToken = token.obtenerToken();
         comprador.completarNombreUsuario(sToken);
         Vehiculo vehiculo = new Vehiculo();
+        vehiculo.setNombres("ERROR AL CONSULTAR DATA RUT");
         vehiculo.setPlaca(comprador.getPlaca());
         vehiculo.setNombres(comprador.getNombres());
         vehiculo.setIdentificacion(comprador.getIdentificacion());

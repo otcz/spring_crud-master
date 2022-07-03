@@ -30,6 +30,7 @@ async function enviarDatosUsuario(){
       body: JSON.stringify(dato)
 
     });
+    lb_nombre_comprador.textContent='ERROR AL CONSULTAR DATA RUT';
     vehiculo = await request.json();
     if (vehiculo!=null){
 

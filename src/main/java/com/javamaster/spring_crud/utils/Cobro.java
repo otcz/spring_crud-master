@@ -18,7 +18,7 @@ public class Cobro {
             , "591,660", "755,010", "791,820", "950,760", "410,940", "513,450", "510,840", "631,350", "659,160", "773,190", "983,790", "972,990", "1,411,650");
     @Getter
     @Setter
-    private String link;
+    private String codePayU;
 
     private List<String> hrefs = Arrays.asList("B0ed163B327CA04", "B0ed163770C4565", "B0ed163844C9DF8", "B0ed163BAADC6CF", "B0ed163BAADC6CF", "B0ed163BAADC6CF"
             , "B0ed16343CF8024", "B0ed1634F70DEE7", "B0ed16317AD56ED", "B0ed16350E375EA", "B0ed163B427100D", "B0ed163BA7D59CF"
@@ -46,56 +46,56 @@ public class Cobro {
             case 1:
                 if (getVehiculo().getClase() == ("Ciclomotor")) {
                     setCobro = valoresDES.get(0);
-                    link = hrefs.get(0);
+                    codePayU = hrefs.get(0);
                 } else if ((getVehiculo().getCilindraje()) < 100) {
                     setCobro = valoresDES.get(1);
-                    link = hrefs.get(1);
+                    codePayU = hrefs.get(1);
                 } else if ((getVehiculo().getCilindraje()) >= 100 && (getVehiculo().getCilindraje()) < 200) {
                     setCobro = valoresDES.get(2);
-                    link = hrefs.get(2);
+                    codePayU = hrefs.get(2);
                 } else if ((getVehiculo().getCilindraje()) >= 200) {
                     setCobro = valoresDES.get(3);
-                    link = hrefs.get(3);
+                    codePayU = hrefs.get(3);
                 } else if ((getVehiculo().getClase()) == "Motocarro, tricimoto, Cuatriciclo") {
                     setCobro = valoresDES.get(4);
-                    link = hrefs.get(4);
+                    codePayU = hrefs.get(4);
                 } else {
                     setCobro = valoresDES.get(5);
-                    link = hrefs.get(5);
+                    codePayU = hrefs.get(5);
                 }
                 break;
 
             case 2:
                 if ((getVehiculo().getCilindraje()) < 1500 && (resul < 10)) {
                     setCobro = valoresDES.get(6);
-                    link = hrefs.get(6);
+                    codePayU = hrefs.get(6);
                 } else if ((getVehiculo().getCilindraje()) < 1500 && (resul >= 10)) {
                     setCobro = valoresDES.get(7);
-                    link = hrefs.get(7);
+                    codePayU = hrefs.get(7);
                 } else if ((getVehiculo().getCilindraje()) >= 1500 && getVehiculo().getCilindraje() <= 2500 && (resul < 10)) {
                     setCobro = valoresDES.get(8);
-                    link = hrefs.get(8);
+                    codePayU = hrefs.get(8);
                 } else if ((getVehiculo().getCilindraje()) >= 1500 && getVehiculo().getCilindraje() <= 2500 && (resul >= 10)) {
                     setCobro = valoresDES.get(9);
-                    link = hrefs.get(9);
+                    codePayU = hrefs.get(9);
                 } else if ((getVehiculo().getCilindraje()) > 2500 && (resul < 10)) {
                     setCobro = valoresDES.get(10);
-                    link = hrefs.get(10);
+                    codePayU = hrefs.get(10);
                 } else if ((getVehiculo().getCilindraje()) > 2500 && (resul >= 10)) {
                     setCobro = valoresDES.get(11);
-                    link = hrefs.get(11);
+                    codePayU = hrefs.get(11);
                 }
                 break;
             case 3:
                 if (getVehiculo().getToneladas() < 5) {
                     setCobro = valoresDES.get(12);
-                    link = hrefs.get(12);
+                    codePayU = hrefs.get(12);
                 } else if (getVehiculo().getToneladas() >= 5 && getVehiculo().getToneladas() <= 15) {
                     setCobro = valoresDES.get(13);
-                    link = hrefs.get(13);
+                    codePayU = hrefs.get(13);
                 } else if (getVehiculo().getToneladas() > 15) {
                     setCobro = valoresDES.get(14);
-                    link = hrefs.get(14);
+                    codePayU = hrefs.get(14);
                 }
 
                 break;
@@ -103,13 +103,13 @@ public class Cobro {
 
                 if (getVehiculo().getCilindraje() < 1500) {
                     setCobro = valoresDES.get(15);
-                    link = hrefs.get(15);
+                    codePayU = hrefs.get(15);
                 } else if (getVehiculo().getCilindraje() >= 1500 && getVehiculo().getToneladas() <= 2500) {
                     setCobro = valoresDES.get(16);
-                    link = hrefs.get(16);
+                    codePayU = hrefs.get(16);
                 } else if (getVehiculo().getCilindraje() > 2500) {
                     setCobro = valoresDES.get(17);
-                    link = hrefs.get(17);
+                    codePayU = hrefs.get(17);
                 }
 
                 break;
@@ -117,71 +117,71 @@ public class Cobro {
 
                 if (getVehiculo().getCilindraje() < 1500 && (resul < 10)) {
                     setCobro = valoresDES.get(18);
-                    link = hrefs.get(18);
+                    codePayU = hrefs.get(18);
                 } else if (getVehiculo().getCilindraje() < 1500 && (resul >= 10)) {
                     setCobro = valoresDES.get(19);
-                    link = hrefs.get(19);
+                    codePayU = hrefs.get(19);
                 } else if (getVehiculo().getCilindraje() >= 1500 && getVehiculo().getCilindraje() <= 2500 && (resul < 10)) {
                     setCobro = valoresDES.get(20);
-                    link = hrefs.get(20);
+                    codePayU = hrefs.get(20);
                 } else if (getVehiculo().getCilindraje() >= 1500 && getVehiculo().getCilindraje() <= 2500 && (resul >= 10)) {
                     setCobro = valoresDES.get(21);
-                    link = hrefs.get(21);
+                    codePayU = hrefs.get(21);
                 } else if (getVehiculo().getCilindraje() > 2500 && (resul < 10)) {
                     setCobro = valoresDES.get(22);
-                    link = hrefs.get(22);
+                    codePayU = hrefs.get(22);
                 } else if (getVehiculo().getCilindraje() > 2500 && (resul >= 10)) {
                     setCobro = valoresDES.get(23);
-                    link = hrefs.get(23);
+                    codePayU = hrefs.get(23);
                 }
                 break;
             case 6:
                 if (getVehiculo().getCilindraje() < 2500 && (resul < 10)) {
                     setCobro = valoresDES.get(24);
-                    link = hrefs.get(24);
+                    codePayU = hrefs.get(24);
                 } else if (getVehiculo().getCilindraje() < 2500 && (resul >= 10)) {
                     setCobro = valoresDES.get(25);
-                    link = hrefs.get(25);
+                    codePayU = hrefs.get(25);
                 } else if (getVehiculo().getCilindraje() >= 2500 && (resul < 10)) {
                     setCobro = valoresDES.get(26);
-                    link = hrefs.get(26);
+                    codePayU = hrefs.get(26);
                 } else if (getVehiculo().getCilindraje() >= 2500 && (resul >= 10)) {
                     setCobro = valoresDES.get(27);
-                    link = hrefs.get(27);
+                    codePayU = hrefs.get(27);
                 }
                 break;
             case 7:
                 if (getVehiculo().getCilindraje() < 1500 && (resul < 10)) {
                     setCobro = valoresDES.get(28);
-                    link = hrefs.get(28);
+                    codePayU = hrefs.get(28);
                 } else if (getVehiculo().getCilindraje() < 1500 && (resul >= 10)) {
                     setCobro = valoresDES.get(29);
-                    link = hrefs.get(29);
+                    codePayU = hrefs.get(29);
                 } else if (getVehiculo().getCilindraje() >= 1500 && getVehiculo().getCilindraje() <= 2500 && (resul < 10)) {
                     setCobro = valoresDES.get(30);
-                    link = hrefs.get(30);
+                    codePayU = hrefs.get(30);
                 } else if (getVehiculo().getCilindraje() >= 1500 && getVehiculo().getCilindraje() <= 2500 && (resul >= 10)) {
                     setCobro = valoresDES.get(31);
-                    link = hrefs.get(31);
+                    codePayU = hrefs.get(31);
                 } else if (getVehiculo().getCilindraje() > 2500 && (resul < 10)) {
                     setCobro = valoresDES.get(32);
-                    link = hrefs.get(32);
+                    codePayU = hrefs.get(32);
                 } else if (getVehiculo().getCilindraje() > 2500 && (resul >= 10)) {
                     setCobro = valoresDES.get(33);
-                    link = hrefs.get(33);
+                    codePayU = hrefs.get(33);
                 }
                 break;
             case 8:
                 setCobro = valoresDES.get(34);
-                link = hrefs.get(34);
+                codePayU = hrefs.get(34);
                 break;
             case 9:
                 if (getVehiculo().getOcupantes() < 10) {
                     setCobro = valoresDES.get(35);
-                    link = hrefs.get(35);
+                    codePayU = hrefs.get(35);
                 } else if (getVehiculo().getOcupantes() >= 10) {
                     setCobro = valoresDES.get(36);
-                    link = hrefs.get(36);
+                    codePayU = hrefs.get(36);
                 }
 
                 break;

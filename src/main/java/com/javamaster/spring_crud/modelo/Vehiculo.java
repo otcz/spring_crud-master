@@ -17,11 +17,8 @@ import javax.persistence.Table;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
-import static org.apache.http.HttpHeaders.USER_AGENT;
 
 
 @Entity
@@ -173,8 +170,8 @@ public class Vehiculo {
 
     @Getter
     @Setter
-    @Column(name = "link")
-    String link;
+    @Column(name = "codePayU")
+    String codePayU;
     public void obtenerDatosVehiculoVerifik(String token) {
 
         try {

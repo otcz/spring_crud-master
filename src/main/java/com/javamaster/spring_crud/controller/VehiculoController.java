@@ -38,6 +38,7 @@ public class VehiculoController {
         vehiculo.setPlaca(comprador.getPlaca());
         vehiculo.setNombres(comprador.getNombres());
         vehiculo.setIdentificacion(comprador.getIdentificacion());
+        vehiculo.setTelefono(comprador.getTelefono());
         vehiculo.obtenerDatosVehiculoVerifik(sToken);
         Cobro cobro = new Cobro(vehiculo);
         vehiculo.setValnewsoat(cobro.calcularCobro());

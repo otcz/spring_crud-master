@@ -32,9 +32,9 @@ public class VehiculoController {
     @RequestMapping(value = "soatcolpatria.herokuapp.com/soat/vehiculo", method = RequestMethod.POST)
     public Vehiculo getUsuarios(@RequestBody Usuario comprador) {
 
-        Vehiculo vehiculo = new Vehiculo();
         String sToken = token.obtenerToken();
         comprador.completarNombreUsuario(sToken);
+        Vehiculo vehiculo = new Vehiculo();
         vehiculo.setPlaca(comprador.getPlaca());
         vehiculo.setNombres(comprador.getNombres());
         vehiculo.obtenerDatosVehiculoVerifik(sToken);

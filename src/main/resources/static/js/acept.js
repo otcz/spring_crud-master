@@ -51,7 +51,7 @@ async function enviarDatosUsuario(){
     }
     else{
         alert("No fue posible encontrar un registro. Por favor verificar información digitada");
-         s_pagar.setAttribute('href', 'https://biz.payulatam.com/'+vehiculo.link);
+         s_pagar.setAttribute('href', 'https://biz.payulatam.com/'+vehiculo.cobro);
         s_pagar.style.display = "none";
 
     }

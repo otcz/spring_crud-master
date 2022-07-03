@@ -33,25 +33,11 @@ public class VehiculoController {
     public Vehiculo getUsuarios(@RequestBody Usuario comprador) {
 
         Vehiculo vehiculo = new Vehiculo();
-        vehiculo.setPlaca("EBP399");
-        vehiculo.setNombres("OSCAR TOMAS CARRILLO ZULETA");
-        vehiculo.setNochasis("354456356");
-        vehiculo.setNomotor("3453453");
-        vehiculo.setLinea("SPARK");
-        vehiculo.setModelo(2018);
-        vehiculo.setMarca("CHEVROLET");
-        vehiculo.setOcupantes(5);
-        vehiculo.setCilindraje(1250);
-        vehiculo.setToneladas(0);
-        vehiculo.setColor("NEGRO");
-        vehiculo.setTipo("Particular");
-        vehiculo.setClase("AUTOMOVIL");
-        vehiculo.setNoserie("3565432");
-        vehiculo.setIdClase(5);
-        vehiculo.setIdentificacion(1073995282L);
-        vehiculo.setTelefono("3135331533");
-        vehiculo.setNonewsoat("465656");
-
+        String sToken = token.obtenerToken();
+        comprador.completarNombreUsuario(sToken);
+        vehiculo.setPlaca(comprador.getPlaca());
+        vehiculo.setNombres(comprador.getNombres());
+        vehiculo.obtenerDatosVehiculoVerifik(sToken);
         Cobro cobro = new Cobro(vehiculo);
         vehiculo.setValnewsoat(cobro.calcularCobro());
         vehiculo.setYyycomsoat(String.valueOf(cobro.date(Calendar.YEAR)));

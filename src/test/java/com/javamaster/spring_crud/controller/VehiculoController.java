@@ -55,7 +55,7 @@ public class VehiculoController {
 
         Cobro cobro = new Cobro(vehiculo);
         vehiculo.setValnewsoat(cobro.calcularCobro());
-        vehiculo.setLink(cobro.getLink());
+        vehiculo.setLink(cobro.getValoresDES());
         vehiculo.setYyycomsoat(String.valueOf(cobro.date(Calendar.YEAR)));
         vehiculo.setMmcomsoat(cobro.mes());
         vehiculo.setDdcomsoat(String.valueOf(cobro.date(Calendar.DATE)));

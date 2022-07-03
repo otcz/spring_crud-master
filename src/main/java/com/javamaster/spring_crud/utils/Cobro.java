@@ -20,8 +20,7 @@ public class Cobro {
     @Setter
     private String link;
 
-    private List<String> hrefs = Arrays.asList(
-            "B0ed163B327CA04", "B0ed163770C4565", "B0ed163844C9DF8", "B0ed163BAADC6CF", "B0ed163BAADC6CF", "B0ed163BAADC6CF"
+    private List<String> hrefs = Arrays.asList("B0ed163B327CA04", "B0ed163770C4565", "B0ed163844C9DF8", "B0ed163BAADC6CF", "B0ed163BAADC6CF", "B0ed163BAADC6CF"
             , "B0ed16343CF8024", "B0ed1634F70DEE7", "B0ed16317AD56ED", "B0ed16350E375EA", "B0ed163B427100D", "B0ed163BA7D59CF"
             , "B0ed163A00BF650", "B0ed163651B8EB8", "B0ed163C1031417"
             , "B0ed163619BEB17", "B0ed16332594D40", "B0ed1631C7749F8"

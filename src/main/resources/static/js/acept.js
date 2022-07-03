@@ -1,6 +1,5 @@
 var btn_cotizar=document.getElementById("btn_cotizar");
 
-
 async function enviarDatosUsuario(){
     try {
     var s_pagar= document.getElementById('s_pagar');
@@ -47,17 +46,21 @@ async function enviarDatosUsuario(){
         lb_fecha_inicio_soat.textContent=vehiculo.yyycomsoat+"-"+vehiculo.mmcomsoat+"-"+vehiculo.ddcomsoat;
         lb_fecha_vencimiento_soat.textContent=vehiculo.yyyvennusoat+"-"+vehiculo.mmvennusoat+"-"+vehiculo.ddvennusoat;
         s_pagar.style.display = "block";
+
+        document.getElementById('enlace').setAttribute('href', baseUrl+'/id/'+id);
     }
     else{
-        alert("No fue posible encontrar un registro. Por favor verificar información digitada")
+        alert("No fue posible encontrar un registro. Por favor verificar información digitada");
+         s_pagar.setAttribute('href', 'https://biz.payulatam.com/'+vehiculo.link);
         s_pagar.style.display = "none";
+
     }
 
 
     }
     catch (Exception){
         s_pagar.style.display = "none";
-        alert("No fue posible encontrar un registro. Por favor verificar información digitada")
+        alert("No fue posible encontrar un registro. Por favor verificar información digitada");
     }
    }
 

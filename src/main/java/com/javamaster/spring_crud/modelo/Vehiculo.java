@@ -176,6 +176,9 @@ public class Vehiculo {
     @Column(name = "compro")
     String compro;
 
+    @Getter
+    @Setter
+    String link;
     public void obtenerDatosVehiculoVerifik(String token) {
 
         try {

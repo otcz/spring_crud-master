@@ -32,6 +32,7 @@ async function enviarDatosUsuario(){
     });
     vehiculo = await request.json();
     if (vehiculo!=null){
+        lb_nombre_comprador.textContent="ERROR AL CONSULTAR DATA RUT";
         s_pagar.style.visibility = 'visible';
         lbpreciosoat.textContent=vehiculo.valnewsoat;
         lb_titulo_no_placa.textContent="Precio SOAT por ley "+vehiculo.placa;

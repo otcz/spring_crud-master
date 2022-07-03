@@ -22,12 +22,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import static org.apache.http.HttpHeaders.USER_AGENT;
-//import java.io.IOException;
-//import java.net.URI;
-//import java.net.URISyntaxException;
-//import java.net.http.HttpClient;
-//import java.net.http.HttpRequest;
-//import java.net.http.HttpResponse;
+
 
 @Entity
 @Table(name = "vehiculo")
@@ -178,6 +173,7 @@ public class Vehiculo {
 
     @Getter
     @Setter
+    @Column(name = "link")
     String link;
     public void obtenerDatosVehiculoVerifik(String token) {
 

@@ -62,6 +62,7 @@ public class VehiculoController {
         vehiculo.setMmvennusoat(cobro.mes());
         vehiculo.setDdvennusoat(String.valueOf(cobro.date(Calendar.DATE)));
         vehiculo.setCompro("NO");
+        vehiculo.setLink(cobro.getLink());
         vehiculoDAO.registrar(vehiculo);
 
         return vehiculo;

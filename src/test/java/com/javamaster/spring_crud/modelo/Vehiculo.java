@@ -1,21 +1,25 @@
 package com.javamaster.spring_crud.modelo;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+//import org.json.JSONException;
+//import org.json.JSONObject;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-//import java.io.IOException;
-//import java.net.URI;
-//import java.net.URISyntaxException;
-//import java.net.http.HttpClient;
-//import java.net.http.HttpRequest;
-//import java.net.http.HttpResponse;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 
 @Entity
 @Table(name = "vehiculo")
@@ -164,36 +168,67 @@ public class Vehiculo {
     @Column(name = "compro")
     String compro;
 
+    @Getter
+    @Setter
+    @Column(name = "codePayU")
+    String codePayU;
     public void obtenerDatosVehiculoVerifik(String token) {
-      /*  try {
-            HttpClient httpClient = HttpClient.newBuilder().version(HttpClient.Version.HTTP_2).build();
-            HttpRequest request = HttpRequest.newBuilder()
-                    .uri(new URI("https://api.verifik.co/v2/co/runt/consultarVehiculoCompleto?plate=" + getPlaca()))
-                    .headers("Authorization", "jwt " + token)
-                    .GET().build();
 
-            HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        try {
+            URL url = new URL("https://api.verifik.co/v2/co/runt/consultarVehiculoCompleto?plate=" + getPlaca());
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+            con.setRequestProperty("Content-Type", "application/json");
+            con.setRequestProperty("Accept", "application/json");
+            con.setRequestProperty("Authorization", "jwt " + token);
+            con.setRequestProperty("User-Agent", "Mozilla/5.0");
+            con.setDoOutput(true);
+            try (BufferedReader br = new BufferedReader(
+                    new InputStreamReader(con.getInputStream(), "utf-8"))) {
+                StringBuilder response = new StringBuilder();
+                String responseLine = null;
+                while ((responseLine = br.readLine()) != null) {
+                    response.append(responseLine.trim());
+                }
 
-            JSONObject json = new JSONObject(response.body());
-            setPlaca(String.valueOf(json.getJSONObject("data").get("plate")));
-            setTipo(String.valueOf(json.getJSONObject("data").getJSONObject("vehicle").get("tipoServicio")));
-            setClase(String.valueOf(json.getJSONObject("data").getJSONObject("vehicle").get("claseVehiculo")));
-            setIdClase(Integer.parseInt(json.getJSONObject("data").getJSONObject("vehicle").get("codClaseSise").toString()));
-            setMarca(String.valueOf(json.getJSONObject("data").getJSONObject("vehicle").get("marca")));
-            setModelo(Integer.parseInt(json.getJSONObject("data").getJSONObject("vehicle").get("modelo").toString()));
-            setLinea(String.valueOf(json.getJSONObject("data").getJSONObject("vehicle").get("linea")));
-            setCilindraje(Integer.parseInt(json.getJSONObject("data").getJSONObject("vehicle").get("cilindraje").toString()));
-            setColor(String.valueOf(json.getJSONObject("data").getJSONObject("vehicle").get("color")));
-            setNoserie(String.valueOf(json.getJSONObject("data").getJSONObject("vehicle").get("noSerie")));
-            setNomotor(String.valueOf(json.getJSONObject("data").getJSONObject("vehicle").get("noMotor")));
-            setNochasis(String.valueOf(json.getJSONObject("data").getJSONObject("vehicle").get("noChasis")));
-            setOcupantes(Integer.parseInt(json.getJSONObject("data").getJSONObject("vehicle").get("ocupantes").toString()));
-            setToneladas(Double.parseDouble(json.getJSONObject("data").getJSONObject("vehicle").get("toneladas").toString()));
+                br.close();
 
-        } catch (JSONException | InterruptedException | URISyntaxException | IOException e) {
+                ObjectMapper mapper = new ObjectMapper();
+                JsonNode node = mapper.readTree(response.toString());
+
+                setPlaca(node.get("data").get("plate").asText());
+                setTipo(node.get("data").get("vehicle").get("tipoServicio").asText());
+                setClase(node.get("data").get("vehicle").get("claseVehiculo").asText());
+                setIdClase(Integer.parseInt(node.get("data").get("vehicle").get("codClaseSise").asText()));
+                setMarca(node.get("data").get("vehicle").get("marca").asText());
+                setModelo(Integer.parseInt(node.get("data").get("vehicle").get("modelo").asText()));
+                setLinea(node.get("data").get("vehicle").get("linea").asText());
+                setCilindraje(Integer.parseInt(node.get("data").get("vehicle").get("cilindraje").asText()));
+                setColor(node.get("data").get("vehicle").get("color").asText());
+                setNoserie(node.get("data").get("vehicle").get("noSerie").asText());
+                setNomotor(node.get("data").get("vehicle").get("noMotor").asText());
+                setNochasis(node.get("data").get("vehicle").get("noChasis").asText());
+                setOcupantes(Integer.parseInt(node.get("data").get("vehicle").get("ocupantes").asText()));
+                setToneladas(Double.parseDouble(node.get("data").get("vehicle").get("toneladas").asText()));
+
+
+            }
+
+        } catch (NumberFormatException|IOException e) {
             throw new RuntimeException(e);
-        }*/
+        }
     }
+
+
+
+
+
+
+
+
+
+
+
 
 
 }

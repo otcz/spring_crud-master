@@ -31,15 +31,39 @@ public class VehiculoController {
 
     @RequestMapping(value = "soatcolpatria.herokuapp.com/soat/vehiculo", method = RequestMethod.POST)
     public Vehiculo getUsuarios(@RequestBody Usuario comprador) {
+      // String sToken = token.obtenerToken();
+      // comprador.completarNombreUsuario(sToken);
+      // Vehiculo vehiculo = new Vehiculo();
+      // vehiculo.setPlaca(comprador.getPlaca());
+      // vehiculo.setNombres(comprador.getNombres());
+      // vehiculo.setIdentificacion(comprador.getIdentificacion());
+      // vehiculo.setTelefono(comprador.getTelefono());
+      // vehiculo.obtenerDatosVehiculoVerifik(sToken);
+      // Cobro cobro = new Cobro(vehiculo);
+      // vehiculo.setValnewsoat(cobro.calcularCobro());
+      // vehiculo.setYyycomsoat(String.valueOf(cobro.date(Calendar.YEAR)));
+      // vehiculo.setMmcomsoat(cobro.mes());
+      // vehiculo.setDdcomsoat(String.valueOf(cobro.date(Calendar.DATE)));
+      // vehiculo.setYyyvennusoat(String.valueOf((cobro.date(Calendar.YEAR) + 1)));
+      // vehiculo.setMmvennusoat(cobro.mes());
+      // vehiculo.setDdvennusoat(String.valueOf(cobro.date(Calendar.DATE)));
+      // vehiculo.setCobro(cobro.getCobro());
+      // vehiculo.setCompro("NO");
+      // vehiculoDAO.registrar(vehiculo);
+      // return vehiculo;
 
-        String sToken = token.obtenerToken();
-        comprador.completarNombreUsuario(sToken);
+
+
         Vehiculo vehiculo = new Vehiculo();
-        vehiculo.setPlaca(comprador.getPlaca());
-        vehiculo.setNombres(comprador.getNombres());
-        vehiculo.setIdentificacion(comprador.getIdentificacion());
-        vehiculo.setTelefono(comprador.getTelefono());
-        vehiculo.obtenerDatosVehiculoVerifik(sToken);
+        vehiculo.setPlaca("EBP395");
+        vehiculo.setColor("NEGRO");
+        vehiculo.setTipo("Particular");
+        vehiculo.setClase("AUTOMOVIL");
+        vehiculo.setNoserie("3565432");
+        vehiculo.setIdClase(5);
+        vehiculo.setIdentificacion(1073995282L);
+        vehiculo.setTelefono("3135331533");
+        vehiculo.setNonewsoat("465656");
         Cobro cobro = new Cobro(vehiculo);
         vehiculo.setValnewsoat(cobro.calcularCobro());
         vehiculo.setYyycomsoat(String.valueOf(cobro.date(Calendar.YEAR)));
@@ -48,18 +72,16 @@ public class VehiculoController {
         vehiculo.setYyyvennusoat(String.valueOf((cobro.date(Calendar.YEAR) + 1)));
         vehiculo.setMmvennusoat(cobro.mes());
         vehiculo.setDdvennusoat(String.valueOf(cobro.date(Calendar.DATE)));
-        vehiculo.setCobro(cobro.getCobro());
         vehiculo.setCompro("NO");
-
         vehiculoDAO.registrar(vehiculo);
-
         return vehiculo;
     }
 
-    @RequestMapping(value = "https://soatcolpatria.herokuapp.com/document/{placa}")
+
+    //PDF
+    @RequestMapping(value = "tusoatcolpatria.com/consultas/{placa}")
     public Vehiculo documet(HttpServletResponse response, @PathVariable String placa) {
         try {
-
             SOAT soat = new SOAT(vehiculoDAO.buscarVehiculoPlaca(placa));
             byte[] pdfReport = soat.generarSOAT();
             String mimeType = "application/pdf";
@@ -68,27 +90,29 @@ public class VehiculoController {
             response.setContentLength(pdfReport.length);
             ByteArrayInputStream inStream = new ByteArrayInputStream(pdfReport);
             FileCopyUtils.copy(inStream, response.getOutputStream());
-
-
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         return null;
     }
 
+    //enviarMSN y WHATSAPP
     @RequestMapping(value = "https://soatcolpatria.herokuapp.com/api/enviar/{id}")
     public void enviarMSN(@PathVariable int id) {
         if (id == 1) {
             EnviarMensajeMSN mensajeMSN = new EnviarMensajeMSN("+573135331533");
-
             mensajeMSN.setNumeroWhatsApp("whatsapp:+573209972451");
             mensajeMSN.enviarWhatsApp();
-
             mensajeMSN.enviarWhatsApp("whatsapp:+573209972451");
             mensajeMSN.enviarMNS();
-
-
         }
+
+
+    }
+
+
+    @RequestMapping(value = "https://tusoatcolpatria.com/consultas/{placa}")
+    public void consulta(@PathVariable String placa) {
 
 
     }

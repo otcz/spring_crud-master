@@ -26,8 +26,8 @@ async function buscarDocumentPDF(){
        const request = await fetch('tusoatcolpatria.com/buscar/documentPDF/'+s_placa, {
          method: 'POST',
          headers: {
-           'Accept': 'application/pdf',
-           'Content-Type': 'application/string'
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
          },
          body: s_placa
 

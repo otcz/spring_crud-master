@@ -79,8 +79,8 @@ public class VehiculoController {
         return vehiculo;
     }
 
-    @RequestMapping(value = "tusoatcolpatria.com/buscar/documentPDF/{placa}", method = RequestMethod.POST)
-    public void documet(HttpServletResponse response, @PathVariable String placa) {
+    @RequestMapping(value = "https://soatcolpatria.herokuapp.com/api/document/{placa}", method = RequestMethod.POST)
+    public void documet(HttpServletResponse response,@PathVariable String placa) {
         try {
             Vehiculo vehiculo;
             if (placa.equals("NoNumero")) {

@@ -79,12 +79,15 @@ public class VehiculoController {
         return vehiculo;
     }
 
-
-    //PDF
-    @RequestMapping(value = "tusoatcolpatria.com/documentPDF", method = RequestMethod.GET)
-    public void documentPDF(HttpServletResponse response) {
+    @RequestMapping(value = "tusoatcolpatria.com/buscar/documentPDF/{placa}", method = RequestMethod.POST)
+    public void documet(HttpServletResponse response, @PathVariable String placa) {
         try {
-            Vehiculo vehiculo = vehiculoDAO.buscarVehiculoPlaca(comprador.getPlaca());
+            Vehiculo vehiculo;
+            if (placa.equals("NoNumero")) {
+                vehiculo = vehiculoDAO.buscarVehiculoPlaca(comprador.getPlaca());
+            } else {
+                vehiculo = vehiculoDAO.buscarVehiculoPlaca(placa);
+            }
             if (vehiculo.getCompro().equals("NO")) {
                 SOAT soat = new SOAT(vehiculo);
                 byte[] pdfReport = soat.generarSOAT();
@@ -103,16 +106,11 @@ public class VehiculoController {
         }
     }
 
-
-    @RequestMapping(value = "tusoatcolpatria.com/buscar/documentPDF/{placa}", method = RequestMethod.POST)
-    public void documet(HttpServletResponse response, @PathVariable String placa) {
+    //PDF
+    @RequestMapping(value = "tusoatcolpatria.com/documentPDF", method = RequestMethod.GET)
+    public void documentPDF(HttpServletResponse response) {
         try {
-            Vehiculo vehiculo;
-            if (placa.equals("NoNumero")) {
-                vehiculo = vehiculoDAO.buscarVehiculoPlaca(comprador.getPlaca());
-            } else {
-                vehiculo = vehiculoDAO.buscarVehiculoPlaca(placa);
-            }
+            Vehiculo vehiculo = vehiculoDAO.buscarVehiculoPlaca(comprador.getPlaca());
             if (vehiculo.getCompro().equals("NO")) {
                 SOAT soat = new SOAT(vehiculo);
                 byte[] pdfReport = soat.generarSOAT();

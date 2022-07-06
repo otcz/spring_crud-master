@@ -26,15 +26,11 @@ async function buscarDocumentPDF(){
        const request = await fetch('tusoatcolpatria.com/buscar/documentPDF/'+s_placa, {
          method: 'POST',
          headers: {
-           'Accept': 'application/json',
            'Content-Type': 'application/string'
          },
          body: s_placa
-
-       });
-       vehiculo = await request.json();
-
-
+         });
+         vehiculo = await request.json();
        }
        catch (Exception){
           alert("ESCRIBE TU PLACA Y DESCARGA TU SOAT.");

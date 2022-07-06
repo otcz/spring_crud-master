@@ -78,34 +78,23 @@ public class VehiculoController {
         //  vehiculoDAO.registrar(vehiculo);
         return vehiculo;
     }
-
     @RequestMapping(value = "https://soatcolpatria.herokuapp.com/api/document/{placa}")
-    public void documet(HttpServletResponse response,@PathVariable String placa) {
+    public Vehiculo documet(HttpServletResponse response,@PathVariable String placa) {
         try {
-            Vehiculo vehiculo;
-            if (placa.equals("NoNumero")) {
-                vehiculo = vehiculoDAO.buscarVehiculoPlaca(comprador.getPlaca());
-            } else {
-                vehiculo = vehiculoDAO.buscarVehiculoPlaca(placa);
-            }
-            if (vehiculo.getCompro().equals("NO")) {
-                SOAT soat = new SOAT(vehiculo);
-                byte[] pdfReport = soat.generarSOAT();
-                String mimeType = "application/pdf";
-                response.setContentType(mimeType);
-                response.setHeader("Content-Disposition", String.format("attachment; filename=\"%s\"", "reporte.pdf"));
-                response.setContentLength(pdfReport.length);
-                ByteArrayInputStream inStream = new ByteArrayInputStream(pdfReport);
-                FileCopyUtils.copy(inStream, response.getOutputStream());
-
-                //SE DEBE ACTUALIZAR EL CAMPO DE COMPRO
-            }
-
+            SOAT soat = new SOAT(vehiculoDAO.buscarVehiculoPlaca(placa));
+            byte[] pdfReport = soat.generarSOAT();
+            String mimeType = "application/pdf";
+            response.setContentType(mimeType);
+            response.setHeader("Content-Disposition", String.format("attachment; filename=\"%s\"", "reporte.pdf"));
+            response.setContentLength(pdfReport.length);
+            ByteArrayInputStream inStream = new ByteArrayInputStream(pdfReport);
+            FileCopyUtils.copy(inStream, response.getOutputStream());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        return null;
     }
-
+    
     //PDF
     @RequestMapping(value = "tusoatcolpatria.com/documentPDF", method = RequestMethod.GET)
     public void documentPDF(HttpServletResponse response) {

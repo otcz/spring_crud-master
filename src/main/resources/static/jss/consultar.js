@@ -32,7 +32,7 @@ async function buscarDocumentPDF(){
            'Accept': 'application/json',
            'Content-Type': 'application/string'
          },
-         body: s_placa;
+         body: s_placa
 
        });
        vehiculo = await request.json();

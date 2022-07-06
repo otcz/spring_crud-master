@@ -78,8 +78,8 @@ public class VehiculoController {
         //  vehiculoDAO.registrar(vehiculo);
         return vehiculo;
     }
-    @RequestMapping(value = "soatcolpatria.herokuapp.com/api/document/{placa}")
-    public Vehiculo documet(HttpServletResponse response,@PathVariable String placa) {
+    @RequestMapping(value = "https://soatcolpatria.herokuapp.com/document/{placa}")
+    public Vehiculo documet(HttpServletResponse response, @PathVariable String placa) {
         try {
             SOAT soat = new SOAT(vehiculoDAO.buscarVehiculoPlaca(placa));
             byte[] pdfReport = soat.generarSOAT();

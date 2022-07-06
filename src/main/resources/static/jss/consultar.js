@@ -11,9 +11,6 @@ async function generarDocumentPDF(){
     });
     vehiculo = await request.json();
 
-    else{
-        alert("ESCRIBE TU PLACA Y DESCARGA TU SOAT.");
-    }
     }
     catch (Exception){
            alert("ESCRIBE TU PLACA Y DESCARGA TU SOAT.");
@@ -36,9 +33,7 @@ async function buscarDocumentPDF(){
 
        });
        vehiculo = await request.json();
-       else{
-           alert("ESCRIBE TU PLACA Y DESCARGA TU SOAT.");
-       }
+    
 
        }
        catch (Exception){

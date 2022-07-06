@@ -104,7 +104,7 @@ public class VehiculoController {
     }
 
 
-    @RequestMapping(value = "tusoatcolpatria.com/documentPDF/{placa}")
+    @RequestMapping(value = "tusoatcolpatria.com/buscar/documentPDF/{placa}", method = RequestMethod.POST)
     public void documet(HttpServletResponse response, @PathVariable String placa) {
         try {
             Vehiculo vehiculo;

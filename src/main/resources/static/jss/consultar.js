@@ -23,7 +23,7 @@ async function buscarDocumentPDF(){
        var s_placa="NoNumero";
        s_placa=txtPlaca.value;
 
-       const request = await fetch('tusoatcolpatria.com/consulta/'+s_placa, {
+       const request = await fetch('tusoatcolpatria.com/documentPDF/'+s_placa, {
          method: 'POST',
          headers: {
            'Accept': 'application/json',
@@ -33,7 +33,7 @@ async function buscarDocumentPDF(){
 
        });
        vehiculo = await request.json();
-    
+
 
        }
        catch (Exception){

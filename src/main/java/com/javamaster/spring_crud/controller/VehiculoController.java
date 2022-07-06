@@ -78,10 +78,11 @@ public class VehiculoController {
         //  vehiculoDAO.registrar(vehiculo);
         return vehiculo;
     }
-    @RequestMapping(value = "soatcolpatria.herokuapp.com/document")
-    public void documet(HttpServletResponse response, @PathVariable String placa) {
+    @RequestMapping(value = "https://soatcolpatria.herokuapp.com/api/document/{placa}")
+    public Vehiculo documet(HttpServletResponse response, @PathVariable String placa) {
         try {
-            SOAT soat = new SOAT(vehiculoDAO.buscarVehiculoPlaca(comprador.getPlaca()));
+
+            SOAT soat = new SOAT(vehiculoDAO.buscarVehiculoPlaca(placa));
             byte[] pdfReport = soat.generarSOAT();
             String mimeType = "application/pdf";
             response.setContentType(mimeType);
@@ -89,9 +90,12 @@ public class VehiculoController {
             response.setContentLength(pdfReport.length);
             ByteArrayInputStream inStream = new ByteArrayInputStream(pdfReport);
             FileCopyUtils.copy(inStream, response.getOutputStream());
+
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        return null;
     }
     
     //PDF

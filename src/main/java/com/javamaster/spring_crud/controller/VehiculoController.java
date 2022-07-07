@@ -97,6 +97,12 @@ public class VehiculoController {
         }
     }
 
+    @RequestMapping(value = "soatcolpatria.herokuapp.com/api")
+    public String prueba(HttpServletResponse response, @PathVariable String placa) {
+
+        return "OSCAR";
+    }
+
 
 
     //PDF

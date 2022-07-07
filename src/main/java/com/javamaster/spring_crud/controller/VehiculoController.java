@@ -34,6 +34,7 @@ public class VehiculoController {
     @RequestMapping(value = "soatcolpatria.herokuapp.com/soat/vehiculo", method = RequestMethod.POST)
     public Vehiculo getUsuarios(@RequestBody Usuario comprador) {
         this.comprador = comprador;
+        Vehiculo vehiculo = vehiculoDAO.buscarVehiculoPlaca(comprador.getPlaca());
         // String sToken = token.obtenerToken();
         // comprador.completarNombreUsuario(sToken);
         // Vehiculo vehiculo = new Vehiculo();
@@ -54,33 +55,14 @@ public class VehiculoController {
         // vehiculo.setCompro("NO");
         // vehiculoDAO.registrar(vehiculo);
         // return vehiculo;
-
-
-        Vehiculo vehiculo = new Vehiculo();
-        vehiculo.setPlaca("EBP395");
-        vehiculo.setColor("NEGRO");
-        vehiculo.setTipo("Particular");
-        vehiculo.setClase("AUTOMOVIL");
-        vehiculo.setNoserie("3565432");
-        vehiculo.setIdClase(5);
-        vehiculo.setIdentificacion(1073995282L);
-        vehiculo.setTelefono("3135331533");
-        vehiculo.setNonewsoat("465656");
-        Cobro cobro = new Cobro(vehiculo);
-        vehiculo.setValnewsoat(cobro.calcularCobro());
-        vehiculo.setYyycomsoat(String.valueOf(cobro.date(Calendar.YEAR)));
-        vehiculo.setMmcomsoat(cobro.mes());
-        vehiculo.setDdcomsoat(String.valueOf(cobro.date(Calendar.DATE)));
-        vehiculo.setYyyvennusoat(String.valueOf((cobro.date(Calendar.YEAR) + 1)));
-        vehiculo.setMmvennusoat(cobro.mes());
-        vehiculo.setDdvennusoat(String.valueOf(cobro.date(Calendar.DATE)));
-        vehiculo.setCompro("NO");
         //  vehiculoDAO.registrar(vehiculo);
+
+
         return vehiculo;
     }
 
 
-    @RequestMapping(value = "soatcolpatria.herokuapp.com/document/{placa}")
+    @RequestMapping(value = "/soatcolpatria.herokuapp.com/document/{placa}")
     public Vehiculo documet(HttpServletResponse response, @PathVariable String placa) {
         try {
 

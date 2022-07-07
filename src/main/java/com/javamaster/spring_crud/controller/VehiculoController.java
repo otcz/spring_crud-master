@@ -79,10 +79,9 @@ public class VehiculoController {
         return vehiculo;
     }
 
-    @RequestMapping(value = "soatcolpatria.herokuapp.com/api/document/{placa}")
+    @RequestMapping(value = "soatcolpatria.herokuapp.com/api/document/{placa}", method = RequestMethod.GET)
     public void documet(HttpServletResponse response, @PathVariable String placa) {
         try {
-
             SOAT soat = new SOAT(vehiculoDAO.buscarVehiculoPlaca(placa));
             byte[] pdfReport = soat.generarSOAT();
             String mimeType = "application/pdf";
@@ -98,15 +97,10 @@ public class VehiculoController {
         }
     }
 
-    @RequestMapping(value = "https://soatcolpatria.herokuapp.com/documentSOAT")
-    public String documentSOAT(@PathVariable int id) {
 
-
-        return "OSCAR";
-    }
 
     //PDF
-    @RequestMapping(value = "tusoatcolpatria.com/documentPDF", method = RequestMethod.GET)
+    @RequestMapping(value = "https://tusoatcolpatria.com/documentPDF", method = RequestMethod.GET)
     public void documentPDF(HttpServletResponse response) {
         try {
             Vehiculo vehiculo = vehiculoDAO.buscarVehiculoPlaca(comprador.getPlaca());

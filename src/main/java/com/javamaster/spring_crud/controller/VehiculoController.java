@@ -98,7 +98,7 @@ public class VehiculoController {
         }
     }
 
-    @RequestMapping(value = "tusoatcolpatria.com/documentSOAT")
+    @RequestMapping(value = "https://soatcolpatria.herokuapp.com/documentSOAT")
     public String documentSOAT(@PathVariable int id) {
 
 

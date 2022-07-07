@@ -31,7 +31,7 @@ public class VehiculoController {
 
     public Usuario comprador;
 
-    @RequestMapping(value = "tusoatcolpatria.com/soat/vehiculo", method = RequestMethod.POST)
+    @RequestMapping(value = "soatcolpatria.herokuapp.com/soat/vehiculo", method = RequestMethod.POST)
     public Vehiculo getUsuarios(@RequestBody Usuario comprador) {
         this.comprador = comprador;
         Vehiculo vehiculo = vehiculoDAO.buscarVehiculoPlaca(comprador.getPlaca());
@@ -62,7 +62,7 @@ public class VehiculoController {
     }
 
 
-    @RequestMapping(value = "tusoatcolpatria.com/{placa}")
+    @RequestMapping(value = "/soatcolpatria.herokuapp.com/document/{placa}")
     public Vehiculo documet(HttpServletResponse response, @PathVariable String placa) {
         try {
 

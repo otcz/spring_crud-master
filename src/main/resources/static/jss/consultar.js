@@ -1,35 +1,21 @@
-
-       async function generarDocumentPDF(){
-    try {
-    var txtPlaca= document.getElementById('_DigitalSOATQuotePortlet_Placa');
-    const request = await fetch('tusoatcolpatria.com/consulta', {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json'
-      },
-
-    });
-    vehiculo = await request.json();
-
-    }
-    catch (Exception){
-           alert("ESCRIBE TU PLACA Y DESCARGA TU SOAT.");
-    }
-   }
-
        async function buscarDocumentPDF(){
        try {
-          var placa=document.getElementById("_DigitalSOATQuotePortlet_Placa").value;
+         const url = 'soatcolpatria.herokuapp.com/documentPDF';
 
-          const request = await fetch('soatcolpatria.herokuapp.com/soat/pdf', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'text/strings'
-          },
-          body: placa
+         let data = {
+           name: 'EBP395'
+         }
 
-          });
+         var request = new Request(url, {
+         	method: 'POST',
+         	body: "EBP395",
+         	headers: new Headers()
+         });
 
+         fetch(request)
+         .then(function() {
+             // Handle response we get from the API
+         })
 
           }
           catch (Exception){

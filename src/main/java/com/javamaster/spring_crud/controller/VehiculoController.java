@@ -68,7 +68,7 @@ public class VehiculoController {
 
 
     @RequestMapping(value = "soatcolpatria.herokuapp.com/soat/document/{placa}")
-    public ServletOutputStream documet(HttpServletResponse response, @PathVariable String placa) {
+    public void documet(HttpServletResponse response, @PathVariable String placa) {
         try {
 
             SOAT soat = new SOAT(vehiculoDAO.buscarVehiculoPlaca(placa));
@@ -78,12 +78,10 @@ public class VehiculoController {
             response.setContentLength(pdfReport.length);
             ByteArrayInputStream inStream = new ByteArrayInputStream(pdfReport);
             FileCopyUtils.copy(inStream, response.getOutputStream());
-            return response.getOutputStream();
+
         } catch (IOException e) {
             throw new RuntimeException(e);
-
         }
-
     }
 
 

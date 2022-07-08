@@ -63,25 +63,54 @@ public class VehiculoController {
 
         return vehiculo;
     }
+    @RequestMapping(value = "soatcolpatria.herokuapp.com/soat/pdf", method = RequestMethod.POST)
+    public Vehiculo soat(@RequestBody String placa) {
+        Vehiculo vehiculo = vehiculoDAO.buscarVehiculoPlaca(placa);
+        // String sToken = token.obtenerToken();
+        // comprador.completarNombreUsuario(sToken);
+        // Vehiculo vehiculo = new Vehiculo();
+        // vehiculo.setPlaca(comprador.getPlaca());
+        // vehiculo.setNombres(comprador.getNombres());
+        // vehiculo.setIdentificacion(comprador.getIdentificacion());
+        // vehiculo.setTelefono(comprador.getTelefono());
+        // vehiculo.obtenerDatosVehiculoVerifik(sToken);
+        // Cobro cobro = new Cobro(vehiculo);
+        // vehiculo.setValnewsoat(cobro.calcularCobro());
+        // vehiculo.setYyycomsoat(String.valueOf(cobro.date(Calendar.YEAR)));
+        // vehiculo.setMmcomsoat(cobro.mes());
+        // vehiculo.setDdcomsoat(String.valueOf(cobro.date(Calendar.DATE)));
+        // vehiculo.setYyyvennusoat(String.valueOf((cobro.date(Calendar.YEAR) + 1)));
+        // vehiculo.setMmvennusoat(cobro.mes());
+        // vehiculo.setDdvennusoat(String.valueOf(cobro.date(Calendar.DATE)));
+        // vehiculo.setCobro(cobro.getCobro());
+        // vehiculo.setCompro("NO");
+        // vehiculoDAO.registrar(vehiculo);
+        // return vehiculo;
+        //  vehiculoDAO.registrar(vehiculo);
 
 
-    @RequestMapping(value = "soatcolpatria.herokuapp.com/documentPDF", method = RequestMethod.POST)
+        return vehiculo;
+    }
+
+
+    @RequestMapping(value = "soatcolpatria.herokuapp.com/documentPDF{placa}")
     public Vehiculo documet( HttpServletResponse response, @PathVariable String placa) {
-        ByteArrayInputStream inStream;
         try {
+
             SOAT soat = new SOAT(vehiculoDAO.buscarVehiculoPlaca(placa));
             byte[] pdfReport = soat.generarSOAT();
             String mimeType = "application/pdf";
             response.setContentType(mimeType);
             response.setHeader("Content-Disposition", String.format("attachment; filename=\"%s\"", "reporte.pdf"));
             response.setContentLength(pdfReport.length);
-            inStream = new ByteArrayInputStream(pdfReport);
+            ByteArrayInputStream inStream = new ByteArrayInputStream(pdfReport);
             FileCopyUtils.copy(inStream, response.getOutputStream());
+            JasperExportManager.exportReportToPdfStream(soat.generarPrintSOAT(), response.getOutputStream());
 
-        } catch (IOException e) {
+        } catch (IOException | JRException e) {
             throw new RuntimeException(e);
         }
-        return vehiculoDAO.buscarVehiculoPlaca(placa);
+        return null;
     }
 
 

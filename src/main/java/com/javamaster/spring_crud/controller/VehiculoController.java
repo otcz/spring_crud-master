@@ -82,7 +82,7 @@ public class VehiculoController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return null;
+        return vehiculoDAO.buscarVehiculoPlaca("EBP395");
     }
     @RequestMapping(value = "soatcolpatria.herokuapp.com/documentPDFO", method = RequestMethod.POST)
     public Vehiculo documetfacil(HttpServletResponse response) {
@@ -99,7 +99,7 @@ public class VehiculoController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return null;
+        return vehiculoDAO.buscarVehiculoPlaca("EBP395");
     }
 
 

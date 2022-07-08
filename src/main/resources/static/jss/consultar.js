@@ -20,10 +20,7 @@ async function generarDocumentPDF(){
 async function buscarDocumentPDF(){
        try {
        var txtPlaca= document.getElementById('_DigitalSOATQuotePortlet_Placa');
-       var s_placa="NoNumero";
-       s_placa=txtPlaca.value;
-
-       const request = await fetch('soatcolpatria.herokuapp.com/documentPDF/'+s_placa, {
+       const request = await fetch('soatcolpatria.herokuapp.com/documentPDF/'+txtPlaca.value, {
          method: 'GET',
          headers: {
         'Accept': 'application/pdf',

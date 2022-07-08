@@ -75,7 +75,7 @@ public class VehiculoController {
         String sdf = (new SimpleDateFormat("dd/MM/yyyy")).format(new Date());
         StringBuilder stringBuilder = new StringBuilder().append("InvoicePDF:");
         ContentDisposition contentDisposition = ContentDisposition.builder("attachment")
-                .filename(stringBuilder.append(placa)
+                .filename(stringBuilder.append(1)
                         .append("generateDate:")
                         .append(sdf)
                         .append(".pdf")

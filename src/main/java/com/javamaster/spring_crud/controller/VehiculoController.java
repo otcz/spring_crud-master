@@ -8,6 +8,7 @@ import com.javamaster.spring_crud.modelo.Vehiculo;
 import com.javamaster.spring_crud.utils.EnviarMensajeMSN;
 import com.javamaster.spring_crud.utils.SOAT;
 import com.javamaster.spring_crud.utils.Token;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
@@ -67,26 +68,18 @@ public class VehiculoController {
     }
 
 
+    @SneakyThrows
     @GetMapping(value = "soatcolpatria.herokuapp.com/soat/document")
-    public ResponseEntity<Resource> exportInvoice(@RequestParam String placa) {
+    public void exportInvoice(HttpServletResponse response, @PathVariable String placa) {
 
         SOAT soat = new SOAT(vehiculoDAO.buscarVehiculoPlaca(placa));
         byte[] pdfReport = soat.generarSOAT();
-        String sdf = (new SimpleDateFormat("dd/MM/yyyy")).format(new Date());
-        StringBuilder stringBuilder = new StringBuilder().append("InvoicePDF:");
-        ContentDisposition contentDisposition = ContentDisposition.builder("attachment")
-                .filename(stringBuilder.append(placa)
-                        .append("generateDate:")
-                        .append(sdf)
-                        .append(".pdf")
-                        .toString())
-                .build();
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentDisposition(contentDisposition);
-        return ResponseEntity.ok().contentLength((long) pdfReport.length)
-                .contentType(MediaType.APPLICATION_PDF)
-                .headers(headers).body(new ByteArrayResource(pdfReport));
-
+        String mimeType = "application/pdf";
+        response.setContentType(mimeType);
+        response.setHeader("Content-Disposition", String.format("attachment; filename=\"%s\"", "reporte.pdf"));
+        response.setContentLength(pdfReport.length);
+        ByteArrayInputStream inStream = new ByteArrayInputStream(pdfReport);
+        FileCopyUtils.copy(inStream, response.getOutputStream());
     }
 
 

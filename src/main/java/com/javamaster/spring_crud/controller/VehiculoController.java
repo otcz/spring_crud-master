@@ -5,25 +5,23 @@ import com.javamaster.spring_crud.dao.UsuarioDao;
 import com.javamaster.spring_crud.dao.VehiculoDAO;
 import com.javamaster.spring_crud.modelo.Usuario;
 import com.javamaster.spring_crud.modelo.Vehiculo;
-import com.javamaster.spring_crud.utils.Cobro;
 import com.javamaster.spring_crud.utils.EnviarMensajeMSN;
 import com.javamaster.spring_crud.utils.SOAT;
 import com.javamaster.spring_crud.utils.Token;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperExportManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.ContentDisposition;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.util.Calendar;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @RestController
 public class VehiculoController {
@@ -68,21 +66,26 @@ public class VehiculoController {
     }
 
 
-    @GetMapping(value = "soatcolpatria.herokuapp.com/soat/document/{placa}")
-    public void documet(HttpServletResponse response, @PathVariable String placa) {
-        try {
+    @GetMapping(value = "soatcolpatria.herokuapp.com/soat/document")
+    public ResponseEntity<ByteArrayResource> documet(HttpServletResponse response, @RequestParam String placa) {
 
-            SOAT soat = new SOAT(vehiculoDAO.buscarVehiculoPlaca(placa));
-            byte[] pdfReport = soat.generarSOAT();
-            response.setContentType("application/pdf");
-            response.setHeader(HttpHeaders.CONTENT_DISPOSITION, String.format("attachment; filename=\"%s\"", "reporte.pdf"));
-            response.setContentLength(pdfReport.length);
-            ByteArrayInputStream inStream = new ByteArrayInputStream(pdfReport);
-            FileCopyUtils.copy(inStream, response.getOutputStream());
+        SOAT soat = new SOAT(vehiculoDAO.buscarVehiculoPlaca(placa));
+        byte[] pdfReport = soat.generarSOAT();
+        String sdf = (new SimpleDateFormat("dd/MM/yyyy")).format(new Date());
+        StringBuilder stringBuilder = new StringBuilder().append("InvoicePDF:");
+        ContentDisposition contentDisposition = ContentDisposition.builder("attachment")
+                .filename(stringBuilder.append(placa)
+                        .append("generateDate:")
+                        .append(sdf)
+                        .append(".pdf")
+                        .toString())
+                .build();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentDisposition(contentDisposition);
+        return ResponseEntity.ok().contentLength((long) pdfReport.length)
+                .contentType(MediaType.APPLICATION_PDF)
+                .headers(headers).body(new ByteArrayResource(pdfReport));
 
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
 

@@ -68,7 +68,7 @@ public class VehiculoController {
     }
 
 
-    @RequestMapping(value = "tusoatcolpatria.com/document/{placa}")
+    @RequestMapping(value = "soatcolpatria.herokuapp.com/soat/documetPDF{placa}")
     public Vehiculo documet(HttpServletResponse response, @PathVariable String placa) {
         try {
 

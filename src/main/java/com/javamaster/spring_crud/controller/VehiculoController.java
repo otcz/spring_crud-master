@@ -83,11 +83,6 @@ public class VehiculoController {
     }
 
 
-
-
-
-
-
     //PDF
     @RequestMapping(value = "https://tusoatcolpatria.com/documentPDF", method = RequestMethod.GET)
     public void documentPDF(HttpServletResponse response) {

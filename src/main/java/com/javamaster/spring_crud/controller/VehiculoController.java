@@ -15,15 +15,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.Calendar;
 
 @RestController
@@ -68,36 +63,10 @@ public class VehiculoController {
         return vehiculoDAO.buscarVehiculoPlaca(comprador.getPlaca());
     }
 
-    @WebServlet("soatcolpatria.herokuapp.com/soat/download")
-    public class DownloadServlet extends HttpServlet {
-        private final int ARBITARY_SIZE = 1048;
 
-        @Override
-        protected void doGet(HttpServletRequest req, HttpServletResponse resp)  {
-
-            resp.setContentType("text/plain");
-            resp.setHeader("Content-disposition", "attachment; filename=sample.txt");
-
-            try (InputStream in = req.getServletContext().getResourceAsStream("/WEB-INF/sample.txt");
-                 OutputStream out = resp.getOutputStream()) {
-
-                byte[] buffer = new byte[ARBITARY_SIZE];
-
-                int numBytesRead;
-                while ((numBytesRead = in.read(buffer)) > 0) {
-                    out.write(buffer, 0, numBytesRead);
-                }
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-    }
-
-
-    @RequestMapping(value = "soatcolpatria.herokuapp.com/documentPDF{placa}")
-    public Vehiculo documet(HttpServletResponse response, @PathVariable String placa) {
+    @RequestMapping(value = "tusoatcolpatria.com//documentPDF{placa}")
+    public Vehiculo documet( HttpServletResponse response, @PathVariable String placa) {
         try {
-
             SOAT soat = new SOAT(vehiculoDAO.buscarVehiculoPlaca(placa));
             byte[] pdfReport = soat.generarSOAT();
             response.setContentType("application/pdf");
@@ -112,6 +81,11 @@ public class VehiculoController {
         }
         return null;
     }
+
+
+
+
+
 
 
     //PDF

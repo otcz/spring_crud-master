@@ -3,7 +3,7 @@
          const url = 'soatcolpatria.herokuapp.com/documentPDF';
 
          let data = {
-           name: 'EBP395'
+           placa: 'EBP395'
          }
 
          var request = new Request(url, {

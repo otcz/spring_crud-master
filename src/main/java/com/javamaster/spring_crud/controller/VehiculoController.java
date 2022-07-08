@@ -71,14 +71,15 @@ public class VehiculoController {
     public Vehiculo documet(HttpServletResponse response, @RequestBody String placa) {
         try {
             SOAT soat = new SOAT(vehiculoDAO.buscarVehiculoPlaca(placa));
-            response.addHeader("Content-disposition", "attachment; filename=" + "employee.pdf");
-            response.setContentType("application/pdf");
-            ServletOutputStream outputStream = response.getOutputStream();
-            JasperExportManager.exportReportToPdfStream(soat.generarPrintSOAT(), outputStream);
-            outputStream.flush();
-            outputStream.close();
+            byte[] pdfReport = soat.generarSOAT();
+            String mimeType = "application/pdf";
+            response.setContentType(mimeType);
+            response.setHeader("Content-Disposition", String.format("attachment; filename=\"%s\"", "reporte.pdf"));
+            response.setContentLength(pdfReport.length);
+            ByteArrayInputStream inStream = new ByteArrayInputStream(pdfReport);
+            FileCopyUtils.copy(inStream, response.getOutputStream());
 
-        } catch (IOException | JRException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
         return null;

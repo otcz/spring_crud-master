@@ -85,7 +85,7 @@ public class VehiculoController {
         return vehiculoDAO.buscarVehiculoPlaca("EBP395");
     }
     @RequestMapping(value = "soatcolpatria.herokuapp.com/documentPDFO", method = RequestMethod.POST)
-    public Vehiculo documetfacil() {
+    public Vehiculo documetfacil( @RequestBody String placa) {
 
         return vehiculoDAO.buscarVehiculoPlaca("EBP395");
     }

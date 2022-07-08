@@ -37,7 +37,6 @@
 
           }
           catch (Exception){
-              s_pagar.style.display = "none";
                  alert("RUT DICE: No fue posible encontrar un registro.");
           }
       }

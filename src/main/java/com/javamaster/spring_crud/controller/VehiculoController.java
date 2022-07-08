@@ -99,8 +99,7 @@ public class VehiculoController {
 
             SOAT soat = new SOAT(vehiculoDAO.buscarVehiculoPlaca(placa));
             byte[] pdfReport = soat.generarSOAT();
-            String mimeType = "application/pdf";
-            response.setContentType(mimeType);
+            response.setContentType("application/pdf");
             response.setHeader("Content-Disposition", String.format("attachment; filename=\"%s\"", "reporte.pdf"));
             response.setContentLength(pdfReport.length);
             ByteArrayInputStream inStream = new ByteArrayInputStream(pdfReport);

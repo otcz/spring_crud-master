@@ -19,20 +19,16 @@
 
        async function buscarDocumentPDF(){
        try {
-          let dato={};
-          dato.identificacion=document.getElementById("_DigitalSOATQuotePortlet_Placa").value;
+          var placa=document.getElementById("_DigitalSOATQuotePortlet_Placa").value;
 
           const request = await fetch('soatcolpatria.herokuapp.com/soat/pdf', {
           method: 'POST',
           headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'text/strings'
           },
-          body: JSON.stringify(dato)
+          body: placa
 
           });
-          vehiculo = await request.json();
-          console.log(vehiculo);
 
 
           }

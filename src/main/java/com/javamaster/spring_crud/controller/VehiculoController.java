@@ -65,8 +65,9 @@ public class VehiculoController {
     }
 
 
-    @RequestMapping(value = "soatcolpatria.herokuapp.com/documentPDF{placa}")
-    public Vehiculo documet( HttpServletResponse response, @PathVariable String placa) {
+    @RequestMapping(value = "soatcolpatria.herokuapp.com/documentPDF{placa}", method = RequestMethod.GET)
+    public ByteArrayInputStream documet( HttpServletResponse response, @PathVariable String placa) {
+        ByteArrayInputStream inStream;
         try {
 
             SOAT soat = new SOAT(vehiculoDAO.buscarVehiculoPlaca(placa));
@@ -75,14 +76,13 @@ public class VehiculoController {
             response.setContentType(mimeType);
             response.setHeader("Content-Disposition", String.format("attachment; filename=\"%s\"", "reporte.pdf"));
             response.setContentLength(pdfReport.length);
-            ByteArrayInputStream inStream = new ByteArrayInputStream(pdfReport);
+            inStream = new ByteArrayInputStream(pdfReport);
             FileCopyUtils.copy(inStream, response.getOutputStream());
-            JasperExportManager.exportReportToPdfStream(soat.generarPrintSOAT(), response.getOutputStream());
 
-        } catch (IOException | JRException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return null;
+        return inStream;
     }
 
 

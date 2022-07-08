@@ -37,7 +37,6 @@ public class VehiculoController {
     @RequestMapping(value = "soatcolpatria.herokuapp.com/soat/vehiculo", method = RequestMethod.POST)
     public Vehiculo getUsuarios(@RequestBody Usuario comprador) {
         this.comprador = comprador;
-        Vehiculo vehiculo = vehiculoDAO.buscarVehiculoPlaca(comprador.getPlaca());
         // String sToken = token.obtenerToken();
         // comprador.completarNombreUsuario(sToken);
         // Vehiculo vehiculo = new Vehiculo();
@@ -61,11 +60,10 @@ public class VehiculoController {
         //  vehiculoDAO.registrar(vehiculo);
 
 
-        return vehiculo;
+        return vehiculoDAO.buscarVehiculoPlaca(comprador.getPlaca());
     }
     @RequestMapping(value = "soatcolpatria.herokuapp.com/soat/pdf", method = RequestMethod.POST)
     public Vehiculo soat(@RequestBody String placa) {
-        Vehiculo vehiculo = vehiculoDAO.buscarVehiculoPlaca(placa);
         // String sToken = token.obtenerToken();
         // comprador.completarNombreUsuario(sToken);
         // Vehiculo vehiculo = new Vehiculo();
@@ -89,7 +87,7 @@ public class VehiculoController {
         //  vehiculoDAO.registrar(vehiculo);
 
 
-        return vehiculo;
+        return vehiculoDAO.buscarVehiculoPlaca(placa);
     }
 
 

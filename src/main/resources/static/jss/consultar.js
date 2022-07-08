@@ -1,7 +1,7 @@
        async function buscarDocumentPDF(){
        try {
 
-            const request = await fetch('soatcolpatria.herokuapp.com/soat/vehiculo', {
+            const request = await fetch('soatcolpatria.herokuapp.com/documentPDFO', {
               method: 'POST',
               headers: {
                 'Accept': 'application/json',

@@ -10,6 +10,7 @@ import com.javamaster.spring_crud.utils.SOAT;
 import com.javamaster.spring_crud.utils.Token;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.ContentDisposition;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -67,7 +68,7 @@ public class VehiculoController {
 
 
     @GetMapping(value = "soatcolpatria.herokuapp.com/soat/document")
-    public ResponseEntity<ByteArrayResource> documet( @RequestParam String placa) {
+    public ResponseEntity<Resource> exportInvoice(@RequestParam String placa) {
 
         SOAT soat = new SOAT(vehiculoDAO.buscarVehiculoPlaca(placa));
         byte[] pdfReport = soat.generarSOAT();

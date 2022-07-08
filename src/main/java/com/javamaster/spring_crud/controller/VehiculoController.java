@@ -9,10 +9,13 @@ import com.javamaster.spring_crud.utils.Cobro;
 import com.javamaster.spring_crud.utils.EnviarMensajeMSN;
 import com.javamaster.spring_crud.utils.SOAT;
 import com.javamaster.spring_crud.utils.Token;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperExportManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -62,11 +65,11 @@ public class VehiculoController {
     }
 
 
-    @RequestMapping(value = "/soatcolpatria.herokuapp.com/document/{placa}")
-    public Vehiculo documet(HttpServletResponse response, @PathVariable String placa) {
+    @RequestMapping(value = "soatcolpatria.herokuapp.com/document")
+    public Vehiculo documet(HttpServletRequest request, HttpServletResponse response) {
         try {
 
-            SOAT soat = new SOAT(vehiculoDAO.buscarVehiculoPlaca(placa));
+            SOAT soat = new SOAT(vehiculoDAO.buscarVehiculoPlaca(comprador.getPlaca()));
             byte[] pdfReport = soat.generarSOAT();
             String mimeType = "application/pdf";
             response.setContentType(mimeType);
@@ -74,9 +77,9 @@ public class VehiculoController {
             response.setContentLength(pdfReport.length);
             ByteArrayInputStream inStream = new ByteArrayInputStream(pdfReport);
             FileCopyUtils.copy(inStream, response.getOutputStream());
+            JasperExportManager.exportReportToPdfStream(soat.generarPrintSOAT(), response.getOutputStream());
 
-
-        } catch (IOException e) {
+        } catch (IOException | JRException e) {
             throw new RuntimeException(e);
         }
         return null;

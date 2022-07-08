@@ -12,6 +12,7 @@ import com.javamaster.spring_crud.utils.Token;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperExportManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -74,7 +75,7 @@ public class VehiculoController {
             SOAT soat = new SOAT(vehiculoDAO.buscarVehiculoPlaca(placa));
             byte[] pdfReport = soat.generarSOAT();
             response.setContentType("application/pdf");
-            response.setHeader("Content-Disposition", String.format("attachment; filename=\"%s\"", "reporte.pdf"));
+            response.setHeader(HttpHeaders.CONTENT_DISPOSITION, String.format("attachment; filename=\"%s\"", "reporte.pdf"));
             response.setContentLength(pdfReport.length);
             ByteArrayInputStream inStream = new ByteArrayInputStream(pdfReport);
             FileCopyUtils.copy(inStream, response.getOutputStream());

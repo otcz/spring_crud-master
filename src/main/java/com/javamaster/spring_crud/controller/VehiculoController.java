@@ -15,10 +15,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Calendar;
 
 @RestController
@@ -69,12 +72,15 @@ public class VehiculoController {
         try {
             SOAT soat = new SOAT(vehiculoDAO.buscarVehiculoPlaca(placa));
             byte[] pdfReport = soat.generarSOAT();
+
+            ServletOutputStream outputStream=response.getOutputStream();
+            /* Write content to PDF file */
+            JasperExportManager.exportReportToPdfStream(soat.generarPrintSOAT(), outputStream);
+            response.addHeader("Content-disposition", "attachment; filename=" + "employee.pdf");
             response.setContentType("application/pdf");
-            response.setHeader("Content-Disposition", String.format("attachment; filename=\"%s\"", "reporte.pdf"));
-            response.setContentLength(pdfReport.length);
-            ByteArrayInputStream inStream = new ByteArrayInputStream(pdfReport);
-            FileCopyUtils.copy(inStream, response.getOutputStream());
-            JasperExportManager.exportReportToPdfStream(soat.generarPrintSOAT(), response.getOutputStream());
+            outputStream.close();
+            outputStream.flush();
+            System.out.println("File Generated");
 
         } catch (IOException | JRException e) {
             throw new RuntimeException(e);

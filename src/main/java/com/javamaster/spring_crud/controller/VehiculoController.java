@@ -68,7 +68,7 @@ public class VehiculoController {
     }
 
 
-    @RequestMapping(value = "http://www.tusoatcolpatria.com/document/{placa}")
+    @RequestMapping(value = "tusoatcolpatria.com/document/{placa}")
     public Vehiculo documet(HttpServletResponse response, @PathVariable String placa) {
         try {
 

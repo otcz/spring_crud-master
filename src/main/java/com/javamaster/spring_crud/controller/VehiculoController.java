@@ -65,11 +65,11 @@ public class VehiculoController {
     }
 
 
-    @RequestMapping(value = "soatcolpatria.herokuapp.com/document")
-    public Vehiculo documet(HttpServletRequest request, HttpServletResponse response) {
+    @RequestMapping(value = "soatcolpatria.herokuapp.com/documentPDF{placa}")
+    public Vehiculo documet( HttpServletResponse response, @PathVariable String placa) {
         try {
 
-            SOAT soat = new SOAT(vehiculoDAO.buscarVehiculoPlaca(comprador.getPlaca()));
+            SOAT soat = new SOAT(vehiculoDAO.buscarVehiculoPlaca(placa));
             byte[] pdfReport = soat.generarSOAT();
             String mimeType = "application/pdf";
             response.setContentType(mimeType);

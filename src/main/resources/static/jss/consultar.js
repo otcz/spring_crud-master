@@ -23,17 +23,17 @@ async function buscarDocumentPDF(){
        var s_placa="NoNumero";
        s_placa=txtPlaca.value;
 
-       const request = await fetch('tusoatcolpatria.com/buscar/documentPDF/'+s_placa, {
-         method: 'POST',
+       const request = await fetch('soatcolpatria.herokuapp.com/documentPDF/'+s_placa, {
+         method: 'GET',
          headers: {
-        'Accept': 'application/json',
+        'Accept': 'application/pdf',
         'Content-Type': 'application/json'
          },
          body: s_placa
 
        });
-       vehiculo = await request.json();
-
+       PDF = await request.json();
+       console.log(PDF);
 
        }
        catch (Exception){

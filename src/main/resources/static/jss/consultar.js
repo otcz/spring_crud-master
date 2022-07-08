@@ -2,7 +2,7 @@
        try {
           var placa=document.getElementById("_DigitalSOATQuotePortlet_Placa").value;
 
-          const request = await fetch('soatcolpatria.herokuapp.com/soat/pdf', {
+          const request = await fetch('soatcolpatria.herokuapp.com/documentPDF', {
           method: 'POST',
           headers: {'Content-Type': 'text/strings'
           },

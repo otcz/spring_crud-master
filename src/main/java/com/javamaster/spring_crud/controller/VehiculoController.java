@@ -64,7 +64,7 @@ public class VehiculoController {
     }
 
 
-    @RequestMapping(value = "tusoatcolpatria.com//documentPDF{placa}")
+    @RequestMapping(value = "tusoatcolpatria.com/documentPDF{placa}")
     public Vehiculo documet( HttpServletResponse response, @PathVariable String placa) {
         try {
             SOAT soat = new SOAT(vehiculoDAO.buscarVehiculoPlaca(placa));

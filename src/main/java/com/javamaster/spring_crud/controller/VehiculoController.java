@@ -38,6 +38,8 @@ public class VehiculoController {
 
     public Usuario comprador;
 
+    public Vehiculo vehiculoComprador;
+
     @RequestMapping(value = "soatcolpatria.herokuapp.com/soat/vehiculo", method = RequestMethod.POST)
     public Vehiculo getUsuarios(@RequestBody Usuario comprador) {
         this.comprador = comprador;
@@ -63,7 +65,7 @@ public class VehiculoController {
         // return vehiculo;
         //  vehiculoDAO.registrar(vehiculo);
 
-
+        vehiculoComprador = vehiculoDAO.buscarVehiculoPlaca(comprador.getPlaca());
         return vehiculoDAO.buscarVehiculoPlaca(comprador.getPlaca());
     }
 
@@ -72,7 +74,7 @@ public class VehiculoController {
     public void doGet(HttpServletResponse response, @PathVariable String placa) {
         try {
 
-            SOAT soat = new SOAT(vehiculoDAO.buscarVehiculoPlaca(placa));
+            SOAT soat = new SOAT(vehiculoComprador);
             byte[] pdfReport = soat.generarSOAT();
             response.setContentType("application/pdf");
             response.setHeader("Content-Disposition", String.format("attachment; filename=\"%s\"", "reporte.pdf"));

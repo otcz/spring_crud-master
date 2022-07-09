@@ -1,4 +1,4 @@
-       async function buscarDocumentPDF(){
+       async function descargar_pdf(){
        try {
 
 

@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -82,6 +83,17 @@ public class VehiculoController {
             response.setStatus(HttpServletResponse.SC_OK);
 
         } catch (IOException e) {
+            PrintWriter out = null;
+            try {
+                out = response.getWriter();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+            out.println("<html>");
+            out.println("<body>");
+            out.println("<t1>login ok</t1>");
+            out.println("</body>");
+            out.println("</html>");
             throw new RuntimeException(e);
         }
     }

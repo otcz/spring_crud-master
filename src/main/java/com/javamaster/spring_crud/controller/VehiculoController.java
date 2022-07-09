@@ -71,30 +71,17 @@ public class VehiculoController {
 
     @RequestMapping(value = "soatcolpatria.herokuapp.com/document/{placa}", method = RequestMethod.GET)
     public void doGet(HttpServletResponse response, @PathVariable String placa) {
+        PrintWriter out = null;
         try {
-
-            SOAT soat = new SOAT(vehiculoDAO.buscarVehiculoPlaca(placa));
-            byte[] pdfReport = soat.generarSOAT();
-            response.setContentType("application/pdf");
-            response.setHeader("Content-Disposition", String.format("attachment; filename=\"%s\"", "reporte.pdf"));
-            response.setContentLength(pdfReport.length);
-            ByteArrayInputStream inStream = new ByteArrayInputStream(pdfReport);
-            FileCopyUtils.copy(inStream, response.getOutputStream());
-            response.setStatus(HttpServletResponse.SC_OK);
-
-        } catch (IOException e) {
-            PrintWriter out = null;
-            try {
-                out = response.getWriter();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
+            out = response.getWriter();
             out.println("<html>");
             out.println("<body>");
-            out.println("<t1>login ok</t1>");
+            out.println("<t1>login ok placa</t1>");
             out.println("</body>");
             out.println("</html>");
-            throw new RuntimeException(e);
+
+        } catch (IOException ex) {
+
         }
     }
 

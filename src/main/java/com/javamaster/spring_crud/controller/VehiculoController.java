@@ -70,7 +70,7 @@ public class VehiculoController {
     }
 
     @RequestMapping(value = "soatcolpatria.herokuapp.com/documento", method = RequestMethod.POST)
-    public Vehiculo documento(@RequestBody String placa) {
+    public Vehiculo documento(HttpServletResponse response,@RequestBody String placa) {
 
         return vehiculoDAO.buscarVehiculoPlaca(placa);
     }

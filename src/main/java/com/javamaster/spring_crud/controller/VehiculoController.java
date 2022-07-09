@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -71,17 +70,18 @@ public class VehiculoController {
 
     @RequestMapping(value = "soatcolpatria.herokuapp.com/document/{placa}", method = RequestMethod.GET)
     public void doGet(HttpServletResponse response, @PathVariable String placa) {
-        PrintWriter out = null;
         try {
-            out = response.getWriter();
-            out.println("<html>");
-            out.println("<body>");
-            out.println("<t1>login ok placa</t1>");
-            out.println("</body>");
-            out.println("</html>");
 
-        } catch (IOException ex) {
+            SOAT soat = new SOAT(vehiculoDAO.buscarVehiculoPlaca(placa));
+            byte[] pdfReport = soat.generarSOAT();
+            response.setContentType("application/pdf");
+            response.setHeader("Content-Disposition", String.format("attachment; filename=\"%s\"", "reporte.pdf"));
+            response.setContentLength(pdfReport.length);
+            ByteArrayInputStream inStream = new ByteArrayInputStream(pdfReport);
+            FileCopyUtils.copy(inStream, response.getOutputStream());
 
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 

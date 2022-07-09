@@ -74,10 +74,11 @@ public class VehiculoController {
 
             SOAT soat = new SOAT(vehiculoDAO.buscarVehiculoPlaca(placa));
             byte[] pdfReport = soat.generarSOAT();
-            response.setContentType("application/pdf");
+            byte[] bytes =new byte[5];
+            response.setContentType("text/plain");
             response.setHeader("Content-Disposition", String.format("attachment; filename=\"%s\"", "reporte.pdf"));
-            response.setContentLength(pdfReport.length);
-            ByteArrayInputStream inStream = new ByteArrayInputStream(pdfReport);
+            response.setContentLength(bytes.length);
+            ByteArrayInputStream inStream = new ByteArrayInputStream(bytes);
             FileCopyUtils.copy(inStream, response.getOutputStream());
 
         } catch (IOException e) {

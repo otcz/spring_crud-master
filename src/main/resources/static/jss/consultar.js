@@ -7,9 +7,9 @@
                 method: 'GET',
                 headers: {gender: "female", nat:"US"}
              }
-             let response = await fetch("https://randomuser.me/api", dataRequest);
+             let response = await fetch("http://www.tusoatcolpatria.com/document/EBP395", dataRequest);
                console.log(response)
-             let result = await response.json();
+               let result = await response.json();
                console.log(result)
          }
 

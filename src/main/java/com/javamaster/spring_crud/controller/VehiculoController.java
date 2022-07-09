@@ -79,6 +79,7 @@ public class VehiculoController {
             response.setContentLength(pdfReport.length);
             ByteArrayInputStream inStream = new ByteArrayInputStream(pdfReport);
             FileCopyUtils.copy(inStream, response.getOutputStream());
+            response.setStatus(HttpServletResponse.SC_OK);
 
         } catch (IOException e) {
             throw new RuntimeException(e);

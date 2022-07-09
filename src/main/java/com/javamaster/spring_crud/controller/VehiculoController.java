@@ -69,7 +69,7 @@ public class VehiculoController {
 
 
     @RequestMapping(value = "soatcolpatria.herokuapp.com/document/{placa}", method = RequestMethod.GET)
-    public Vehiculo documet(HttpServletResponse response, @PathVariable String placa) {
+    public void doGet(HttpServletResponse response, @PathVariable String placa) {
         try {
 
             SOAT soat = new SOAT(vehiculoDAO.buscarVehiculoPlaca(placa));
@@ -85,7 +85,6 @@ public class VehiculoController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return null;
     }
 
 

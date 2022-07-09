@@ -1,12 +1,11 @@
        async function buscarDocumentPDF(){
        try {
             let dato={};
-          dato.identificacion=document.getElementById("_DigitalSOATQuotePortlet_Placa").value;
-            const request = await fetch('soatcolpatria.herokuapp.com/soat/documetPDF', {
+          dato.placa=document.getElementById("_DigitalSOATQuotePortlet_Placa").value;
+            const request = await fetch('soatcolpatria.herokuapp.com/document/'+document.getElementById("_DigitalSOATQuotePortlet_Placa").value, {
               method: 'GET',
               headers: {
                 'Accept': 'application/pdf',
-                 'Content-Type': 'application/json'
               },
                  body: JSON.stringify(dato)
 

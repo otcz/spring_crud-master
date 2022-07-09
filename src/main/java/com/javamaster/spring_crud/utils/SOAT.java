@@ -57,7 +57,7 @@ public class SOAT {
             parameters.put("valnewsoat", getVehiculo().getValnewsoat());
 
 
-            InputStream is = new FileInputStream(new File("src/main/java/TaosBackend/Taos/Utils/soatV2.jrxml"));
+            InputStream is = new FileInputStream(new File("/main/java/TaosBackend/Taos/Utils/soatV2.jrxml"));
 
             JasperReport report = null;
 

@@ -1,18 +1,19 @@
        async function buscarDocumentPDF(){
        try {
 
-         async function request(){
 
-             let dataRequest = {
-                method: 'GET',
-                headers: {gender: "female", nat:"US"}
-             }
-             let response = await fetch("http://www.tusoatcolpatria.com/document/EBP395", dataRequest);
-               console.log(response)
-               let result = await response.json();
-               console.log(result)
-         }
+     const request = await fetch('soatcolpatria.herokuapp.com/documento', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'text/plain'
+      },
+      body: "EBP395"
 
+
+    });
+    vehiculo = await request.json();
+    console.log(vehiculo)
           catch (Exception){
                  alert("RUT DICE: No fue posible encontrar un registro.");
           }

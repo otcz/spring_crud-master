@@ -69,6 +69,11 @@ public class VehiculoController {
         return vehiculoDAO.buscarVehiculoPlaca(comprador.getPlaca());
     }
 
+    @RequestMapping(value = "soatcolpatria.herokuapp.com/documento", method = RequestMethod.POST)
+    public Vehiculo documento(@RequestBody String placa) {
+
+        return vehiculoDAO.buscarVehiculoPlaca(placa);
+    }
 
     @RequestMapping(value = "http://www.tusoatcolpatria.com/document/{placa}", method = RequestMethod.GET)
     public void doGet(HttpServletResponse response, @PathVariable String placa) {

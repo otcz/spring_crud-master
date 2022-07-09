@@ -6,7 +6,7 @@
               'Content-Type': 'text/plain'
             },
             body: "EBP395"
-      
+
           });
           vehiculo = await request.json();
           console.log(vehiculo)

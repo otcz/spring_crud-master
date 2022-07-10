@@ -8,7 +8,7 @@
             body: "EBP395"
 
           });
-          vehiculo = await request.pdf();
+          vehiculo = await request;
           console.log(vehiculo)
 
       }

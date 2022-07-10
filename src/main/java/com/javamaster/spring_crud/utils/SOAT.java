@@ -63,9 +63,10 @@ public class SOAT {
             return JasperExportManager.exportReportToPdf(print);
 
         } catch (JRException | FileNotFoundException e) {
-            e.printStackTrace();
+            return new byte[1];
+            //e.printStackTrace();
         }
-        return new byte[1];
+        
     }
 
     public JasperPrint generarPrintSOAT() {

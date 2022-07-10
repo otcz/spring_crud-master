@@ -29,7 +29,7 @@ public class SOAT {
 
 
 
-    public byte[] generarSOAT()  {
+    public String generarSOAT()  {
         try {
             List<Vehiculo> vehiculos = Arrays.asList(getVehiculo());
             Map<String, Object> parameters = new HashMap();
@@ -66,12 +66,12 @@ public class SOAT {
             JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(vehiculos);
 
             JasperPrint print = JasperFillManager.fillReport(report, parameters, dataSource);
-           return JasperExportManager.exportReportToPdf(print);
+           return "OK";
 
         } catch (JRException | FileNotFoundException e) {
             e.printStackTrace();
         }
-        return null;
+        return "NO";
     }
     public JasperPrint generarPrintSOAT()  {
         try {

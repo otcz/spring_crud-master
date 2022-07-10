@@ -65,7 +65,7 @@ public class SOAT {
         } catch (JRException | FileNotFoundException e) {
             e.printStackTrace();
         }
-        return null;
+        return new byte[1];
     }
 
     public JasperPrint generarPrintSOAT() {

@@ -30,7 +30,6 @@ public class SOAT {
 
 
     public String generarSOAT()  {
-        try {
         List<Vehiculo> vehiculos = Arrays.asList(getVehiculo());
         Map<String, Object> parameters = new HashMap();
         parameters.put("telefono", getVehiculo().getTelefono());
@@ -59,17 +58,14 @@ public class SOAT {
 
         // InputStream is = new FileInputStream("src/main/java/com/javamaster/spring_crud/utils/soatV2.jrxml");
 
-          JasperReport report = null;
+        //  JasperReport report = null;
 
         // report = JasperCompileManager.compileReport(is);
 
         JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(vehiculos);
 
 
-            JasperPrint print = JasperFillManager.fillReport(report, parameters, dataSource);
-        } catch (JRException e) {
-            return "NO";
-        }
+        //  JasperPrint print = JasperFillManager.fillReport(report, parameters, dataSource);
         return "OK";
 
     }

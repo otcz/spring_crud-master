@@ -30,7 +30,7 @@ public class SOAT {
 
     public String generarSOAT() {
 
-        return "OSCAR";
+        return getClass().getResource("soatV2.jrxml").getFile();
     }
 
     public JasperPrint generarPrintSOAT() {

@@ -56,7 +56,7 @@
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
-				<imageExpression><![CDATA["src/main/java/TaosBackend/Taos/Utils/backgroud.png"]]></imageExpression>
+				<imageExpression><![CDATA["src/main/java/com/javamaster/spring_crud/utils/backgroud.png"]]></imageExpression>
 			</image>
 			<textField>
 				<reportElement mode="Transparent" x="227" y="322" width="72" height="20" uuid="764db983-ca50-4f4b-8a1c-8af0bf4dec43"/>

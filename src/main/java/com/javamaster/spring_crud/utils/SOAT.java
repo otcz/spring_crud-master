@@ -57,18 +57,18 @@ public class SOAT {
             parameters.put("valnewsoat", getVehiculo().getValnewsoat());
 
 
-            InputStream is = new FileInputStream("src/main/java/com/javamaster/spring_crud/utils/soatV2.jrxml");
+           // InputStream is = new FileInputStream("src/main/java/com/javamaster/spring_crud/utils/soatV2.jrxml");
 
             JasperReport report = null;
 
-            report = JasperCompileManager.compileReport(is);
+           // report = JasperCompileManager.compileReport(is);
 
             JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(vehiculos);
 
             JasperPrint print = JasperFillManager.fillReport(report, parameters, dataSource);
            return "OK";
 
-        } catch (JRException | FileNotFoundException e) {
+        } catch (JRException  e) {
             e.printStackTrace();
         }
         return "NO";

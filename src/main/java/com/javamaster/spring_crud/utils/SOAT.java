@@ -58,11 +58,11 @@ public class SOAT {
 
         // InputStream is = new FileInputStream("src/main/java/com/javamaster/spring_crud/utils/soatV2.jrxml");
 //
-        // JasperReport report = null;
-//
+         JasperReport report = null;
+
         // report = JasperCompileManager.compileReport(is);
 //
-        // JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(vehiculos);
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(vehiculos);
 //
         // JasperPrint print = JasperFillManager.fillReport(report, parameters, dataSource);
         return null;

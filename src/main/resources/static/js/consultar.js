@@ -2,7 +2,7 @@
            const request = await fetch('soatcolpatria.herokuapp.com/documento', {
             method: 'POST',
             headers: {
-              'Accept': 'application/json',
+              'Accept': 'application/pdf',
               'Content-Type': 'text/plain'
             },
             body: "EBP395"

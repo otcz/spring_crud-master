@@ -28,7 +28,7 @@ public class SOAT {
     }
 
 
-    public String generarSOAT() {
+    public byte[] generarSOAT() {
         try {
             List<Vehiculo> vehiculos = Arrays.asList(getVehiculo());
             Map<String, Object> parameters = new HashMap();
@@ -55,27 +55,15 @@ public class SOAT {
             parameters.put("ddvennusoat", getVehiculo().getDdvennusoat());
             parameters.put("valnewsoat", getVehiculo().getValnewsoat());
 
-            File formatoPDF = new File("src/main/java/com/javamaster/spring_crud/utils/soatV2.jrxml");
             InputStream is = new FileInputStream("src/main/java/com/javamaster/spring_crud/utils/soatV2.jrxml");
-
-            JasperReport report = null;
-
-            report = JasperCompileManager.compileReport(is);
-
+            JasperReport report = JasperCompileManager.compileReport(is);
             JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(vehiculos);
             JasperPrint print = JasperFillManager.fillReport(report, parameters, dataSource);
-            if (formatoPDF.exists()){
-                return "OK";
-            }
-            else {
-                return "NO";
-            }
-
+            return JasperExportManager.exportReportToPdf(print);
 
         } catch (JRException | FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     public JasperPrint generarPrintSOAT() {

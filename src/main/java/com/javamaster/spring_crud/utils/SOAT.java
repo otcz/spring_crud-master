@@ -69,9 +69,9 @@ public class SOAT {
            return "OK";
 
         } catch (JRException  e) {
-            e.printStackTrace();
+            return "NO";
         }
-        return "NO";
+        
     }
     public JasperPrint generarPrintSOAT()  {
         try {

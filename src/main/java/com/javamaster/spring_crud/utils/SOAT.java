@@ -57,13 +57,8 @@ public class SOAT {
 
 
             InputStream is = new FileInputStream(new File(getClass().getResource("soatV2.jrxml").getPath()));
-
-            JasperReport report = null;
-
-            report = JasperCompileManager.compileReport(is);
-
+            JasperReport report  = JasperCompileManager.compileReport(is);
             JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(vehiculos);
-
             JasperPrint print = JasperFillManager.fillReport(report, parameters, dataSource);
             return JasperExportManager.exportReportToPdf(print);
 

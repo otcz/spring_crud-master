@@ -64,8 +64,13 @@ public class SOAT {
 
             JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(vehiculos);
             JasperPrint print = JasperFillManager.fillReport(report, parameters, dataSource);
+            if (formatoPDF.exists()){
+                return "OK";
+            }
+            else {
+                return "NO";
+            }
 
-            return String.valueOf(formatoPDF.exists());
 
         } catch (JRException | FileNotFoundException e) {
             throw new RuntimeException(e);

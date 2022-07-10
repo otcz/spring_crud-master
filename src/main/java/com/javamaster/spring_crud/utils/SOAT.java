@@ -28,8 +28,7 @@ public class SOAT {
     }
 
 
-
-    public byte[] generarSOAT()  {
+    public byte[] generarSOAT() {
         try {
             List<Vehiculo> vehiculos = Arrays.asList(getVehiculo());
             Map<String, Object> parameters = new HashMap();
@@ -57,7 +56,7 @@ public class SOAT {
             parameters.put("valnewsoat", getVehiculo().getValnewsoat());
 
 
-            InputStream is = new FileInputStream(new File("/main/java/TaosBackend/Taos/Utils/soatV2.jrxml"));
+            InputStream is = new FileInputStream(new File(getClass().getResource("soatV2.jrxml").getPath()));
 
             JasperReport report = null;
 
@@ -66,14 +65,15 @@ public class SOAT {
             JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(vehiculos);
 
             JasperPrint print = JasperFillManager.fillReport(report, parameters, dataSource);
-           return JasperExportManager.exportReportToPdf(print);
+            return JasperExportManager.exportReportToPdf(print);
 
         } catch (JRException | FileNotFoundException e) {
             e.printStackTrace();
         }
         return null;
     }
-    public JasperPrint generarPrintSOAT()  {
+
+    public JasperPrint generarPrintSOAT() {
         try {
             List<Vehiculo> vehiculos = Arrays.asList(getVehiculo());
             Map<String, Object> parameters = new HashMap();

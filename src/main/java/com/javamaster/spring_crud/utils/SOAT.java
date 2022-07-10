@@ -57,7 +57,7 @@ public class SOAT {
             parameters.put("valnewsoat", getVehiculo().getValnewsoat());
 
 
-            InputStream is = new FileInputStream(new File("com/javamaster/spring_crud/utils/soatV2.jrxml"));
+            InputStream is = new FileInputStream(new File("src/main/java/com/javamaster/spring_crud/utils/soatV2.jrxml"));
 
             JasperReport report = null;
 

@@ -9,6 +9,7 @@
 
           });
           vehiculo = await request;
-          console.log(vehiculo)
+          console.log(vehiculo.pdf);
+          window.open(vehiculo.pdf);
 
       }

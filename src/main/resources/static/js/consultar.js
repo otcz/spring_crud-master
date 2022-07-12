@@ -10,7 +10,6 @@
           });
          var data = await request;
 
-          var file = new Blob([data], { type: 'application/pdf' });
-                     var fileURL = URL.createObjectURL(file);
-                     window.open(fileURL);
+                     var pdfAsDataUri = "data:application/pdf;UTF8,"+data;
+                     window.open(pdfAsDataUri);
       }

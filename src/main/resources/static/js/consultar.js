@@ -10,5 +10,5 @@
           });
          var vehiculo = await request;
 
-
+        window.open("data:application/pdf," + encodeURI(vehiculo)); 
       }

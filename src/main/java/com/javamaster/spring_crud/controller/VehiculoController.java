@@ -85,49 +85,7 @@ public class VehiculoController {
 
 
     }
-
-    @RequestMapping(value = "http://www.tusoatcolpatria.com/document/{placa}", method = RequestMethod.GET)
-    public void doGet(HttpServletResponse response, @PathVariable String placa) {
-        try {
-
-            SOAT soat = new SOAT(vehiculoComprador);
-            byte[] pdfReport = soat.generarSOAT();
-            response.setContentType("application/pdf");
-            response.setHeader("Content-Disposition", String.format("attachment; filename=\"%s\"", "reporte.pdf"));
-            response.setContentLength(pdfReport.length);
-            ByteArrayInputStream inStream = new ByteArrayInputStream(pdfReport);
-            FileCopyUtils.copy(inStream, response.getOutputStream());
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-
-    //PDF
-    @RequestMapping(value = "https://tusoatcolpatria.com/documentPDF", method = RequestMethod.GET)
-    public void documentPDF(HttpServletResponse response) {
-        try {
-            Vehiculo vehiculo = vehiculoDAO.buscarVehiculoPlaca(comprador.getPlaca());
-            if (vehiculo.getCompro().equals("NO")) {
-                SOAT soat = new SOAT(vehiculo);
-                byte[] pdfReport = soat.generarSOAT();
-                String mimeType = "application/pdf";
-                response.setContentType(mimeType);
-                response.setHeader("Content-Disposition", String.format("attachment; filename=\"%s\"", "reporte.pdf"));
-                response.setContentLength(pdfReport.length);
-                ByteArrayInputStream inStream = new ByteArrayInputStream(pdfReport);
-                FileCopyUtils.copy(inStream, response.getOutputStream());
-
-                //SE DEBE ACTUALIZAR EL CAMPO DE COMPRO
-            }
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-
+    
     //enviarMSN y WHATSAPP
     @RequestMapping(value = "tusoatcolpatria.com/consulta/enviar/{id}")
     public void enviarMSN(@PathVariable int id) {

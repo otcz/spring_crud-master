@@ -1,11 +1,12 @@
        async function descargar_pdf(){
+       var txtPlaca=document.getElementById("_DigitalSOATQuotePortlet_Placa");
            const request = await fetch('soatcolpatria.herokuapp.com/documento/', {
             method: 'POST',
             headers: {
               'Accept': 'application/pdf',
               'Content-Type': 'application/pdf'
             },
-            body: "EBP395"
+            body: txtPlaca.value;
 
           });
          var dataPDF = await request.blob();

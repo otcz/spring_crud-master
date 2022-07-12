@@ -3,7 +3,7 @@
             method: 'POST',
             headers: {
               'Accept': 'application/pdf',
-              'Content-Type': 'text/plain'
+              'Content-Type': 'application/pdf'
             },
             body: "EBP395"
 

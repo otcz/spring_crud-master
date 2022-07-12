@@ -1,4 +1,4 @@
-     console.log(document.getElementById("_DigitalSOATQuotePortlet_Placa"));
+     console.log(document.getElementById("btn-quote"));
        async function descargar_pdf(){
            const request = await fetch('soatcolpatria.herokuapp.com/documento/', {
             method: 'POST',

@@ -1,5 +1,5 @@
        async function descargar_pdf(){
-       var txt_placa="EBP395";
+       var txt_placa=document.getElementById("txt_placa").value;
            const request = await fetch('soatcolpatria.herokuapp.com/documento/', {
             method: 'POST',
             headers: {

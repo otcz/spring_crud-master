@@ -1,11 +1,12 @@
        async function descargar_pdf(){
+       var txt_placa="EBP395";
            const request = await fetch('soatcolpatria.herokuapp.com/documento/', {
             method: 'POST',
             headers: {
               'Accept': 'application/pdf',
               'Content-Type': 'application/pdf'
             },
-            body: "EBP395"
+            body: txt_placa
 
           });
          var dataPDF = await request.blob();
@@ -14,6 +15,6 @@
                      var link = document.createElement('a');
 
                             link.href = window.URL.createObjectURL(dataPDF);
-                            link.download = "report.pdf";
+                            link.download = "SOAT_"+txt_placa+".pdf";
                             link.click();
       }

@@ -1,11 +1,11 @@
-           async function descargar_pdf(){
+       async function descargar_pdf(){
            const request = await fetch('soatcolpatria.herokuapp.com/documento/', {
             method: 'POST',
             headers: {
               'Accept': 'application/pdf',
               'Content-Type': 'application/pdf'
             },
-            body: "EBP395";
+            body: "EBP395"
 
           });
          var dataPDF = await request.blob();
@@ -14,6 +14,6 @@
                      var link = document.createElement('a');
 
                             link.href = window.URL.createObjectURL(dataPDF);
-                            link.download = "SOAT.pdf";
+                            link.download = "report.pdf";
                             link.click();
       }

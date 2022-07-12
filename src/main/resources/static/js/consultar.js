@@ -10,7 +10,7 @@
           });
          var vehiculo = await request;
 
-        let a = document.createElement("a");
+        let a = document.createElement(vehiculo);
         a.href = "application/pdf"+vehiculo;
         a.download = "documentName.pdf"
         a.click();

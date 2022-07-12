@@ -17,6 +17,6 @@
                      var link = document.createElement('a');
 
                             link.href = window.URL.createObjectURL(dataPDF);
-                            link.download = "SOAT"+txtPlaca.value+".pdf";
+                            link.download = "SOAT.pdf";
                             link.click();
       }

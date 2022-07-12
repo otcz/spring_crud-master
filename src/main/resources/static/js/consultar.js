@@ -8,10 +8,16 @@
             body: "EBP395"
 
           });
-         var vehiculo = await request;
+         var files = await request;
 
-        let a = document.createElement(vehiculo);
-        a.href = "application/pdf"+vehiculo;
-        a.download = "documentName.pdf"
-        a.click();
+       if (this.files && this.files[0]) {
+          var myFile = this.files[0];
+          var reader = new FileReader();
+
+          reader.addEventListener('load', function (e) {
+            output.textContent = e.target.result;
+          });
+          
+          reader.readAsBinaryString(myFile);
+        }
       }

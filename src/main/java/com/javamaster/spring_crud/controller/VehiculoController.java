@@ -19,9 +19,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -71,23 +74,33 @@ public class VehiculoController {
 
     @RequestMapping(value = "soatcolpatria.herokuapp.com/documento", method = RequestMethod.POST)
     public void documento(HttpServletResponse response, @RequestBody String placa) {
-        SOAT soat = new SOAT(vehiculoDAO.buscarVehiculoPlaca(placa));
-        byte[] pdfReport = soat.generarSOAT();
-        response.setContentType("application/pdf");
-        response.setHeader("Content-Disposition", String.format("attachment; filename=\"%s\"", "reporte.pdf"));
-        response.setContentLength(pdfReport.length);
-        ByteArrayInputStream inStream = new ByteArrayInputStream(pdfReport);
         try {
-            FileCopyUtils.copy(inStream, response.getOutputStream());
-            response.getOutputStream().write(pdfReport);
-            response.getOutputStream().flush();
-            response.getOutputStream().close();
+            SOAT soat = new SOAT(vehiculoDAO.buscarVehiculoPlaca(placa));
+            // Prepare.
+            byte[] pdfData = soat.generarSOAT();
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            ExternalContext externalContext = facesContext.getExternalContext();
+            response = (HttpServletResponse) externalContext.getResponse();
+
+            // Initialize response.
+            response.reset(); // Some JSF component library or some Filter might have set some headers in the buffer beforehand. We want to get rid of them, else it may collide.
+            response.setContentType("application/pdf"); // Check http://www.iana.org/assignments/media-types for all types. Use if necessary ServletContext#getMimeType() for auto-detection based on filename.
+            response.setHeader("Content-disposition", "attachment; filename=\"name.pdf\""); // The Save As popup magic is done here. You can give it any filename you want, this only won't work in MSIE, it will use current request URL as filename instead.
+
+            // Write file to response.
+            OutputStream output = null;
+
+            output = response.getOutputStream();
+
+            output.write(pdfData);
+            output.close();
+
+            // Inform JSF to not take the response in hands.
+            facesContext.responseComplete(); // Important! Else JSF will attempt to render the response which obviously will fail since it's already written with a file and closed.
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-
     }
 
     @RequestMapping(value = "http://www.tusoatcolpatria.com/document/{placa}", method = RequestMethod.GET)

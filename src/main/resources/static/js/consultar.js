@@ -14,6 +14,6 @@
        let data = fs.readFileSync(files),
        contenido = data.toString('UTF8');
     } catch (err) {
-       console.error(err);
+       
     }
       }

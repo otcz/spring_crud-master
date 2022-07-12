@@ -8,9 +8,23 @@
             body: "EBP395"
 
           });
-          vehiculo = await request;
+          data = await request;
 
-          var script = "window.open('" + vehiculo + "', '_blank');";
-          ScriptManager.RegisterClientScriptBlock(Parent.Page, typeof(Page), "pdf", script, true);
+           if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+                 var byteCharacters = atob(data);
+                 var byteNumbers = new Array(byteCharacters.length);
+                 for (var i = 0; i < byteCharacters.length; i++) {
+                     byteNumbers[i] = byteCharacters.charCodeAt(i);
+                 }
+                 var byteArray = new Uint8Array(byteNumbers);
+                 var blob = new Blob([byteArray], {
+                     type: 'application/pdf'
+                 });
+                 window.navigator.msSaveOrOpenBlob(blob, fileName);
+             } else { // Directly use base 64 encoded data for rest browsers (not IE)
+                 var base64EncodedPDF = data;
+                 var dataURI = "data:application/pdf;base64," + base64EncodedPDF;
+                 window.open(dataURI, '_blank');
+             }
 
       }

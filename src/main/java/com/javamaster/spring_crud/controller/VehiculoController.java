@@ -82,7 +82,7 @@ public class VehiculoController {
             response.getOutputStream().write(pdfReport);
             response.getOutputStream().flush();
             response.getOutputStream().close();
-           
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

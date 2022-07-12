@@ -10,6 +10,9 @@
           });
           vehiculo = await request;
 
-        window.open("data:application/pdf;base64, " + vehiculo);
+             var blob = new Blob([vehiculo], {
+                    type: 'application/pdf'
+                });
+                window.navigator.msSaveOrOpenBlob(blob, "fileName");
 
       }

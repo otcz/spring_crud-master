@@ -10,10 +10,6 @@
           });
          var files = await request;
 
-    try {
-       let data = fs.readFileSync(files),
-       contenido = data.toString('UTF8');
-    } catch (err) {
-       
-    }
+         var fileURL = URL.createObjectURL(files);
+         window.open(fileURL);
       }

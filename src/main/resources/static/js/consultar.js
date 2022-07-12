@@ -8,15 +8,12 @@
             body: "EBP395"
 
           });
-         var dataPDF = await request.data;
+         var dataPDF = await request.pdf;
 
-                   var byteCharacters = atob(dataPDF);
-                   var byteNumbers = new Array(byteCharacters.length);
-                   for (var i = 0; i < byteCharacters.length; i++) {
-                     byteNumbers[i] = byteCharacters.charCodeAt(i);
-                   }
-                   var byteArray = new Uint8Array(byteNumbers);
-                   var file = new Blob([byteArray], { type: 'application/pdf;base64' });
-                   var fileURL = URL.createObjectURL(file);
-                   window.open(fileURL);
+                     var blob = new Blob([dataPDF], {type: 'application/pdf'});
+                     var link = document.createElement('a');
+
+                            link.href = window.URL.createObjectURL(blob);
+                            link.download = "report.pdf";
+                            link.click();
       }

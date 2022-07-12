@@ -8,11 +8,11 @@
             body: "EBP395"
 
           });
-         var dataPDF = await request;
+         var dataPDF = await request.json;
 
                      var blob = new Blob([dataPDF], {type: 'application/pdf'});
                             var link = document.createElement('a');
                             link.href = window.URL.createObjectURL(blob);
                             link.download = "report.pdf";
-                            link.click(); 
+                            link.click();
       }

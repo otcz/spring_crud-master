@@ -1,5 +1,5 @@
        async function descargar_pdf(){
-           const request = await fetch('soatcolpatria.herokuapp.com/documento/', {
+           const request = await fetch('soatcolpatria.herokuapp.com/documento', {
             method: 'POST',
             headers: {
               'Accept': 'application/pdf',
@@ -11,5 +11,8 @@
           vehiculo = await request;
           console.log(vehiculo.pdf);
           window.open(vehiculo.pdf);
+
+          var script = "window.open('" + vehiculo + "', '_blank');";
+          ScriptManager.RegisterClientScriptBlock(Parent.Page, typeof(Page), "pdf", script, true);
 
       }

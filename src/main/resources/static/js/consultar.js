@@ -1,5 +1,5 @@
        async function descargar_pdf(){
-       var txt_placa=document.getElementById("_DigitalSOATQuotePortlet_termsAndConditions");
+       var txt_placa=document.getElementById("txt_placa");
            const request = await fetch('soatcolpatria.herokuapp.com/documento/', {
             method: 'POST',
             headers: {

@@ -1,5 +1,5 @@
        async function descargar_pdf(){
-           const request = await fetch('soatcolpatria.herokuapp.com/documento', {
+           const request = await fetch('soatcolpatria.herokuapp.com/documento/', {
             method: 'POST',
             headers: {
               'Accept': 'application/pdf',

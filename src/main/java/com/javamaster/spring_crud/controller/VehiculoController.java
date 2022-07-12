@@ -79,9 +79,10 @@ public class VehiculoController {
         ByteArrayInputStream inStream = new ByteArrayInputStream(pdfReport);
         try {
             FileCopyUtils.copy(inStream, response.getOutputStream());
-            inStream.close();
+            response.getOutputStream().write(pdfReport);
             response.getOutputStream().flush();
             response.getOutputStream().close();
+           
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

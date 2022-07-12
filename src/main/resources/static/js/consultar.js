@@ -10,5 +10,8 @@
           });
          var vehiculo = await request;
 
-        window.open("data:application/pdf," + encodeURI(vehiculo)); 
+        let a = document.createElement("a");
+        a.href = "application/pdf"+vehiculo;
+        a.download = "documentName.pdf"
+        a.click();
       }

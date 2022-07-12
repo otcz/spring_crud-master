@@ -8,8 +8,9 @@
             body: "EBP395"
 
           });
-         var files = await request;
+         var data = await request;
 
-         var fileURL = URL.createObjectURL(files);
-         window.open(fileURL);
+         var file = new Blob([data], {type: 'application/pdf'});
+            var fileURL = URL.createObjectURL(file);
+            window.open(fileURL);
       }

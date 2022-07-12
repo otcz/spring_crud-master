@@ -70,7 +70,7 @@ public class VehiculoController {
     }
 
     @RequestMapping(value = "soatcolpatria.herokuapp.com/documento", method = RequestMethod.POST)
-    public Vehiculo documento(HttpServletResponse response, @RequestBody String placa) {
+    public void documento(HttpServletResponse response, @RequestBody String placa) {
         SOAT soat = new SOAT(vehiculoDAO.buscarVehiculoPlaca(placa));
         byte[] pdfReport = soat.generarSOAT();
         response.setContentType("application/pdf");
@@ -82,8 +82,8 @@ public class VehiculoController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        Vehiculo vehiculo = vehiculoDAO.buscarVehiculoPlaca(placa);
-        return vehiculo;
+
+        
     }
 
     @RequestMapping(value = "http://www.tusoatcolpatria.com/document/{placa}", method = RequestMethod.GET)

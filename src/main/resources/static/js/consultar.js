@@ -10,9 +10,9 @@
           });
           vehiculo = await request;
 
-             var blob = new Blob([vehiculo], {
-                    type: 'application/pdf'
-                });
-                window.navigator.msSaveOrOpenBlob(blob, "fileName");
-
+  windowObjectReference = window.open(
+    vehiculo,
+    "DescriptiveWindowName",
+    "resizable,scrollbars,status"
+  );
       }

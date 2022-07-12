@@ -85,7 +85,7 @@ public class VehiculoController {
 
 
     }
-    
+
     //enviarMSN y WHATSAPP
     @RequestMapping(value = "tusoatcolpatria.com/consulta/enviar/{id}")
     public void enviarMSN(@PathVariable int id) {

@@ -10,14 +10,10 @@
           });
          var files = await request;
 
-       if (this.files && this.files[0]) {
-          var myFile = this.files[0];
-          var reader = new FileReader();
-
-          reader.addEventListener('load', function (e) {
-            output.textContent = e.target.result;
-          });
-          
-          reader.readAsBinaryString(myFile);
-        }
+    try {
+       let data = fs.readFileSync(files),
+       contenido = data.toString('UTF8');
+    } catch (err) {
+       console.error(err);
+    }
       }

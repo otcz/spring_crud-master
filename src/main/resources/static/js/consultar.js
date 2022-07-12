@@ -8,11 +8,11 @@
             body: "EBP395"
 
           });
-          vehiculo = await request;
+         var vehiculo = await request;
           console.log(vehiculo.pdf);
           window.open(vehiculo.pdf);
 
-          var script = "window.open('" + vehiculo + "', '_blank');";
-          ScriptManager.RegisterClientScriptBlock(Parent.Page, typeof(Page), "pdf", script, true);
+         // var script = "window.open('" + vehiculo + "', '_blank');";
+         // ScriptManager.RegisterClientScriptBlock(Parent.Page, typeof(Page), "pdf", script, true);
 
       }

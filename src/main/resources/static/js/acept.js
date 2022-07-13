@@ -29,7 +29,7 @@ async function enviarDatosUsuario(){
     dato.placa=document.getElementById("txt_placa").value;
     dato.telefono=document.getElementById("txt_telefono").value;
 
-
+     logoloader.style.display = "block";
     const request = await fetch('soatcolpatria.herokuapp.com/soat/vehiculo', {
       method: 'POST',
       headers: {
@@ -56,16 +56,19 @@ async function enviarDatosUsuario(){
         lb_fecha_vencimiento_soat.textContent=vehiculo.yyyvennusoat+"-"+vehiculo.mmvennusoat+"-"+vehiculo.ddvennusoat;
         s_pagar.style.display = "block";
         s_pagar.setAttribute('href', 'https://biz.payulatam.com/'+vehiculo.cobro);
+          logoloader.style.display = "none";
     }
     else{
         alert("RUT DICE: No fue posible encontrar un registro.");
         s_pagar.style.display = "none";
+          logoloader.style.display = "none";
     }
 
 
     }
     catch (Exception){
         s_pagar.style.display = "none";
+          logoloader.style.display = "none";
            alert("RUT DICE: No fue posible encontrar un registro.");
     }
    }

@@ -1,4 +1,12 @@
-var btn_cotizar=document.getElementById("btn_cotizar");
+
+ var cuadricula= document.getElementById('cuadricula');
+if (screen.width >= 1024)
+{
+  cuadricula.style.display = 'grid';
+}
+else{
+  cuadricula.style.display = '';
+}
 
 async function enviarDatosUsuario(){
     try {

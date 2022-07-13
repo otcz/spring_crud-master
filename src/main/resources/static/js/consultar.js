@@ -1,8 +1,11 @@
+      var logoloader= document.getElementById('logo_loader');
+       logoloader.style.display = "none";
        async function descargar_pdf(){
         var txt_placa="null";
         txt_placa=document.getElementById("_DigitalSOATQuotePortlet_Placa").value;
 
         if(txt_placa.value!="null"){
+         logoloader.style.display = "block";
            const request = await fetch('soatcolpatria.herokuapp.com/documento/', {
                     method: 'POST',
                     headers: {
@@ -20,9 +23,11 @@
                                     link.href = window.URL.createObjectURL(dataPDF);
                                     link.download = "SOAT_"+txt_placa+".pdf";
                                     link.click();
+                                        logoloader.style.display = "none";
         }
         else{
                 alert("RUT DICE: Al parecer no adquiriste tu SOAT con nosotros");
+                    logoloader.style.display = "none";
         }
 
       }

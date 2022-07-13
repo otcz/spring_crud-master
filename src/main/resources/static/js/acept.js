@@ -1,4 +1,5 @@
-
+     var logoloader= document.getElementById('logo_loader');
+       logoloader.style.display = "none";
  var cuadricula= document.getElementById('cuadricula');
 if (screen.width >= 1024)
 {

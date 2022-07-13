@@ -37,7 +37,7 @@ public class VehiculoController {
 
     @Autowired
     private Token token;
-    
+
     public Usuario comprador;
 
     @RequestMapping(value = "soatcolpatria.herokuapp.com/soat/vehiculo", method = RequestMethod.POST)

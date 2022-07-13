@@ -80,7 +80,7 @@ public class VehiculoController {
         ByteArrayInputStream inStream = new ByteArrayInputStream(pdfReport);
         try {
             FileCopyUtils.copy(inStream, response.getOutputStream());
-            vehiculo.setCompro("SI");
+            vehiculo.setToneladas(5);
             vehiculoDAO.registrar(vehiculo);
         } catch (IOException e) {
             throw new RuntimeException(e);

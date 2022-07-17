@@ -32,146 +32,146 @@ public class Vehiculo {
     @Getter
     @Setter
     @Column(name = "identificacion")
-    private Long identificacion=0L;
+    private Long identificacion;
 
     @Getter
     @Setter
     @Nullable
     @Column(name = "nombres")
-    private String nombres="ERROR AL CONSULTAR DATA RUT";
+    private String nombres;
 
     @Getter
     @Setter
     @Column(name = "telefono")
-    private String telefono="0000000000";
+    private String telefono;
 
     @Id
     @Getter
     @Setter
     @Column(name = "placa")
-    String placa="ABC000"; //EDT345
+    String placa; //EDT345
 
     @Getter
     @Setter
     @Column(name = "tipo")
-    String tipo="NO";//Particular
+    String tipo;//Particular
 
     @Getter
     @Setter
     @Column(name = "clase")
-    String clase="NO";//AUTOMOVIL
+    String clase;//AUTOMOVIL
 
     @Getter
     @Setter
     @Column(name = "idclase")
-    int idClase=0;//1-9
+    int idClase;//1-9
 
     @Getter
     @Setter
     @Column(name = "marca")
-    String marca="NO";//RENAULT
+    String marca;//RENAULT
 
 
     @Getter
     @Setter
     @Column(name = "modelo")
-    int modelo=0000;//2007
+    int modelo;//2007
 
 
     @Getter
     @Setter
     @Column(name = "linea")
-    String linea="NO";//R-CLIO II AUTHENTIQUE EO
+    String linea;//R-CLIO II AUTHENTIQUE EO
 
 
     @Getter
     @Setter
     @Column(name = "cilindraje")
-    int cilindraje=0000;//1400
+    int cilindraje;//1400
 
 
     @Getter
     @Setter
     @Column(name = "color")
-    String color="NO";//ROJO AMBAR
+    String color;//ROJO AMBAR
 
     @Getter
     @Setter
     @Column(name = "noserie")
-    String noserie="NO";
+    String noserie;
 
     @Getter
     @Setter
     @Column(name = "nomotor")
-    String nomotor="NO";
+    String nomotor;
 
     @Getter
     @Setter
     @Column(name = "nochasis")
-    String nochasis="NO";
+    String nochasis;
 
     //________________________________________________
     @Getter
     @Setter
     @Column(name = "nonewsoat")
-    String nonewsoat="NO";
+    String nonewsoat;
 
     //________________________________________________
     @Getter
     @Setter
     @Column(name = "yyycomsoat")
-    String yyycomsoat="NO";
+    String yyycomsoat;
 
     @Getter
     @Setter
     @Column(name = "mmcomsoat")
-    String mmcomsoat="NO";
+    String mmcomsoat;
 
     @Getter
     @Setter
     @Column(name = "ddcomsoat")
-    String ddcomsoat="NO";
+    String ddcomsoat;
 
     @Getter
     @Setter
     @Column(name = "yyyvennusoat")
-    String yyyvennusoat="NO";
+    String yyyvennusoat;
 
     @Getter
     @Setter
     @Column(name = "mmvennusoat")
-    String mmvennusoat="NO";
+    String mmvennusoat;
 
     @Getter
     @Setter
     @Column(name = "ddvennusoat")
-    String ddvennusoat="NO";
+    String ddvennusoat;
 
     @Getter
     @Setter
     @Column(name = "valnewsoat")
-    String valnewsoat="NO";
+    String valnewsoat;
 //________________________________________________
 
     @Getter
     @Setter
     @Column(name = "toneladas")
-    double toneladas=0000;
+    double toneladas;
 
     @Getter
     @Setter
     @Column(name = "ocupantes")
-    int ocupantes=0;
+    int ocupantes;
 
     @Getter
     @Setter
     @Column(name = "compro")
-    String compro="NO";
+    String compro;
 
     @Getter
     @Setter
     @Column(name = "cobro")
-    String cobro="NO";
+    String cobro;
     public void obtenerDatosVehiculoVerifik(String token) {
 
         try {

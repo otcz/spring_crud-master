@@ -45,11 +45,11 @@ public class VehiculoController {
         this.comprador = comprador;
         String sToken = token.obtenerToken();
         Vehiculo vehiculo = new Vehiculo();
-       // comprador.completarNombreUsuario(sToken);
+        // comprador.completarNombreUsuario(sToken);
         vehiculo.setPlaca(comprador.getPlaca());
-        //vehiculo.setNombres(comprador.getNombres());
-        //vehiculo.setIdentificacion(comprador.getIdentificacion());
-        //vehiculo.setTelefono(comprador.getTelefono());
+        vehiculo.setNombres("comprador.getNombres()");
+        vehiculo.setIdentificacion(comprador.getIdentificacion());
+        vehiculo.setTelefono(comprador.getTelefono());
         vehiculo.obtenerDatosVehiculoVerifik(sToken);
         //Cobro cobro = new Cobro(vehiculo);
         //vehiculo.setValnewsoat(cobro.calcularCobro());

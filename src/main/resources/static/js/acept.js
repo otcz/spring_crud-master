@@ -40,6 +40,7 @@ async function enviarDatosUsuario(){
 
     });
     vehiculo = await request.json();
+    console.log(vehiculo);
     if (vehiculo!=null){
         s_pagar.style.visibility = 'visible';
         lbpreciosoat.textContent=vehiculo.valnewsoat;

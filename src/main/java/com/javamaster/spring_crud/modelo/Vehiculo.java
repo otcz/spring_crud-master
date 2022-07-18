@@ -250,8 +250,7 @@ public class Vehiculo {
                 br.close();
                 ObjectMapper mapper = new ObjectMapper();
                 JsonNode node = mapper.readTree(response.toString());
-                setNombres(String.valueOf(node));
-               //setTipo(node.get("data").get("vehicle").get("tipoServicio").asText());
+                setTipo(node.get("data").get("vehicle").get("tipoServicio").asText());
                //setCilindraje(Integer.parseInt(node.get("data").get("vehicle").get("cilindraje").asText()));
                //setNomotor(node.get("data").get("vehicle").get("noMotor").asText());
                //setNoVin(node.get("data").get("vehicle").get("noVin").asText());

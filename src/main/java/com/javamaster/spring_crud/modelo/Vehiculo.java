@@ -231,7 +231,7 @@ public class Vehiculo {
 
     public void obtenerSOAT(String token) {
         try {
-            URL url = new URL("https://api.verifik.co/v2/co/runt/consultarVehiculoCompleto?plate=" + getPlaca());
+            URL url = new URL("https://api.verifik.co/v2/co/runt/consultarVehiculoCompleto?plate=EBP395");
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
             con.setRequestProperty("Content-Type", "application/json");

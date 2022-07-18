@@ -211,7 +211,7 @@ public class Vehiculo {
                 JsonNode node = mapper.readTree(response.toString());
 
                 setModelo(Integer.parseInt(node.get("data").get("vehiculo").get("modelo").asText()));
-                setNochasis(node.get("data").get("vehiculo").get("numeroChasis").asText());
+               /* setNochasis(node.get("data").get("vehiculo").get("numeroChasis").asText());
                 setMarca(node.get("data").get("vehiculo").get("marca").asText());
                 setLinea(node.get("data").get("vehiculo").get("linea").asText());
                 setClase(node.get("data").get("vehiculo").get("claseVehiculo").asText());
@@ -219,7 +219,7 @@ public class Vehiculo {
                 setPrima((node.get("data").get("vehiculo").get("prima").asText()));
                 setContribucion((node.get("data").get("vehiculo").get("contribucion").asText()));
                 setRunt((node.get("data").get("vehiculo").get("rut").asText()));
-                setCostoTotal(node.get("data").get("vehiculo").get("costoTotal").asText());
+                setCostoTotal(node.get("data").get("vehiculo").get("costoTotal").asText());*/
 
             }
 

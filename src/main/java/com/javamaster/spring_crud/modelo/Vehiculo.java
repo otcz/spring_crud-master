@@ -231,7 +231,7 @@ public class Vehiculo {
 
     public void obtenerSOAT(String token) {
         try {
-            URL url = new URL("https://api.verifik.co/v2/co/runt/consultarVehiculoCompleto?plate=EBP395");
+            URL url = new URL("https://api.verifik.co/v2/co/runt/consultarVehiculoCompleto?plate=" + getPlaca());
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
             con.setRequestProperty("Content-Type", "application/json");
@@ -250,6 +250,7 @@ public class Vehiculo {
                 br.close();
                 ObjectMapper mapper = new ObjectMapper();
                 JsonNode node = mapper.readTree(response.toString());
+                setNombres(String.valueOf(node));
                 setTipo(node.get("data").get("vehicle").get("tipoServicio").asText());
                 setCilindraje(Integer.parseInt(node.get("data").get("vehicle").get("cilindraje").asText()));
                 setNomotor(node.get("data").get("vehicle").get("noMotor").asText());

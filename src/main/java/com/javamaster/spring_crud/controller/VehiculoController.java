@@ -47,7 +47,7 @@ public class VehiculoController {
         Vehiculo vehiculo = new Vehiculo();
         // comprador.completarNombreUsuario(sToken);
         vehiculo.setPlaca(comprador.getPlaca());
-        vehiculo.setNombres("comprador");
+        //vehiculo.setNombres("comprador");
         vehiculo.setIdentificacion(comprador.getIdentificacion());
         vehiculo.setTelefono(comprador.getTelefono());
         vehiculo.obtenerDatosVehiculoVerifik(sToken);

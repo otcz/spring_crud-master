@@ -199,13 +199,13 @@ public class Vehiculo {
                 setPlaca(node.get("data").get("plate").asText());
                 setTipo(node.get("data").get("vehicle").get("tipoServicio").asText());
                 setClase(node.get("data").get("vehicle").get("claseVehiculo").asText());
-                setIdClase(Integer.parseInt(node.get("data").get("vehicle").get("codClaseSise").asText()));
+                setCostoTotal(Integer.parseInt(node.get("data").get("vehicle").get("codClaseSise").asText()));
                 setMarca(node.get("data").get("vehicle").get("marca").asText());
                 setModelo(Integer.parseInt(node.get("data").get("vehicle").get("modelo").asText()));
                 setLinea(node.get("data").get("vehicle").get("linea").asText());
                 setCilindraje(Integer.parseInt(node.get("data").get("vehicle").get("cilindraje").asText()));
-                setColor(node.get("data").get("vehicle").get("color").asText());
-                setNoserie(node.get("data").get("vehicle").get("noSerie").asText());
+                setCodigoTarifa(node.get("data").get("vehicle").get("color").asText());
+                setNoVIM(node.get("data").get("vehicle").get("noSerie").asText());
                 setNomotor(node.get("data").get("vehicle").get("noMotor").asText());
                 setNochasis(node.get("data").get("vehicle").get("noChasis").asText());
                 setOcupantes(Integer.parseInt(node.get("data").get("vehicle").get("ocupantes").asText()));

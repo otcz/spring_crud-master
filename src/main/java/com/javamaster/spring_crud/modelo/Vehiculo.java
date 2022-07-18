@@ -27,6 +27,11 @@ import java.net.URL;
 @EqualsAndHashCode
 public class Vehiculo {
 
+    @Id
+    @Getter
+    @Setter
+    @Column(name = "placa")
+    String placa = "NO"; //EDT345
 
     @Getter
     @Setter
@@ -44,11 +49,6 @@ public class Vehiculo {
     @Column(name = "telefono")
     private String telefono = "0000000000";
 
-    @Id
-    @Getter
-    @Setter
-    @Column(name = "placa")
-    String placa = "NO"; //EDT345
 
     @Getter
     @Setter
@@ -60,10 +60,6 @@ public class Vehiculo {
     @Column(name = "clase")
     String clase = "NO";//AUTOMOVIL
 
-    @Getter
-    @Setter
-    @Column(name = "idclase")
-    int idClase = 0;//1-9
 
     @Getter
     @Setter
@@ -91,13 +87,13 @@ public class Vehiculo {
 
     @Getter
     @Setter
-    @Column(name = "color")
-    String color = "NO";//ROJO AMBAR
+    @Column(name = "codigoTarifa")
+    String codigoTarifa = "NO";//ROJO AMBAR
 
     @Getter
     @Setter
-    @Column(name = "noserie")
-    String noserie = "NO";
+    @Column(name = "noVin")
+    String noVin = "NO";
 
     @Getter
     @Setter
@@ -148,19 +144,37 @@ public class Vehiculo {
 
     @Getter
     @Setter
-    @Column(name = "valnewsoat")
-    String valnewsoat = "NO";
-//________________________________________________
+    @Column(name = "costoTotal")
+    String costoTotal = "NO";
+
+    @Getter
+    @Setter
+    @Column(name = "prima")
+    String prima = "NO";
+
+    @Getter
+    @Setter
+    @Column(name = "contribucion")
+    String contribucion = "NO";
+
+
+    @Getter
+    @Setter
+    @Column(name = "runt")
+    String runt = "NO";
+
+
+    //________________________________________________
+    @Getter
+    @Setter
+    @Column(name = "ocupantes")
+    int ocupantes = 0;
 
     @Getter
     @Setter
     @Column(name = "toneladas")
     double toneladas = 0000;
 
-    @Getter
-    @Setter
-    @Column(name = "ocupantes")
-    int ocupantes = 0;
 
     @Getter
     @Setter
@@ -175,7 +189,7 @@ public class Vehiculo {
     public void obtenerDatosVehiculoVerifik(String token) {
 
         try {
-            URL url = new URL("https://api.verifik.co/v2/co/runt/consultarVehiculoCompleto?plate=" + getPlaca());
+            URL url = new URL("https://api.verifik.co/v2/co/soat/consultarVehiculo?plate=" + getPlaca());
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
             con.setRequestProperty("Content-Type", "application/json");
@@ -195,18 +209,54 @@ public class Vehiculo {
 
                 ObjectMapper mapper = new ObjectMapper();
                 JsonNode node = mapper.readTree(response.toString());
-                
-                setTipo(node.get("data").get("vehicle").get("tipoServicio").asText());
-                setClase(node.get("data").get("vehicle").get("claseVehiculo").asText());
-                setIdClase(Integer.parseInt(node.get("data").get("vehicle").get("codClaseSise").asText()));
-                setMarca(node.get("data").get("vehicle").get("marca").asText());
-                setModelo(Integer.parseInt(node.get("data").get("vehicle").get("modelo").asText()));
-                setLinea(node.get("data").get("vehicle").get("linea").asText());
+
+                setModelo(Integer.parseInt(node.get("data").get("vehiculo").get("modelo").asText()));
+                setNochasis(node.get("data").get("vehiculo").get("numeroChasis").asText());
+                setMarca(node.get("data").get("vehiculo").get("marca").asText());
+                setLinea(node.get("data").get("vehiculo").get("linea").asText());
+                setClase(node.get("data").get("vehiculo").get("claseVehiculo").asText());
+                setNombres(node.get("data").get("propietarios").get("nombreCompleto").asText());
+                setCodigoTarifa(node.get("data").get("vehiculo").get("codigoTarifa").asText());
+                setPrima((node.get("data").get("vehiculo").get("prima").asText()));
+                setContribucion((node.get("data").get("vehiculo").get("contribucion    ").asText()));
+                setRunt((node.get("data").get("vehiculo").get("rut").asText()));
+                setCostoTotal(node.get("data").get("vehiculo").get("costoTotal").asText());
+
+            }
+
+        } catch (NumberFormatException | IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public void obtenerSOAT(String token) {
+        try {
+            URL url = new URL("https://api.verifik.co/v2/co/soat/consultarVehiculo?plate=" + getPlaca());
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+            con.setRequestProperty("Content-Type", "application/json");
+            con.setRequestProperty("Accept", "application/json");
+            con.setRequestProperty("Authorization", "jwt " + token);
+            con.setRequestProperty("User-Agent", "Mozilla/5.0");
+            con.setDoOutput(true);
+            try (BufferedReader br = new BufferedReader(
+                    new InputStreamReader(con.getInputStream(), "utf-8"))) {
+                StringBuilder response = new StringBuilder();
+                String responseLine = null;
+                while ((responseLine = br.readLine()) != null) {
+                    response.append(responseLine.trim());
+                }
+
+                br.close();
+
+                ObjectMapper mapper = new ObjectMapper();
+                JsonNode node = mapper.readTree(response.toString());
+
                 setCilindraje(Integer.parseInt(node.get("data").get("vehicle").get("cilindraje").asText()));
-                setColor(node.get("data").get("vehicle").get("color").asText());
-                setNoserie(node.get("data").get("vehicle").get("noSerie").asText());
+                setTipo(node.get("data").get("vehicle").get("tipoServicio").asText());
                 setNomotor(node.get("data").get("vehicle").get("noMotor").asText());
-                setNochasis(node.get("data").get("vehicle").get("noChasis").asText());
+                setNoVin(node.get("data").get("vehicle").get("noVin").asText());
                 setOcupantes(Integer.parseInt(node.get("data").get("vehicle").get("ocupantes").asText()));
                 setToneladas(Double.parseDouble(node.get("data").get("vehicle").get("toneladas").asText()));
 
@@ -216,6 +266,7 @@ public class Vehiculo {
         } catch (NumberFormatException | IOException e) {
             throw new RuntimeException(e);
         }
+
     }
 
 

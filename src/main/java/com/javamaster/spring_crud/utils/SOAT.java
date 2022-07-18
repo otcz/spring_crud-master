@@ -7,7 +7,6 @@ import lombok.Setter;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -44,6 +43,7 @@ public class SOAT {
             parameters.put("linea", getVehiculo().getLinea());
             parameters.put("nomotor", getVehiculo().getNomotor());
             parameters.put("nochasis", getVehiculo().getNochasis());
+            parameters.put("noVin", getVehiculo().getNoVin());
             parameters.put("toneladas", getVehiculo().getToneladas());
             parameters.put("nombres", getVehiculo().getNombres());
             parameters.put("identificacion", getVehiculo().getIdentificacion());
@@ -53,7 +53,12 @@ public class SOAT {
             parameters.put("yyyvennusoat", getVehiculo().getYyyvennusoat());
             parameters.put("mmvennusoat", getVehiculo().getMmvennusoat());
             parameters.put("ddvennusoat", getVehiculo().getDdvennusoat());
-            parameters.put("valnewsoat", getVehiculo().getValnewsoat());
+            parameters.put("costoTotal", getVehiculo().getCostoTotal());
+            parameters.put("codigoTarifa", getVehiculo().getCodigoTarifa());
+            parameters.put("prima", getVehiculo().getPrima());
+            parameters.put("contribucion", getVehiculo().getContribucion());
+            parameters.put("rut", getVehiculo().getRunt());
+
 
             InputStream is = new FileInputStream("src/main/java/com/javamaster/spring_crud/utils/soatV2.jrxml");
             JasperReport report = JasperCompileManager.compileReport(is);
@@ -66,48 +71,5 @@ public class SOAT {
         }
     }
 
-    public JasperPrint generarPrintSOAT() {
-        try {
-            List<Vehiculo> vehiculos = Arrays.asList(getVehiculo());
-            Map<String, Object> parameters = new HashMap();
-            parameters.put("telefono", getVehiculo().getTelefono());
-            parameters.put("nonewsoat", getVehiculo().getNonewsoat());
-            parameters.put("placa", getVehiculo().getPlaca());
-            parameters.put("clase", getVehiculo().getClase());
-            parameters.put("tipo", getVehiculo().getTipo());
-            parameters.put("cilindraje", getVehiculo().getCilindraje());
-            parameters.put("modelo", getVehiculo().getModelo());
-            parameters.put("ocupantes", getVehiculo().getOcupantes());
-            parameters.put("marca", getVehiculo().getMarca());
-            parameters.put("linea", getVehiculo().getLinea());
-            parameters.put("nomotor", getVehiculo().getNomotor());
-            parameters.put("nochasis", getVehiculo().getNochasis());
-            parameters.put("toneladas", getVehiculo().getToneladas());
-            parameters.put("nombres", getVehiculo().getNombres());
-            parameters.put("identificacion", getVehiculo().getIdentificacion());
-            parameters.put("yyycomsoat", getVehiculo().getYyycomsoat());
-            parameters.put("mmcomsoat", getVehiculo().getMmcomsoat());
-            parameters.put("ddcomsoat", getVehiculo().getDdcomsoat());
-            parameters.put("yyyvennusoat", getVehiculo().getYyyvennusoat());
-            parameters.put("mmvennusoat", getVehiculo().getMmvennusoat());
-            parameters.put("ddvennusoat", getVehiculo().getDdvennusoat());
-            parameters.put("valnewsoat", getVehiculo().getValnewsoat());
 
-
-            InputStream is = new FileInputStream(new File("src/main/java/TaosBackend/Taos/Utils/soatV2.jrxml"));
-
-            JasperReport report = null;
-
-            report = JasperCompileManager.compileReport(is);
-
-            JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(vehiculos);
-
-            JasperPrint print = JasperFillManager.fillReport(report, parameters, dataSource);
-            return (print);
-
-        } catch (JRException | FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 }

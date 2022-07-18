@@ -43,7 +43,7 @@ public class Cobro {
     public String calcularCobro() {
         String setCobro = "";
         int resul = yearActual() - getVehiculo().getModelo();
-        switch (getVehiculo().getIdClase()) {
+        switch (getVehiculo().getCostoTotal()) {
             case 1:
                 if (getVehiculo().getClase() == ("Ciclomotor")) {
                     setCobro = valoresDES.get(0);

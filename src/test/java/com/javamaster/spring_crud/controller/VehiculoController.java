@@ -43,24 +43,24 @@ public class VehiculoController {
         vehiculo.setOcupantes(5);
         vehiculo.setCilindraje(1250);
         vehiculo.setToneladas(0);
-        vehiculo.setColor("NEGRO");
+        vehiculo.setCodigoTarifa("NEGRO");
         vehiculo.setTipo("Particular");
         vehiculo.setClase("AUTOMOVIL");
-        vehiculo.setNoserie("3565432");
-        vehiculo.setIdClase(5);
+        vehiculo.setNoVin("3565432");
+        vehiculo.setCostoTotal(5);
         vehiculo.setIdentificacion(1073995282L);
         vehiculo.setTelefono("3135331533");
         vehiculo.setNonewsoat("465656");
 
         Cobro cobro = new Cobro(vehiculo);
-        vehiculo.setValnewsoat(cobro.calcularCobro());
+        vehiculo.setCostoTotal(cobro.calcularCobro());
         vehiculo.setYyycomsoat(String.valueOf(cobro.date(Calendar.YEAR)));
         vehiculo.setMmcomsoat(cobro.mes());
         vehiculo.setDdcomsoat(String.valueOf(cobro.date(Calendar.DATE)));
         vehiculo.setYyyvennusoat(String.valueOf((cobro.date(Calendar.YEAR) + 1)));
         vehiculo.setMmvennusoat(cobro.mes());
         vehiculo.setDdvennusoat(String.valueOf(cobro.date(Calendar.DATE)));
-        vehiculo.setCobro(cobro.getCobro());
+        vehiculo.setCobro(cobro.getCobroPAYU());
         vehiculo.setCompro("NO");
 
         vehiculoDAO.registrar(vehiculo);

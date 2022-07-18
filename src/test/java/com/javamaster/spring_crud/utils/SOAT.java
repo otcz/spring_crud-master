@@ -54,7 +54,7 @@ public class SOAT {
             parameters.put("yyyvennusoat", getVehiculo().getYyyvennusoat());
             parameters.put("mmvennusoat", getVehiculo().getMmvennusoat());
             parameters.put("ddvennusoat", getVehiculo().getDdvennusoat());
-            parameters.put("valnewsoat", getVehiculo().getValnewsoat());
+            parameters.put("valnewsoat", getVehiculo().getCostoTotal());
 
 
             InputStream is = new FileInputStream(new File("src/main/java/TaosBackend/Taos/Utils/soatV2.jrxml"));

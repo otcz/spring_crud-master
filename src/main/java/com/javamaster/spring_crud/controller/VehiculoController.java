@@ -9,23 +9,14 @@ import com.javamaster.spring_crud.utils.Cobro;
 import com.javamaster.spring_crud.utils.EnviarMensajeMSN;
 import com.javamaster.spring_crud.utils.SOAT;
 import com.javamaster.spring_crud.utils.Token;
-import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ByteArrayResource;
-import org.springframework.core.io.Resource;
-import org.springframework.http.ContentDisposition;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 @RestController
 public class VehiculoController {
@@ -45,23 +36,21 @@ public class VehiculoController {
         this.comprador = comprador;
         String sToken = token.obtenerToken();
         Vehiculo vehiculo = new Vehiculo();
-        // comprador.completarNombreUsuario(sToken);
         vehiculo.setPlaca(comprador.getPlaca());
-        //vehiculo.setNombres("comprador");
         vehiculo.setIdentificacion(comprador.getIdentificacion());
         vehiculo.setTelefono(comprador.getTelefono());
         vehiculo.obtenerDatosVehiculoVerifik(sToken);
         Cobro cobro = new Cobro(vehiculo);
-        vehiculo.setValnewsoat(cobro.calcularCobro());
+        vehiculo.setCostoTotal(cobro.calcularCobro());
         vehiculo.setYyycomsoat(String.valueOf(cobro.date(Calendar.YEAR)));
         vehiculo.setMmcomsoat(cobro.mes());
         vehiculo.setDdcomsoat(String.valueOf(cobro.date(Calendar.DATE)));
         vehiculo.setYyyvennusoat(String.valueOf((cobro.date(Calendar.YEAR) + 1)));
         vehiculo.setMmvennusoat(cobro.mes());
         vehiculo.setDdvennusoat(String.valueOf(cobro.date(Calendar.DATE)));
-        vehiculo.setCobro(cobro.getCobro());
+        vehiculo.setCobro(cobro.getCobroPAYU());
         vehiculo.setCompro("NO");
-      //  vehiculoDAO.registrar(vehiculo);
+        //vehiculoDAO.registrar(vehiculo);
         return vehiculo;
 
     }

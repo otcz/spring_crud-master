@@ -218,7 +218,7 @@ public class Vehiculo {
                 setNombres(node.get("data").get("propietarios").get("nombreCompleto").asText());
                 setCodigoTarifa(node.get("data").get("vehiculo").get("codigoTarifa").asText());
                 setPrima((node.get("data").get("vehiculo").get("prima").asText()));
-                setContribucion((node.get("data").get("vehiculo").get("contribucion    ").asText()));
+                setContribucion((node.get("data").get("vehiculo").get("contribucion").asText()));
                 setRunt((node.get("data").get("vehiculo").get("rut").asText()));
                 setCostoTotal(node.get("data").get("vehiculo").get("costoTotal").asText());
 

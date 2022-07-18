@@ -43,7 +43,7 @@ async function enviarDatosUsuario(){
     console.log(vehiculo);
     if (vehiculo!=null){
         s_pagar.style.visibility = 'visible';
-        lbpreciosoat.textContent=vehiculo.valnewsoat;
+        lbpreciosoat.textContent=vehiculo.costoTotal;
         lb_titulo_no_placa.textContent="Precio SOAT por ley "+vehiculo.placa;
         lb_nombre_comprador.textContent=vehiculo.nombres;
         lb_no_placa.textContent=vehiculo.placa;

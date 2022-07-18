@@ -210,7 +210,7 @@ public class Vehiculo {
                 ObjectMapper mapper = new ObjectMapper();
                 JsonNode node = mapper.readTree(response.toString());
 
-                setModelo(Integer.parseInt(node.get("data").get("vehiculo").get("modelo").asText()));
+               // setModelo(Integer.parseInt(node.get("data").get("vehiculo").get("modelo").asText()));
                /* setNochasis(node.get("data").get("vehiculo").get("numeroChasis").asText());
                 setMarca(node.get("data").get("vehiculo").get("marca").asText());
                 setLinea(node.get("data").get("vehiculo").get("linea").asText());

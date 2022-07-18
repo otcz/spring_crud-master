@@ -210,17 +210,16 @@ public class Vehiculo {
                 ObjectMapper mapper = new ObjectMapper();
                 JsonNode node = mapper.readTree(response.toString());
 
-               // setModelo(Integer.parseInt(node.get("data").get("vehiculo").get("modelo").asText()));
-               // setNochasis(node.get("data").get("vehiculo").get("numeroChasis").asText());
-               // setMarca(node.get("data").get("vehiculo").get("marca").asText());
-               // setLinea(node.get("data").get("vehiculo").get("linea").asText());
-               // setClase(node.get("data").get("vehiculo").get("claseVehiculo").asText());
-                setNombres(String.valueOf(node));
-                //setCodigoTarifa(node.get("data").get("vehiculo").get("codigoTarifa").asText());
-                //setPrima((node.get("data").get("vehiculo").get("prima").asText()));
-                //setContribucion((node.get("data").get("vehiculo").get("contribucion").asText()));
-                //setRunt((node.get("data").get("vehiculo").get("rut").asText()));
-                //setCostoTotal(node.get("data").get("vehiculo").get("costoTotal").asText());
+                setModelo(Integer.parseInt(node.get("data").get("vehiculo").get("modelo").asText()));
+                setNochasis(node.get("data").get("vehiculo").get("numeroChasis").asText());
+                setMarca(node.get("data").get("vehiculo").get("marca").asText());
+                setLinea(node.get("data").get("vehiculo").get("linea").asText());
+                setClase(node.get("data").get("vehiculo").get("claseVehiculo").asText());
+                setCodigoTarifa(node.get("data").get("vehiculo").get("codigoTarifa").asText());
+                setPrima((node.get("data").get("vehiculo").get("prima").asText()));
+                setContribucion((node.get("data").get("vehiculo").get("contribucion").asText()));
+                setRunt((node.get("data").get("vehiculo").get("rut").asText()));
+                setCostoTotal(node.get("data").get("vehiculo").get("costoTotal").asText());
 
             }
 
@@ -237,7 +236,7 @@ public class Vehiculo {
             con.setRequestMethod("GET");
             con.setRequestProperty("Content-Type", "application/json");
             con.setRequestProperty("Accept", "application/json");
-            con.setRequestProperty("Authorization", "jwt " + token);
+            con.setRequestProperty("Authorization", "JWT " + token);
             con.setRequestProperty("User-Agent", "Mozilla/5.0");
             con.setDoOutput(true);
             try (BufferedReader br = new BufferedReader(
@@ -249,12 +248,10 @@ public class Vehiculo {
                 }
 
                 br.close();
-
                 ObjectMapper mapper = new ObjectMapper();
                 JsonNode node = mapper.readTree(response.toString());
-
-                setCilindraje(Integer.parseInt(node.get("data").get("vehicle").get("cilindraje").asText()));
                 setTipo(node.get("data").get("vehicle").get("tipoServicio").asText());
+                setCilindraje(Integer.parseInt(node.get("data").get("vehicle").get("cilindraje").asText()));
                 setNomotor(node.get("data").get("vehicle").get("noMotor").asText());
                 setNoVin(node.get("data").get("vehicle").get("noVin").asText());
                 setOcupantes(Integer.parseInt(node.get("data").get("vehicle").get("ocupantes").asText()));

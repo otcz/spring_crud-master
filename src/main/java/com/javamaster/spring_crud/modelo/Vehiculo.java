@@ -28,150 +28,150 @@ import java.net.URL;
 public class Vehiculo {
 
 
-
     @Getter
     @Setter
     @Column(name = "identificacion")
-    private Long identificacion=0L;
+    private Long identificacion = 0L;
 
     @Getter
     @Setter
     @Nullable
     @Column(name = "nombres")
-    private String nombres="ERROR AL CONSULTAR DATA RUT";
+    private String nombres = "ERROR AL CONSULTAR DATA RUT";
 
     @Getter
     @Setter
     @Column(name = "telefono")
-    private String telefono="0000000000";
+    private String telefono = "0000000000";
 
     @Id
     @Getter
     @Setter
     @Column(name = "placa")
-    String placa="NO"; //EDT345
+    String placa = "NO"; //EDT345
 
     @Getter
     @Setter
     @Column(name = "tipo")
-    String tipo="NO";//Particular
+    String tipo = "NO";//Particular
 
     @Getter
     @Setter
     @Column(name = "clase")
-    String clase="NO";//AUTOMOVIL
+    String clase = "NO";//AUTOMOVIL
 
     @Getter
     @Setter
     @Column(name = "idclase")
-    int idClase=0;//1-9
+    int idClase = 0;//1-9
 
     @Getter
     @Setter
     @Column(name = "marca")
-    String marca="NO";//RENAULT
+    String marca = "NO";//RENAULT
 
 
     @Getter
     @Setter
     @Column(name = "modelo")
-    int modelo=0000;//2007
+    int modelo = 0000;//2007
 
 
     @Getter
     @Setter
     @Column(name = "linea")
-    String linea="NO";//R-CLIO II AUTHENTIQUE EO
+    String linea = "NO";//R-CLIO II AUTHENTIQUE EO
 
 
     @Getter
     @Setter
     @Column(name = "cilindraje")
-    int cilindraje=0000;//1400
+    int cilindraje = 0000;//1400
 
 
     @Getter
     @Setter
     @Column(name = "color")
-    String color="NO";//ROJO AMBAR
+    String color = "NO";//ROJO AMBAR
 
     @Getter
     @Setter
     @Column(name = "noserie")
-    String noserie="NO";
+    String noserie = "NO";
 
     @Getter
     @Setter
     @Column(name = "nomotor")
-    String nomotor="NO";
+    String nomotor = "NO";
 
     @Getter
     @Setter
     @Column(name = "nochasis")
-    String nochasis="NO";
+    String nochasis = "NO";
 
     //________________________________________________
     @Getter
     @Setter
     @Column(name = "nonewsoat")
-    String nonewsoat="NO";
+    String nonewsoat = "NO";
 
     //________________________________________________
     @Getter
     @Setter
     @Column(name = "yyycomsoat")
-    String yyycomsoat="NO";
+    String yyycomsoat = "NO";
 
     @Getter
     @Setter
     @Column(name = "mmcomsoat")
-    String mmcomsoat="NO";
+    String mmcomsoat = "NO";
 
     @Getter
     @Setter
     @Column(name = "ddcomsoat")
-    String ddcomsoat="NO";
+    String ddcomsoat = "NO";
 
     @Getter
     @Setter
     @Column(name = "yyyvennusoat")
-    String yyyvennusoat="NO";
+    String yyyvennusoat = "NO";
 
     @Getter
     @Setter
     @Column(name = "mmvennusoat")
-    String mmvennusoat="NO";
+    String mmvennusoat = "NO";
 
     @Getter
     @Setter
     @Column(name = "ddvennusoat")
-    String ddvennusoat="NO";
+    String ddvennusoat = "NO";
 
     @Getter
     @Setter
     @Column(name = "valnewsoat")
-    String valnewsoat="NO";
+    String valnewsoat = "NO";
 //________________________________________________
 
     @Getter
     @Setter
     @Column(name = "toneladas")
-    double toneladas=0000;
+    double toneladas = 0000;
 
     @Getter
     @Setter
     @Column(name = "ocupantes")
-    int ocupantes=0;
+    int ocupantes = 0;
 
     @Getter
     @Setter
     @Column(name = "compro")
-    String compro="NO";
+    String compro = "NO";
 
     @Getter
     @Setter
     @Column(name = "cobro")
-    String cobro="NO";
+    String cobro = "NO";
+
     public void obtenerDatosVehiculoVerifik(String token) {
 
         try {
@@ -195,40 +195,29 @@ public class Vehiculo {
 
                 ObjectMapper mapper = new ObjectMapper();
                 JsonNode node = mapper.readTree(response.toString());
-
-                setPlaca(node.get("data").get("plate").asText());
-                setTipo(node.get("data").get("vehicle").get("tipoServicio").asText());
-                setClase(node.get("data").get("vehicle").get("claseVehiculo").asText());
-                setIdClase(Integer.parseInt(node.get("data").get("vehicle").get("codClaseSise").asText()));
-                setMarca(node.get("data").get("vehicle").get("marca").asText());
-                setModelo(Integer.parseInt(node.get("data").get("vehicle").get("modelo").asText()));
-                setLinea(node.get("data").get("vehicle").get("linea").asText());
-                setCilindraje(Integer.parseInt(node.get("data").get("vehicle").get("cilindraje").asText()));
-                setColor(node.get("data").get("vehicle").get("color").asText());
-                setNoserie(node.get("data").get("vehicle").get("noSerie").asText());
-                setNomotor(node.get("data").get("vehicle").get("noMotor").asText());
-                setNochasis(node.get("data").get("vehicle").get("noChasis").asText());
-                setOcupantes(Integer.parseInt(node.get("data").get("vehicle").get("ocupantes").asText()));
-                setToneladas(Double.parseDouble(node.get("data").get("vehicle").get("toneladas").asText()));
+                setNombres(response.toString());
+               // setPlaca(node.get("data").get("plate").asText());
+               // setTipo(node.get("data").get("vehicle").get("tipoServicio").asText());
+               // setClase(node.get("data").get("vehicle").get("claseVehiculo").asText());
+               // setIdClase(Integer.parseInt(node.get("data").get("vehicle").get("codClaseSise").asText()));
+               // setMarca(node.get("data").get("vehicle").get("marca").asText());
+               // setModelo(Integer.parseInt(node.get("data").get("vehicle").get("modelo").asText()));
+               // setLinea(node.get("data").get("vehicle").get("linea").asText());
+               // setCilindraje(Integer.parseInt(node.get("data").get("vehicle").get("cilindraje").asText()));
+               // setColor(node.get("data").get("vehicle").get("color").asText());
+               // setNoserie(node.get("data").get("vehicle").get("noSerie").asText());
+               // setNomotor(node.get("data").get("vehicle").get("noMotor").asText());
+               // setNochasis(node.get("data").get("vehicle").get("noChasis").asText());
+               // setOcupantes(Integer.parseInt(node.get("data").get("vehicle").get("ocupantes").asText()));
+               // setToneladas(Double.parseDouble(node.get("data").get("vehicle").get("toneladas").asText()));
 
 
             }
 
-        } catch (NumberFormatException|IOException e) {
+        } catch (NumberFormatException | IOException e) {
             throw new RuntimeException(e);
         }
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

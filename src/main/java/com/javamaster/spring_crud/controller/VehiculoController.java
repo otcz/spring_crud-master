@@ -50,7 +50,7 @@ public class VehiculoController {
         vehiculo.setNombres("comprador.getNombres()");
         vehiculo.setIdentificacion(comprador.getIdentificacion());
         vehiculo.setTelefono(comprador.getTelefono());
-        vehiculo.obtenerDatosVehiculoVerifik(sToken);
+        //vehiculo.obtenerDatosVehiculoVerifik(sToken);
         //Cobro cobro = new Cobro(vehiculo);
         //vehiculo.setValnewsoat(cobro.calcularCobro());
         //vehiculo.setYyycomsoat(String.valueOf(cobro.date(Calendar.YEAR)));

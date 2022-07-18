@@ -41,29 +41,7 @@ async function enviarDatosUsuario(){
     });
     vehiculo = await request.json();
     console.log(vehiculo);
-    if (vehiculo!=null){
-        s_pagar.style.visibility = 'visible';
-        lbpreciosoat.textContent=vehiculo.costoTotal;
-        lb_titulo_no_placa.textContent="Precio SOAT por ley "+vehiculo.placa;
-        lb_nombre_comprador.textContent=vehiculo.nombres;
-        lb_no_placa.textContent=vehiculo.placa;
-        lb_marca.textContent=vehiculo.marca;
-        lb_modelo.textContent=vehiculo.modelo;
-        lb_linea.textContent=vehiculo.linea;
-        lb_cIlindraje.textContent=vehiculo.cilindraje;
-        lb_numeroChasis.textContent=vehiculo.nochasis;
-        lb_no_motor.textContent=vehiculo.nomotor;
-        lb_fecha_inicio_soat.textContent=vehiculo.yyycomsoat+"-"+vehiculo.mmcomsoat+"-"+vehiculo.ddcomsoat;
-        lb_fecha_vencimiento_soat.textContent=vehiculo.yyyvennusoat+"-"+vehiculo.mmvennusoat+"-"+vehiculo.ddvennusoat;
-        s_pagar.style.display = "block";
-        s_pagar.setAttribute('href', 'https://biz.payulatam.com/'+vehiculo.cobro);
-          logoloader.style.display = "none";
-    }
-    else{
-        alert("RUT DICE: No fue posible encontrar un registro.");
-        s_pagar.style.display = "none";
-          logoloader.style.display = "none";
-    }
+ 
 
 
     }

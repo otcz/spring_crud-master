@@ -215,7 +215,7 @@ public class Vehiculo {
                // setMarca(node.get("data").get("vehiculo").get("marca").asText());
                // setLinea(node.get("data").get("vehiculo").get("linea").asText());
                // setClase(node.get("data").get("vehiculo").get("claseVehiculo").asText());
-                //setNombres(node.get("data").get("propietarios").get("nombreCompleto").asText());
+                setNombres(String.valueOf(node));
                 //setCodigoTarifa(node.get("data").get("vehiculo").get("codigoTarifa").asText());
                 //setPrima((node.get("data").get("vehiculo").get("prima").asText()));
                 //setContribucion((node.get("data").get("vehiculo").get("contribucion").asText()));

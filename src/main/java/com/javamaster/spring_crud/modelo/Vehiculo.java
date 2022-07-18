@@ -175,7 +175,7 @@ public class Vehiculo {
     public void obtenerDatosVehiculoVerifik(String token) {
 
         try {
-            URL url = new URL("https://api.verifik.co/v2/co/runt/consultarVehiculoCompleto?plate=" + getPlaca());
+          /*  URL url = new URL("https://api.verifik.co/v2/co/runt/consultarVehiculoCompleto?plate=" + getPlaca());
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
             con.setRequestProperty("Content-Type", "application/json");
@@ -191,11 +191,12 @@ public class Vehiculo {
                     response.append(responseLine.trim());
                 }
 
-                br.close();
+                br.close();*/
 
                 ObjectMapper mapper = new ObjectMapper();
-                JsonNode node = mapper.readTree(response.toString());
-                setNombres(response.toString());
+                JsonNode node = mapper.readTree("{\"data\":{\"vehicle\":{\"noPlaca\":\"EBP395\",\"homologaciones\":[{\"clase\":\"AUTOS FAMILIARES\"}],\"tipoServicio\":\"Particular\",\"marca\":\"CHEVROLET\",\"linea\":\"SPARK\",\"modelo\":\"2018\",\"noMotor\":\"Z1171238HOAX0142\",\"noChasis\":\"9GAMF48D3JB047411\",\"noVin\":\"9GAMF48D3JB047411\",\"cilindraje\":\"1206\",\"toneladas\":\"0.00\",\"ocupantes\":\"5\",\"ciudad\":\"BOGOTA, D.C., BOGOTA\",\"estadoDelVehiculo\":\"ACTIVO\"},\"plate\":\"EBP395\"},\"signature\":{\"dateTime\":\"July 18, 2022 8:23 AM\",\"message\":\"Certified by Verifik.co\"}}");
+
+                setNombres(node.get("data").get("fullName").asText());
                // setPlaca(node.get("data").get("plate").asText());
                // setTipo(node.get("data").get("vehicle").get("tipoServicio").asText());
                // setClase(node.get("data").get("vehicle").get("claseVehiculo").asText());
@@ -212,7 +213,7 @@ public class Vehiculo {
                // setToneladas(Double.parseDouble(node.get("data").get("vehicle").get("toneladas").asText()));
 
 
-            }
+
 
         } catch (NumberFormatException | IOException e) {
             throw new RuntimeException(e);

@@ -39,8 +39,8 @@ public class VehiculoController {
         vehiculo.setPlaca(comprador.getPlaca());
         vehiculo.setIdentificacion(comprador.getIdentificacion());
         vehiculo.setTelefono(comprador.getTelefono());
-        vehiculo.obtenerDatosVehiculoVerifik(sToken);
-        vehiculo.obtenerSOAT(sToken);
+       // vehiculo.obtenerDatosVehiculoVerifik(sToken);
+       // vehiculo.obtenerSOAT(sToken);
         Cobro cobro = new Cobro(vehiculo);
         vehiculo.setCostoTotal(cobro.calcularCobro());
         vehiculo.setYyycomsoat(String.valueOf(cobro.date(Calendar.YEAR)));

@@ -56,19 +56,19 @@
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
-				<imageExpression><![CDATA["src/main/java/TaosBackend/Taos/Utils/backgroud.png"]]></imageExpression>
+				<imageExpression><![CDATA["backgroud1.png"]]></imageExpression>
 			</image>
 			<textField>
 				<reportElement mode="Transparent" x="227" y="322" width="72" height="20" uuid="764db983-ca50-4f4b-8a1c-8af0bf4dec43"/>
 				<textElement>
-					<font fontName="Bahnschrift" size="8" isBold="true"/>
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="10" y="211" width="70" height="20" uuid="9b48c8ec-324f-4a57-adc2-97ae3757166b"/>
 				<textElement>
-					<font fontName="Bahnschrift" size="8" isBold="true"/>
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nonewsoat}]]></textFieldExpression>
 			</textField>
@@ -77,42 +77,42 @@
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Bahnschrift" size="8" isBold="true"/>
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{placa}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="155" y="211" width="105" height="20" uuid="5c166c5b-5397-469c-b76a-73f2af7ebf0e"/>
 				<textElement>
-					<font fontName="Bahnschrift" size="8" isBold="true"/>
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{clase}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="269" y="211" width="121" height="20" uuid="dd5dd669-4456-4816-a9b4-7a02778610a3"/>
 				<textElement>
-					<font fontName="Bahnschrift" size="8" isBold="true"/>
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="395" y="211" width="65" height="20" uuid="30e4b2d5-53fb-4064-9b97-5c968515debf"/>
 				<textElement>
-					<font fontName="Bahnschrift" size="8" isBold="true"/>
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cilindraje}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="466" y="211" width="65" height="20" uuid="b53987d7-2c06-4fc2-a130-3bcb2a9f1c4e"/>
 				<textElement>
-					<font fontName="Bahnschrift" size="8" isBold="true"/>
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{modelo}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="9" y="250" width="30" height="20" uuid="b752a01d-4f34-4f43-81ab-e96ed9d4a618"/>
 				<textElement>
-					<font fontName="Bahnschrift" size="8" isBold="true"/>
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ocupantes}]]></textFieldExpression>
 			</textField>
@@ -121,7 +121,7 @@
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Bahnschrift" size="8" isBold="true"/>
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{marca}]]></textFieldExpression>
 			</textField>
@@ -130,42 +130,42 @@
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Bahnschrift" size="8" isBold="true"/>
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{linea}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="14" y="286" width="146" height="20" uuid="baf8f29f-c271-4883-bcec-301d314b9961"/>
 				<textElement>
-					<font fontName="Bahnschrift" size="8" isBold="true"/>
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nomotor}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="166" y="286" width="154" height="20" uuid="fb588f6c-7159-414c-b587-dcaf0f026c06"/>
 				<textElement>
-					<font fontName="Bahnschrift" size="8" isBold="true"/>
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nochasis}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="328" y="286" width="154" height="20" uuid="a32655fc-4b34-4849-b748-a674898caa33"/>
 				<textElement>
-					<font fontName="Bahnschrift" size="8" isBold="true"/>
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nochasis}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{noVin}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="490" y="286" width="55" height="20" uuid="9c917eac-0982-49f6-9350-a7bfb5ed5e19"/>
 				<textElement>
-					<font fontName="Bahnschrift" size="8" isBold="true"/>
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{toneladas}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="11" y="322" width="208" height="20" uuid="cf1a7005-74c5-4132-a86b-a457e613206f"/>
 				<textElement>
-					<font fontName="Bahnschrift" size="8" isBold="true"/>
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
 			</textField>
@@ -175,72 +175,44 @@
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Bahnschrift" size="8" isBold="true"/>
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{identificacion}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="44" y="417" width="72" height="20" uuid="38cc2eb4-a6d2-46a5-b47a-34123cfe007c"/>
 				<textElement>
-					<font fontName="Bahnschrift" size="8" isBold="true"/>
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{valnewsoat}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{costoTotal}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="11" y="360" width="95" height="20" uuid="20e72bf1-481e-4af2-b11f-e259c4acfde3"/>
 				<textElement>
-					<font fontName="Bahnschrift" size="8" isBold="true"/>
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[ATP1351]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="116" y="360" width="95" height="20" uuid="7aca6008-072d-4e64-9325-02709f47376a"/>
 				<textElement>
-					<font fontName="Bahnschrift" size="8" isBold="true"/>
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[025]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="222" y="360" width="95" height="20" uuid="870b752f-2c1c-4cb8-a4bd-892f108e56f2"/>
 				<textElement>
-					<font fontName="Bahnschrift" size="8" isBold="true"/>
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[4955]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="305" y="327" width="65" height="15" uuid="256ca829-58bb-498a-a33b-60540b43bd2a"/>
 				<textElement>
-					<font fontName="Bahnschrift" size="8" isBold="true"/>
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[CEDULA]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="9" y="400" width="26" height="16" uuid="b870e365-55f0-4725-b223-a7282c0cfc02"/>
-				<textElement>
-					<font fontName="Bahnschrift" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[120]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="45" y="401" width="71" height="16" uuid="457dae30-3925-4ed7-a37f-6130d87f193c"/>
-				<textElement>
-					<font fontName="Bahnschrift" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[$ 0.00]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="128" y="400" width="71" height="16" uuid="f1945379-d783-4344-91cd-8a9d011111be"/>
-				<textElement>
-					<font fontName="Bahnschrift" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[$ 0.00]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="217" y="401" width="71" height="16" uuid="0c44dc36-176e-47f2-bf48-555c3e89856e"/>
-				<textElement>
-					<font fontName="Bahnschrift" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[$ 0.00]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="22" y="140" width="28" height="20" uuid="2b8f4345-3ed6-4477-bb39-27a028157cd8">
@@ -248,7 +220,7 @@
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Bahnschrift" size="8" isBold="true"/>
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{yyycomsoat}]]></textFieldExpression>
 			</textField>
@@ -258,7 +230,7 @@
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Bahnschrift" size="8" isBold="true"/>
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{mmcomsoat}]]></textFieldExpression>
 			</textField>
@@ -268,7 +240,7 @@
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Bahnschrift" size="8" isBold="true"/>
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ddcomsoat}]]></textFieldExpression>
 			</textField>
@@ -278,7 +250,7 @@
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Bahnschrift" size="8" isBold="true"/>
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{yyycomsoat}]]></textFieldExpression>
 			</textField>
@@ -288,7 +260,7 @@
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Bahnschrift" size="8" isBold="true"/>
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{mmcomsoat}]]></textFieldExpression>
 			</textField>
@@ -298,7 +270,7 @@
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Bahnschrift" size="8" isBold="true"/>
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ddcomsoat}]]></textFieldExpression>
 			</textField>
@@ -308,7 +280,7 @@
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Bahnschrift" size="8" isBold="true"/>
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{yyyvennusoat}]]></textFieldExpression>
 			</textField>
@@ -318,7 +290,7 @@
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Bahnschrift" size="8" isBold="true"/>
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{mmvennusoat}]]></textFieldExpression>
 			</textField>
@@ -328,9 +300,37 @@
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Bahnschrift" size="8" isBold="true"/>
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ddvennusoat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="7" y="399" width="30" height="20" uuid="1083a921-8e91-4b07-84f3-8cc1ce4fedfc"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codigoTarifa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="44" y="399" width="72" height="20" uuid="4db80dc5-7fde-4535-ad27-d6cfe8ac027b"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{prima}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="127" y="399" width="72" height="20" uuid="b0fdd6b6-2387-47c8-99ca-f5655a757210"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{contribucion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="214" y="399" width="72" height="20" uuid="763b06de-5f26-4fa5-9b43-dccc7efd7e87"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{runt}]]></textFieldExpression>
 			</textField>
 		</band>
 	</background>

@@ -1,4 +1,4 @@
-package com.javamaster.spring_crud.utils;
+package spring_crud.utils;
 
 
 import com.javamaster.spring_crud.modelo.Vehiculo;
@@ -7,7 +7,6 @@ import lombok.Setter;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -28,8 +27,7 @@ public class SOAT {
     }
 
 
-
-    public byte[] generarSOAT()  {
+    public byte[] generarSOAT() {
         try {
             List<Vehiculo> vehiculos = Arrays.asList(getVehiculo());
             Map<String, Object> parameters = new HashMap();
@@ -45,6 +43,7 @@ public class SOAT {
             parameters.put("linea", getVehiculo().getLinea());
             parameters.put("nomotor", getVehiculo().getNomotor());
             parameters.put("nochasis", getVehiculo().getNochasis());
+            parameters.put("noVin", getVehiculo().getNoVin());
             parameters.put("toneladas", getVehiculo().getToneladas());
             parameters.put("nombres", getVehiculo().getNombres());
             parameters.put("identificacion", getVehiculo().getIdentificacion());
@@ -54,22 +53,23 @@ public class SOAT {
             parameters.put("yyyvennusoat", getVehiculo().getYyyvennusoat());
             parameters.put("mmvennusoat", getVehiculo().getMmvennusoat());
             parameters.put("ddvennusoat", getVehiculo().getDdvennusoat());
-            parameters.put("valnewsoat", getVehiculo().getCostoTotal());
+            parameters.put("costoTotal", getVehiculo().getCostoTotal());
+            parameters.put("codigoTarifa", getVehiculo().getCodigoTarifa());
+            parameters.put("prima", getVehiculo().getPrima());
+            parameters.put("contribucion", getVehiculo().getContribucion());
+            parameters.put("rut", getVehiculo().getRunt());
 
 
-            InputStream is = new FileInputStream(new File("src/main/java/TaosBackend/Taos/Utils/soatV2.jrxml"));
-
-            JasperReport report = null;
-
-            report = JasperCompileManager.compileReport(is);
-
+            InputStream is = new FileInputStream("src/main/java/com/javamaster/spring_crud/utils/soatV2.jrxml");
+            JasperReport report = JasperCompileManager.compileReport(is);
             JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(vehiculos);
             JasperPrint print = JasperFillManager.fillReport(report, parameters, dataSource);
-           return JasperExportManager.exportReportToPdf(print);
+            return JasperExportManager.exportReportToPdf(print);
 
         } catch (JRException | FileNotFoundException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
-        return null;
     }
+
+
 }

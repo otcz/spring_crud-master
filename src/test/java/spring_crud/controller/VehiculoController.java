@@ -1,4 +1,4 @@
-package com.javamaster.spring_crud.controller;
+package spring_crud.controller;
 
 
 import com.javamaster.spring_crud.dao.UsuarioDao;
@@ -29,29 +29,18 @@ public class VehiculoController {
     @Autowired
     private Token token;
 
+    public Usuario comprador;
+
     @RequestMapping(value = "soatcolpatria.herokuapp.com/soat/vehiculo", method = RequestMethod.POST)
     public Vehiculo getUsuarios(@RequestBody Usuario comprador) {
-
+        this.comprador = comprador;
+        String sToken = token.obtenerToken();
         Vehiculo vehiculo = new Vehiculo();
-        vehiculo.setPlaca("EBP399");
-        vehiculo.setNombres("OSCAR TOMAS CARRILLO ZULETA");
-        vehiculo.setNochasis("354456356");
-        vehiculo.setNomotor("3453453");
-        vehiculo.setLinea("SPARK");
-        vehiculo.setModelo(2018);
-        vehiculo.setMarca("CHEVROLET");
-        vehiculo.setOcupantes(5);
-        vehiculo.setCilindraje(1250);
-        vehiculo.setToneladas(0);
-        vehiculo.setCodigoTarifa("NEGRO");
-        vehiculo.setTipo("Particular");
-        vehiculo.setClase("AUTOMOVIL");
-        vehiculo.setNoVin("3565432");
-        vehiculo.setCostoTotal(5);
-        vehiculo.setIdentificacion(1073995282L);
-        vehiculo.setTelefono("3135331533");
-        vehiculo.setNonewsoat("465656");
-
+        vehiculo.setPlaca(comprador.getPlaca());
+        vehiculo.setIdentificacion(comprador.getIdentificacion());
+        vehiculo.setTelefono(comprador.getTelefono());
+        vehiculo.obtenerDatosVehiculoVerifik(sToken);
+        vehiculo.obtenerSOAT(sToken);
         Cobro cobro = new Cobro(vehiculo);
         vehiculo.setCostoTotal(cobro.calcularCobro());
         vehiculo.setYyycomsoat(String.valueOf(cobro.date(Calendar.YEAR)));
@@ -62,46 +51,44 @@ public class VehiculoController {
         vehiculo.setDdvennusoat(String.valueOf(cobro.date(Calendar.DATE)));
         vehiculo.setCobro(cobro.getCobroPAYU());
         vehiculo.setCompro("NO");
-
-        vehiculoDAO.registrar(vehiculo);
-
+        //vehiculoDAO.registrar(vehiculo);
         return vehiculo;
+
     }
 
-    @RequestMapping(value = "https://soatcolpatria.herokuapp.com/document/{placa}")
-    public Vehiculo documet(HttpServletResponse response, @PathVariable String placa) {
+    @RequestMapping(value = "soatcolpatria.herokuapp.com/documento", method = RequestMethod.POST)
+    public void documento(HttpServletResponse response, @RequestBody String placa) {
+        Vehiculo vehiculo = vehiculoDAO.buscarVehiculoPlaca(placa);
+        SOAT soat = new SOAT(vehiculo);
+        byte[] pdfReport = soat.generarSOAT();
+        response.setContentType("application/pdf");
+        response.setHeader("Content-Disposition", String.format("attachment; filename=\"%s\"", "reporte.pdf"));
+        response.setContentLength(pdfReport.length);
+        ByteArrayInputStream inStream = new ByteArrayInputStream(pdfReport);
         try {
-
-            SOAT soat = new SOAT(vehiculoDAO.buscarVehiculoPlaca(placa));
-            byte[] pdfReport = soat.generarSOAT();
-            String mimeType = "application/pdf";
-            response.setContentType(mimeType);
-            response.setHeader("Content-Disposition", String.format("attachment; filename=\"%s\"", "reporte.pdf"));
-            response.setContentLength(pdfReport.length);
-            ByteArrayInputStream inStream = new ByteArrayInputStream(pdfReport);
             FileCopyUtils.copy(inStream, response.getOutputStream());
-
-
+            vehiculo.setCompro("SI");
+            vehiculoDAO.registrar(vehiculo);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return null;
+
+
     }
 
-    @RequestMapping(value = "https://soatcolpatria.herokuapp.com/api/enviar/{id}")
+    //enviarMSN y WHATSAPP
+    @RequestMapping(value = "tusoatcolpatria.com/consulta/enviar/{id}")
     public void enviarMSN(@PathVariable int id) {
         if (id == 1) {
             EnviarMensajeMSN mensajeMSN = new EnviarMensajeMSN("+573135331533");
-
             mensajeMSN.setNumeroWhatsApp("whatsapp:+573209972451");
             mensajeMSN.enviarWhatsApp();
-
             mensajeMSN.enviarWhatsApp("whatsapp:+573209972451");
             mensajeMSN.enviarMNS();
-
-
         }
 
 
     }
+
+
 }

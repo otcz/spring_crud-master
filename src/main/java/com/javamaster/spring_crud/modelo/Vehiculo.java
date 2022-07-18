@@ -210,17 +210,17 @@ public class Vehiculo {
                 ObjectMapper mapper = new ObjectMapper();
                 JsonNode node = mapper.readTree(response.toString());
 
-                setModelo(Integer.parseInt(node.get("data").get("vehiculo").get("modelo").asText()));
-                setNochasis(node.get("data").get("vehiculo").get("numeroChasis").asText());
-                setMarca(node.get("data").get("vehiculo").get("marca").asText());
-                setLinea(node.get("data").get("vehiculo").get("linea").asText());
-                setClase(node.get("data").get("vehiculo").get("claseVehiculo").asText());
-                setNombres(node.get("data").get("propietarios").get("nombreCompleto").asText());
-                setCodigoTarifa(node.get("data").get("vehiculo").get("codigoTarifa").asText());
-                setPrima((node.get("data").get("vehiculo").get("prima").asText()));
-                setContribucion((node.get("data").get("vehiculo").get("contribucion").asText()));
-                setRunt((node.get("data").get("vehiculo").get("rut").asText()));
-                setCostoTotal(node.get("data").get("vehiculo").get("costoTotal").asText());
+               // setModelo(Integer.parseInt(node.get("data").get("vehiculo").get("modelo").asText()));
+               // setNochasis(node.get("data").get("vehiculo").get("numeroChasis").asText());
+               // setMarca(node.get("data").get("vehiculo").get("marca").asText());
+               // setLinea(node.get("data").get("vehiculo").get("linea").asText());
+               // setClase(node.get("data").get("vehiculo").get("claseVehiculo").asText());
+                //setNombres(node.get("data").get("propietarios").get("nombreCompleto").asText());
+                //setCodigoTarifa(node.get("data").get("vehiculo").get("codigoTarifa").asText());
+                //setPrima((node.get("data").get("vehiculo").get("prima").asText()));
+                //setContribucion((node.get("data").get("vehiculo").get("contribucion").asText()));
+                //setRunt((node.get("data").get("vehiculo").get("rut").asText()));
+                //setCostoTotal(node.get("data").get("vehiculo").get("costoTotal").asText());
 
             }
 

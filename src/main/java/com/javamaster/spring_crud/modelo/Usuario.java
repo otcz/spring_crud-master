@@ -71,11 +71,9 @@ public class Usuario {
                 while ((responseLine = br.readLine()) != null) {
                     response.append(responseLine.trim());
                 }
-
                 br.close();
                 ObjectMapper mapper = new ObjectMapper();
                 JsonNode node = mapper.readTree(response.toString());
-
                 setNombres(node.get("data").get("fullName").asText());
             }
 

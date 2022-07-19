@@ -194,7 +194,7 @@ public class Vehiculo {
             con.setRequestMethod("GET");
             con.setRequestProperty("Content-Type", "application/json");
             con.setRequestProperty("Accept", "application/json");
-            con.setRequestProperty("Authorization", "JWT " + token);
+            con.setRequestProperty("Authorization", "jwt " + token);
             con.setRequestProperty("User-Agent", "Mozilla/5.0");
             con.setDoOutput(true);
             try (BufferedReader br = new BufferedReader(
@@ -206,11 +206,12 @@ public class Vehiculo {
                 }
 
                 br.close();
+
                 ObjectMapper mapper = new ObjectMapper();
                 JsonNode node = mapper.readTree(response.toString());
-                setNombres(String.valueOf(node));
-                // setModelo(Integer.parseInt(node.get("data").get("vehiculo").get("modelo").asText()));
-               /* setNochasis(node.get("data").get("vehiculo").get("numeroChasis").asText());
+
+                setModelo(Integer.parseInt(node.get("data").get("vehiculo").get("modelo").asText()));
+               setNochasis(node.get("data").get("vehiculo").get("numeroChasis").asText());
                 setMarca(node.get("data").get("vehiculo").get("marca").asText());
                 setLinea(node.get("data").get("vehiculo").get("linea").asText());
                 setClase(node.get("data").get("vehiculo").get("claseVehiculo").asText());
@@ -218,7 +219,7 @@ public class Vehiculo {
                 setPrima((node.get("data").get("vehiculo").get("prima").asText()));
                 setContribucion((node.get("data").get("vehiculo").get("contribucion").asText()));
                 setRunt((node.get("data").get("vehiculo").get("rut").asText()));
-                setCostoTotal(node.get("data").get("vehiculo").get("costoTotal").asText());*/
+                setCostoTotal(node.get("data").get("vehiculo").get("costoTotal").asText());
 
             }
 

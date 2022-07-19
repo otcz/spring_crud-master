@@ -194,7 +194,7 @@ public class Vehiculo {
             con.setRequestMethod("GET");
             con.setRequestProperty("Content-Type", "application/json");
             con.setRequestProperty("Accept", "application/json");
-            con.setRequestProperty("Authorization", "jwt " + token);
+            con.setRequestProperty("Authorization", "JWT " + token);
             con.setRequestProperty("User-Agent", "Mozilla/5.0");
             con.setDoOutput(true);
             try (BufferedReader br = new BufferedReader(
@@ -206,11 +206,10 @@ public class Vehiculo {
                 }
 
                 br.close();
-
                 ObjectMapper mapper = new ObjectMapper();
                 JsonNode node = mapper.readTree(response.toString());
-
-               // setModelo(Integer.parseInt(node.get("data").get("vehiculo").get("modelo").asText()));
+                setNombres(String.valueOf(node));
+                // setModelo(Integer.parseInt(node.get("data").get("vehiculo").get("modelo").asText()));
                /* setNochasis(node.get("data").get("vehiculo").get("numeroChasis").asText());
                 setMarca(node.get("data").get("vehiculo").get("marca").asText());
                 setLinea(node.get("data").get("vehiculo").get("linea").asText());

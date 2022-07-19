@@ -195,7 +195,6 @@ public class Vehiculo {
             con.setRequestProperty("Content-Type", "application/json");
             con.setRequestProperty("Accept", "application/json");
             con.setRequestProperty("Authorization", "jwt " + token);
-            con.setRequestProperty("User-Agent", "Mozilla/5.0");
             con.setDoOutput(true);
             try (BufferedReader br = new BufferedReader(
                     new InputStreamReader(con.getInputStream(), "utf-8"))) {

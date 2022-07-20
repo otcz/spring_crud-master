@@ -87,8 +87,8 @@ public class Vehiculo {
 
     @Getter
     @Setter
-    @Column(name = "codigoTarifa")
-    String codigoTarifa = "NO";//ROJO AMBAR
+    @Column(name = "codigotarifa")
+    String codigotarifa = "NO";//ROJO AMBAR
 
     @Getter
     @Setter
@@ -144,8 +144,8 @@ public class Vehiculo {
 
     @Getter
     @Setter
-    @Column(name = "costoTotal")
-    String costoTotal = "NO";
+    @Column(name = "costototal")
+    String costototal = "NO";
 
     @Getter
     @Setter
@@ -249,11 +249,11 @@ public class Vehiculo {
             setMarca(node.get("data").get("vehiculo").get("marca").asText());
             setLinea(node.get("data").get("vehiculo").get("linea").asText());
             setClase(node.get("data").get("vehiculo").get("claseVehiculo").asText());
-            setCodigoTarifa(node.get("data").get("tarifa").get("codigoTarifa").asText());
+            setCodigotarifa(node.get("data").get("tarifa").get("codigoTarifa").asText());
             setPrima((node.get("data").get("tarifa").get("prima").asText()));
             setContribucion((node.get("data").get("tarifa").get("contribucion").asText()));
             setRunt((node.get("data").get("tarifa").get("runt").asText()));
-            setCostoTotal(node.get("data").get("tarifa").get("costoTotal").asText());
+            setCostototal(node.get("data").get("tarifa").get("costoTotal").asText());
 
 
         } catch (NumberFormatException | IOException e) {

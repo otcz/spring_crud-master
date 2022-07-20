@@ -189,7 +189,7 @@ public class Vehiculo {
     public void obtenerDatosVehiculoVerifik(String token) {
 
         try {
-            URL url = new URL("https://api.verifik.co/v2/co/soat/consultarVehiculo?plate=" + getPlaca());
+          /*  URL url = new URL("https://api.verifik.co/v2/co/soat/consultarVehiculo?plate=" + getPlaca());
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
             con.setRequestProperty("Content-Type", "application/json");
@@ -204,7 +204,7 @@ public class Vehiculo {
                     response.append(responseLine.trim());
                 }
 
-                br.close();
+                br.close();*/
 
                 ObjectMapper mapper = new ObjectMapper();
                 JsonNode node = mapper.readTree("{\n" +
@@ -255,7 +255,7 @@ public class Vehiculo {
                 setRunt((node.get("data").get("vehiculo").get("rut").asText()));
                 setCostoTotal(node.get("data").get("vehiculo").get("costoTotal").asText());
 
-            }
+            
 
         } catch (NumberFormatException | IOException e) {
             throw new RuntimeException(e);

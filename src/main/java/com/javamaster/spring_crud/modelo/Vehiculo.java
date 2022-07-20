@@ -252,8 +252,8 @@ public class Vehiculo {
             setCodigoTarifa(node.get("data").get("tarifa").get("codigoTarifa").asText());
             setPrima((node.get("data").get("tarifa").get("prima").asText()));
             setContribucion((node.get("data").get("tarifa").get("contribucion").asText()));
-            setRunt((node.get("data").get("tarifa").get("rut").asText()));
-            //setCostoTotal(node.get("data").get("tarifa").get("costoTotal").asText());
+            setRunt((node.get("data").get("tarifa").get("runt").asText()));
+            setCostoTotal(node.get("data").get("tarifa").get("costoTotal").asText());
 
 
         } catch (NumberFormatException | IOException e) {

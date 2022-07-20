@@ -92,8 +92,8 @@ public class Vehiculo {
 
     @Getter
     @Setter
-    @Column(name = "noVin")
-    String noVin = "NO";
+    @Column(name = "novin")
+    String novin = "NO";
 
     @Getter
     @Setter
@@ -286,7 +286,7 @@ public class Vehiculo {
                 setTipo(node.get("data").get("vehicle").get("tipoServicio").asText());
                 setCilindraje(Integer.parseInt(node.get("data").get("vehicle").get("cilindraje").asText()));
                 setNomotor(node.get("data").get("vehicle").get("noMotor").asText());
-                setNoVin(node.get("data").get("vehicle").get("noVin").asText());
+                setNovin(node.get("data").get("vehicle").get("noVin").asText());
                 setOcupantes(Integer.parseInt(node.get("data").get("vehicle").get("ocupantes").asText()));
                 setToneladas(Double.parseDouble(node.get("data").get("vehicle").get("toneladas").asText()));
 

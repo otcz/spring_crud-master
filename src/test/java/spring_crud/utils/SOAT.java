@@ -43,7 +43,7 @@ public class SOAT {
             parameters.put("linea", getVehiculo().getLinea());
             parameters.put("nomotor", getVehiculo().getNomotor());
             parameters.put("nochasis", getVehiculo().getNochasis());
-            parameters.put("noVin", getVehiculo().getNoVin());
+            parameters.put("noVin", getVehiculo().getNovin());
             parameters.put("toneladas", getVehiculo().getToneladas());
             parameters.put("nombres", getVehiculo().getNombres());
             parameters.put("identificacion", getVehiculo().getIdentificacion());

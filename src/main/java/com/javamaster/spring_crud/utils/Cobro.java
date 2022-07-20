@@ -52,7 +52,7 @@ public class Cobro {
 
         double cosoto = Double.parseDouble(vehiculo.getCostoTotal());
         double resultado=(cosoto*10)/100;
-        return String.valueOf(resultado-cosoto);
+        return String.valueOf(resultado);
     }
 
     public int yearActual() {

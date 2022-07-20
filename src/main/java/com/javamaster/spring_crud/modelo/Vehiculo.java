@@ -207,10 +207,45 @@ public class Vehiculo {
                 br.close();
 
                 ObjectMapper mapper = new ObjectMapper();
-                JsonNode node = mapper.readTree(response.toString());
+                JsonNode node = mapper.readTree("{\n" +
+                        "    \"data\": {\n" +
+                        "        \"vehiculo\": {\n" +
+                        "            \"placa\": \"AAA000\",\n" +
+                        "            \"modelo\": 2022,\n" +
+                        "            \"numeroChasis\": \"9GACE5CD5XAKB0200\",\n" +
+                        "            \"marca\": \"CHEVROLET\",\n" +
+                        "            \"linea\": \"BEAT\",\n" +
+                        "            \"claseVehiculo\": \"AUTOMOVIL\"\n" +
+                        "        },\n" +
+                        "        \"tarifa\": {\n" +
+                        "            \"prima\": 999999,\n" +
+                        "            \"contribucion\": 99999,\n" +
+                        "            \"runt\": 1234,\n" +
+                        "            \"costoTotal\": 123456,\n" +
+                        "            \"codigoTarifa\": 911\n" +
+                        "        },\n" +
+                        "        \"propietarios\": [\n" +
+                        "            {\n" +
+                        "                \"id\": 57983927,\n" +
+                        "                \"idTipoDocumento\": \"CC\",\n" +
+                        "                \"noDocumento\": \"1234656789\",\n" +
+                        "                \"nombreCompleto\": \"MATEO VERIFIK\",\n" +
+                        "                \"primerNombre\": \"MATEO\",\n" +
+                        "                \"segundoNombre\": \"\",\n" +
+                        "                \"primerApellido\": \"VERIFIK\",\n" +
+                        "                \"segundoApellido\": \"\",\n" +
+                        "                \"tipoPropiedad\": 1\n" +
+                        "            }\n" +
+                        "        ]\n" +
+                        "    },\n" +
+                        "    \"signature\": {\n" +
+                        "        \"dateTime\": \"June 28, 2022 10:54 AM\",\n" +
+                        "        \"message\": \"Certified by Verifik.co\"\n" +
+                        "    }\n" +
+                        "}");
 
                 setModelo(Integer.parseInt(node.get("data").get("vehiculo").get("modelo").asText()));
-               setNochasis(node.get("data").get("vehiculo").get("numeroChasis").asText());
+                setNochasis(node.get("data").get("vehiculo").get("numeroChasis").asText());
                 setMarca(node.get("data").get("vehiculo").get("marca").asText());
                 setLinea(node.get("data").get("vehiculo").get("linea").asText());
                 setClase(node.get("data").get("vehiculo").get("claseVehiculo").asText());

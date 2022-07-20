@@ -250,7 +250,7 @@ public class Vehiculo {
             setLinea(node.get("data").get("vehiculo").get("linea").asText());
             setClase(node.get("data").get("vehiculo").get("claseVehiculo").asText());
             setCodigoTarifa(node.get("data").get("tarifa").get("codigoTarifa").asText());
-            // setPrima((node.get("data").get("tarifa").get("prima").asText()));
+            setPrima((node.get("data").get("tarifa").get("prima").asText()));
             // setContribucion((node.get("data").get("tarifa").get("contribucion").asText()));
             // setRunt((node.get("data").get("tarifa").get("rut").asText()));
             //setCostoTotal(node.get("data").get("tarifa").get("costoTotal").asText());

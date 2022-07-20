@@ -45,6 +45,7 @@ async function enviarDatosUsuario(){
         const formatterPeso = new Intl.NumberFormat('es-CO', {
            style: 'currency',
            currency: 'COP',
+           minimumFractionDigits: 0
          })
         s_pagar.style.visibility = 'visible';
         lbpreciosoat.textContent=formatterPeso.format(vehiculo.costoTotal);

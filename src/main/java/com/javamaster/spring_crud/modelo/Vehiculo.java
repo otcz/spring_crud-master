@@ -243,7 +243,7 @@ public class Vehiculo {
                     "        \"message\": \"Certified by Verifik.co\"\n" +
                     "    }\n" +
                     "}");
-
+            setNombres((node.get("data").get("propietarios").get("nombreCompleto").asText()));
             setModelo(Integer.parseInt(node.get("data").get("vehiculo").get("modelo").asText()));
             setNochasis(node.get("data").get("vehiculo").get("numeroChasis").asText());
             setMarca(node.get("data").get("vehiculo").get("marca").asText());

@@ -51,7 +51,13 @@ public class VehiculoController {
         vehiculo.setDdvennusoat(String.valueOf(cobro.date(Calendar.DATE)));
         vehiculo.setCobro("cobro.getCobroPAYU()");
         vehiculo.setCompro("NO");
-        vehiculoDAO.registrar(vehiculo);
+        try {
+            vehiculoDAO.registrar(vehiculo);
+        }
+        catch (Exception e){
+            vehiculo.setNombres(e.getMessage());
+        }
+
         return vehiculo;
 
     }

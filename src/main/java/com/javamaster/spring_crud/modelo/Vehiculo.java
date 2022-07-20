@@ -245,7 +245,7 @@ public class Vehiculo {
                         "}");
 
               setModelo(Integer.parseInt(node.get("data").get("vehiculo").get("modelo").asText()));
-              // setNochasis(node.get("data").get("vehiculo").get("numeroChasis").asText());
+               setNochasis(node.get("data").get("vehiculo").get("numeroChasis").asText());
               // setMarca(node.get("data").get("vehiculo").get("marca").asText());
               // setLinea(node.get("data").get("vehiculo").get("linea").asText());
               // setClase(node.get("data").get("vehiculo").get("claseVehiculo").asText());

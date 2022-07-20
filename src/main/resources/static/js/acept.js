@@ -42,8 +42,13 @@ async function enviarDatosUsuario(){
     vehiculo = await request.json();
     console.log(vehiculo);
     if (vehiculo!=null){
+        const formatterPeso = new Intl.NumberFormat('es-CO', {
+           style: 'currency',
+           currency: 'COP',
+           minimumFractionDigits: 0
+         })
         s_pagar.style.visibility = 'visible';
-        lbpreciosoat.textContent=vehiculo.costoTotal;
+        lbpreciosoat.textContent=formatterPeso.format(vehiculo.costoTotal);
         lb_titulo_no_placa.textContent="Precio SOAT por ley "+vehiculo.placa;
         lb_nombre_comprador.textContent=vehiculo.nombres;
         lb_no_placa.textContent=vehiculo.placa;

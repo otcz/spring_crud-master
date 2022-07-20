@@ -87,7 +87,7 @@ public class Vehiculo {
 
     @Getter
     @Setter
-    @Column(name = "codigotarifa")
+    @Column(name = "codigoTarifa")
     String codigoTarifa = "NO";//ROJO AMBAR
 
     @Getter
@@ -144,7 +144,7 @@ public class Vehiculo {
 
     @Getter
     @Setter
-    @Column(name = "costototal")
+    @Column(name = "costoTotal")
     String costoTotal = "NO";
 
     @Getter

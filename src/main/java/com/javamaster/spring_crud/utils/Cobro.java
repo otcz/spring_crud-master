@@ -51,7 +51,7 @@ public class Cobro {
     public String calcularCobro() {
 
         double cosoto = Double.parseDouble(vehiculo.getCostototal());
-        double resultado=(cosoto*10)/100;
+        double resultado=(cosoto*15)/100;
         return String.valueOf(cosoto-resultado);
     }
 

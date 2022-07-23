@@ -10,10 +10,8 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.NumberFormat;
+import java.util.*;
 
 
 public class SOAT {
@@ -29,6 +27,7 @@ public class SOAT {
 
     public byte[] generarSOAT() {
         try {
+            NumberFormat myFormat = NumberFormat.getInstance(new Locale("es", "ES"));
             List<Vehiculo> vehiculos = Arrays.asList(getVehiculo());
             Map<String, Object> parameters = new HashMap();
             parameters.put("nonewsoat", getVehiculo().getNonewsoat());
@@ -54,10 +53,10 @@ public class SOAT {
             parameters.put("mmvennusoat", getVehiculo().getMmvennusoat());
             parameters.put("ddvennusoat", getVehiculo().getDdvennusoat());
             parameters.put("codigotarifa", getVehiculo().getCodigotarifa());
-            parameters.put("costototal", getVehiculo().getCostototal());
-            parameters.put("prima", getVehiculo().getPrima());
-            parameters.put("contribucion", getVehiculo().getContribucion());
-            parameters.put("runt", getVehiculo().getRunt());
+            parameters.put("costototal", myFormat.format(getVehiculo().getCostototal()));
+            parameters.put("prima", myFormat.format(getVehiculo().getPrima()));
+            parameters.put("contribucion", myFormat.format(getVehiculo().getContribucion()));
+            parameters.put("runt", myFormat.format(getVehiculo().getRunt()));
 
 
             InputStream is = new FileInputStream("src/main/java/com/javamaster/spring_crud/utils/soatV2.jrxml");

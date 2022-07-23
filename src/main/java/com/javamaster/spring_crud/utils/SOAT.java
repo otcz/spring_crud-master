@@ -31,7 +31,6 @@ public class SOAT {
         try {
             List<Vehiculo> vehiculos = Arrays.asList(getVehiculo());
             Map<String, Object> parameters = new HashMap();
-            parameters.put("telefono", getVehiculo().getTelefono());
             parameters.put("nonewsoat", getVehiculo().getNonewsoat());
             parameters.put("placa", getVehiculo().getPlaca());
             parameters.put("clase", getVehiculo().getClase());
@@ -46,8 +45,8 @@ public class SOAT {
             parameters.put("novin", getVehiculo().getNovin());
             parameters.put("toneladas", getVehiculo().getToneladas());
             parameters.put("nombres", getVehiculo().getNombres());
+            parameters.put("telefono", getVehiculo().getTelefono());
             parameters.put("identificacion", getVehiculo().getIdentificacion());
-            parameters.put("costototal", getVehiculo().getCostototal());
             parameters.put("yyycomsoat", getVehiculo().getYyycomsoat());
             parameters.put("mmcomsoat", getVehiculo().getMmcomsoat());
             parameters.put("ddcomsoat", getVehiculo().getDdcomsoat());
@@ -55,6 +54,7 @@ public class SOAT {
             parameters.put("mmvennusoat", getVehiculo().getMmvennusoat());
             parameters.put("ddvennusoat", getVehiculo().getDdvennusoat());
             parameters.put("codigotarifa", getVehiculo().getCodigotarifa());
+            parameters.put("costototal", getVehiculo().getCostototal());
             parameters.put("prima", getVehiculo().getPrima());
             parameters.put("contribucion", getVehiculo().getContribucion());
             parameters.put("runt", getVehiculo().getRunt());

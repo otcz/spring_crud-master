@@ -28,7 +28,6 @@ public class SOAT {
     public byte[] generarSOAT() {
         try {
             Locale usa = new Locale("es", "co");
-            Currency dollars = Currency.getInstance(usa);
             NumberFormat dollarFormat = NumberFormat.getCurrencyInstance(usa);
             List<Vehiculo> vehiculos = Arrays.asList(getVehiculo());
             Map<String, Object> parameters = new HashMap();

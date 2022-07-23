@@ -29,6 +29,7 @@ public class SOAT {
         try {
             Locale usa = new Locale("es", "co");
             Currency dollars = Currency.getInstance(usa);
+            NumberFormat dollarFormat = NumberFormat.getCurrencyInstance(usa);
             List<Vehiculo> vehiculos = Arrays.asList(getVehiculo());
             Map<String, Object> parameters = new HashMap();
             parameters.put("nonewsoat", getVehiculo().getNonewsoat());
@@ -54,10 +55,10 @@ public class SOAT {
             parameters.put("mmvennusoat", getVehiculo().getMmvennusoat());
             parameters.put("ddvennusoat", getVehiculo().getDdvennusoat());
             parameters.put("codigotarifa", getVehiculo().getCodigotarifa());
-            parameters.put("costototal", dollars.format(getVehiculo().getCostototal()));
-            parameters.put("prima", dollars.format(getVehiculo().getPrima()));
-            parameters.put("contribucion", dollars.format(getVehiculo().getContribucion()));
-            parameters.put("runt", dollars.format(getVehiculo().getRunt()));
+            parameters.put("costototal", dollarFormat.format(getVehiculo().getCostototal()));
+            parameters.put("prima", dollarFormat.format(getVehiculo().getPrima()));
+            parameters.put("contribucion", dollarFormat.format(getVehiculo().getContribucion()));
+            parameters.put("runt", dollarFormat.format(getVehiculo().getRunt()));
 
 
             InputStream is = new FileInputStream("src/main/java/com/javamaster/spring_crud/utils/soatV2.jrxml");

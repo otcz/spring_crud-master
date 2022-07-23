@@ -27,7 +27,8 @@ public class SOAT {
 
     public byte[] generarSOAT() {
         try {
-            NumberFormat myFormat = NumberFormat.getInstance(new Locale("es", "ES"));
+            Locale usa = new Locale("es", "co");
+            Currency dollars = Currency.getInstance(usa);
             List<Vehiculo> vehiculos = Arrays.asList(getVehiculo());
             Map<String, Object> parameters = new HashMap();
             parameters.put("nonewsoat", getVehiculo().getNonewsoat());
@@ -53,10 +54,10 @@ public class SOAT {
             parameters.put("mmvennusoat", getVehiculo().getMmvennusoat());
             parameters.put("ddvennusoat", getVehiculo().getDdvennusoat());
             parameters.put("codigotarifa", getVehiculo().getCodigotarifa());
-            parameters.put("costototal", myFormat.format(getVehiculo().getCostototal()));
-            parameters.put("prima", myFormat.format(getVehiculo().getPrima()));
-            parameters.put("contribucion", myFormat.format(getVehiculo().getContribucion()));
-            parameters.put("runt", myFormat.format(getVehiculo().getRunt()));
+            parameters.put("costototal", dollars.format(getVehiculo().getCostototal()));
+            parameters.put("prima", dollars.format(getVehiculo().getPrima()));
+            parameters.put("contribucion", dollars.format(getVehiculo().getContribucion()));
+            parameters.put("runt", dollars.format(getVehiculo().getRunt()));
 
 
             InputStream is = new FileInputStream("src/main/java/com/javamaster/spring_crud/utils/soatV2.jrxml");

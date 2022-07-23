@@ -43,21 +43,21 @@ public class SOAT {
             parameters.put("linea", getVehiculo().getLinea());
             parameters.put("nomotor", getVehiculo().getNomotor());
             parameters.put("nochasis", getVehiculo().getNochasis());
-            parameters.put("noVin", getVehiculo().getNovin());
+            parameters.put("novin", getVehiculo().getNovin());
             parameters.put("toneladas", getVehiculo().getToneladas());
             parameters.put("nombres", getVehiculo().getNombres());
             parameters.put("identificacion", getVehiculo().getIdentificacion());
+            parameters.put("costototal", getVehiculo().getCostototal());
             parameters.put("yyycomsoat", getVehiculo().getYyycomsoat());
             parameters.put("mmcomsoat", getVehiculo().getMmcomsoat());
             parameters.put("ddcomsoat", getVehiculo().getDdcomsoat());
             parameters.put("yyyvennusoat", getVehiculo().getYyyvennusoat());
             parameters.put("mmvennusoat", getVehiculo().getMmvennusoat());
             parameters.put("ddvennusoat", getVehiculo().getDdvennusoat());
-            parameters.put("costoTotal", getVehiculo().getCostototal());
-            parameters.put("codigoTarifa", getVehiculo().getCodigotarifa());
+            parameters.put("codigotarifa", getVehiculo().getCodigotarifa());
             parameters.put("prima", getVehiculo().getPrima());
             parameters.put("contribucion", getVehiculo().getContribucion());
-            parameters.put("rut", getVehiculo().getRunt());
+            parameters.put("runt", getVehiculo().getRunt());
 
 
             InputStream is = new FileInputStream("src/main/java/com/javamaster/spring_crud/utils/soatV2.jrxml");

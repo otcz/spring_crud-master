@@ -153,7 +153,7 @@
 				<textElement>
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{noVin}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{novin}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="490" y="286" width="55" height="20" uuid="9c917eac-0982-49f6-9350-a7bfb5ed5e19"/>
@@ -184,7 +184,7 @@
 				<textElement>
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{costoTotal}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{costototal}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="11" y="360" width="95" height="20" uuid="20e72bf1-481e-4af2-b11f-e259c4acfde3"/>
@@ -309,7 +309,7 @@
 				<textElement>
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{codigoTarifa}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{codigotarifa}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="44" y="399" width="72" height="20" uuid="4db80dc5-7fde-4535-ad27-d6cfe8ac027b"/>

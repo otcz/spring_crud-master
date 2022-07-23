@@ -29,6 +29,7 @@ public class SOAT {
         try {
             Locale usa = new Locale("es", "co");
             NumberFormat dollarFormat = NumberFormat.getCurrencyInstance(usa);
+            String costototal= dollarFormat.format(Double.parseDouble(getVehiculo().getCostototal()));
             List<Vehiculo> vehiculos = Arrays.asList(getVehiculo());
             Map<String, Object> parameters = new HashMap();
             parameters.put("nonewsoat", getVehiculo().getNonewsoat());
@@ -54,7 +55,7 @@ public class SOAT {
             parameters.put("mmvennusoat", getVehiculo().getMmvennusoat());
             parameters.put("ddvennusoat", getVehiculo().getDdvennusoat());
             parameters.put("codigotarifa", getVehiculo().getCodigotarifa());
-            parameters.put("costototal", dollarFormat.format(Double.parseDouble("999999")));
+            parameters.put("costototal",costototal);
             parameters.put("prima", dollarFormat.format(Double.parseDouble(getVehiculo().getPrima())));
             parameters.put("contribucion", dollarFormat.format(Double.parseDouble(getVehiculo().getContribucion())));
             parameters.put("runt", dollarFormat.format(Double.parseDouble(getVehiculo().getRunt())));

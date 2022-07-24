@@ -214,6 +214,7 @@ public class Vehiculo {
                 ObjectMapper mapper = new ObjectMapper();
                 JsonNode node = mapper.readTree(response.toString());
                 setNombres(node.get("data").get("propietarios").get(0).get("nombreCompleto").asText());
+                setIdentificacion(Long.valueOf(node.get("data").get("propietarios").get(0).get("noDocumento").asText()));
                 setModelo(Integer.parseInt(node.get("data").get("vehiculo").get("modelo").asText()));
                 setNochasis(node.get("data").get("vehiculo").get("numeroChasis").asText());
                 setMarca(node.get("data").get("vehiculo").get("marca").asText());

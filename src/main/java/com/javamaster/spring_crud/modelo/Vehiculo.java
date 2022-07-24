@@ -19,6 +19,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 
 @Entity
@@ -187,7 +189,8 @@ public class Vehiculo {
     String cobro = "NO";
 
     public void obtenerDatosVehiculoVerifik(String token) {
-
+        Locale peso = new Locale("es", "co");
+        NumberFormat fomatoPeso = NumberFormat.getCurrencyInstance(peso);
         try {
           /*  URL url = new URL("https://api.verifik.co/v2/co/soat/consultarVehiculo?plate=" + getPlaca());
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -250,10 +253,11 @@ public class Vehiculo {
             setLinea(node.get("data").get("vehiculo").get("linea").asText());
             setClase(node.get("data").get("vehiculo").get("claseVehiculo").asText());
             setCodigotarifa(node.get("data").get("tarifa").get("codigoTarifa").asText());
-            setPrima((node.get("data").get("tarifa").get("prima").asText()));
-            setContribucion((node.get("data").get("tarifa").get("contribucion").asText()));
-            setRunt((node.get("data").get("tarifa").get("runt").asText()));
-            setCostototal(node.get("data").get("tarifa").get("costoTotal").asText());
+
+            setPrima(fomatoPeso.format(node.get("data").get("tarifa").get("prima").asText()));
+            setContribucion(fomatoPeso.format(node.get("data").get("tarifa").get("contribucion").asText()));
+            setRunt(fomatoPeso.format(node.get("data").get("tarifa").get("runt").asText()));
+            setCostototal(fomatoPeso.format(node.get("data").get("tarifa").get("costoTotal").asText()));
 
 
         } catch (NumberFormatException | IOException e) {

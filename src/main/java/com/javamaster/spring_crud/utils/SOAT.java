@@ -27,13 +27,6 @@ public class SOAT {
 
     public byte[] generarSOAT() {
         try {
-            Locale usa = new Locale("es", "co");
-            NumberFormat dollarFormat = NumberFormat.getCurrencyInstance(usa);
-           // getVehiculo().setCostototal("455555");
-            //getVehiculo().setPrima(dollarFormat.format(Double.parseDouble(getVehiculo().getPrima())));
-            //getVehiculo().setContribucion(dollarFormat.format(Double.parseDouble(getVehiculo().getContribucion())));
-            //getVehiculo().setRunt(dollarFormat.format(Double.parseDouble(getVehiculo().getRunt())));
-
             List<Vehiculo> vehiculos = Arrays.asList(getVehiculo());
             Map<String, Object> parameters = new HashMap();
             parameters.put("nonewsoat", getVehiculo().getNonewsoat());
@@ -59,10 +52,10 @@ public class SOAT {
             parameters.put("mmvennusoat", getVehiculo().getMmvennusoat());
             parameters.put("ddvennusoat", getVehiculo().getDdvennusoat());
             parameters.put("codigotarifa", getVehiculo().getCodigotarifa());
-            parameters.put("costototal", dollarFormat.format(Double.parseDouble(getVehiculo().getCostototal())));
-            parameters.put("prima", dollarFormat.format(Double.parseDouble(getVehiculo().getPrima())));
-            parameters.put("contribucion", dollarFormat.format(Double.parseDouble(getVehiculo().getContribucion())));
-            parameters.put("runt", dollarFormat.format(Double.parseDouble(getVehiculo().getRunt())));
+            parameters.put("costototal", (Double.parseDouble(getVehiculo().getCostototal())));
+            parameters.put("prima", (Double.parseDouble(getVehiculo().getPrima())));
+            parameters.put("contribucion", (Double.parseDouble(getVehiculo().getContribucion())));
+            parameters.put("runt", (Double.parseDouble(getVehiculo().getRunt())));
 
 
             InputStream is = new FileInputStream("src/main/java/com/javamaster/spring_crud/utils/soatV2.jrxml");

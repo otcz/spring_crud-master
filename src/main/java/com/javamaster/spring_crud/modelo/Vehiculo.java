@@ -262,6 +262,8 @@ public class Vehiculo {
                 setNovin(node.get("data").get("vehicle").get("noVin").asText());
                 setOcupantes(Integer.parseInt(node.get("data").get("vehicle").get("ocupantes").asText()));
                 setToneladas(Double.parseDouble(node.get("data").get("vehicle").get("toneladas").asText()));
+                Configuracion configuracion = new Configuracion();
+                setCobro(configuracion.getCodePagoPayU().get(getCodigotarifa()).toString());
 
 
             }

@@ -228,7 +228,7 @@ public class Vehiculo {
                 double costototal = Double.parseDouble(node.get("data").get("tarifa").get("costoTotal").asText());
                 setCostototal(fomatoPeso.format((costototal - (costototal * Configuracion.PORCENTAJE / 100))));
                 Configuracion configuracion = new Configuracion();
-                setCobro(configuracion.getCodePagoPayU().get(getCodigotarifa()).toString());
+                setCobro("B0ed163844C9DF8");
             }
         } catch (NumberFormatException | IOException e) {
             throw new RuntimeException(e);

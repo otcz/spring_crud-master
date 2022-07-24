@@ -194,7 +194,7 @@ public class Vehiculo {
         NumberFormat fomatoPeso = NumberFormat.getCurrencyInstance(peso);
         fomatoPeso.setMaximumFractionDigits(0);
         try {
-          /*  URL url = new URL("https://api.verifik.co/v2/co/soat/consultarVehiculo?plate=" + getPlaca());
+            URL url = new URL("https://api.verifik.co/v2/co/soat/consultarVehiculo?plate=" + getPlaca());
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
             con.setRequestProperty("Content-Type", "application/json");
@@ -209,62 +209,28 @@ public class Vehiculo {
                     response.append(responseLine.trim());
                 }
 
-                br.close();*/
+                br.close();
 
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode node = mapper.readTree("{\n" +
-                    "    \"data\": {\n" +
-                    "        \"vehiculo\": {\n" +
-                    "            \"placa\": \"AAA000\",\n" +
-                    "            \"modelo\": 2022,\n" +
-                    "            \"numeroChasis\": \"9GACE5CD5XAKB0200\",\n" +
-                    "            \"marca\": \"CHEVROLET\",\n" +
-                    "            \"linea\": \"BEAT\",\n" +
-                    "            \"claseVehiculo\": \"AUTOMOVIL\"\n" +
-                    "        },\n" +
-                    "        \"tarifa\": {\n" +
-                    "            \"prima\": 999999,\n" +
-                    "            \"contribucion\": 99999,\n" +
-                    "            \"runt\": 1234,\n" +
-                    "            \"costoTotal\": 123456,\n" +
-                    "            \"codigoTarifa\": 911\n" +
-                    "        },\n" +
-                    "        \"propietarios\": [\n" +
-                    "            {\n" +
-                    "                \"id\": 57983927,\n" +
-                    "                \"idTipoDocumento\": \"CC\",\n" +
-                    "                \"noDocumento\": \"1234656789\",\n" +
-                    "                \"nombreCompleto\": \"MATEO VERIFIK\",\n" +
-                    "                \"primerNombre\": \"MATEO\",\n" +
-                    "                \"segundoNombre\": \"\",\n" +
-                    "                \"primerApellido\": \"VERIFIK\",\n" +
-                    "                \"segundoApellido\": \"\",\n" +
-                    "                \"tipoPropiedad\": 1\n" +
-                    "            }\n" +
-                    "        ]\n" +
-                    "    },\n" +
-                    "    \"signature\": {\n" +
-                    "        \"dateTime\": \"June 28, 2022 10:54 AM\",\n" +
-                    "        \"message\": \"Certified by Verifik.co\"\n" +
-                    "    }\n" +
-                    "}");
-            setNombres(node.get("data").get("propietarios").get(0).get("nombreCompleto").asText());
-            setModelo(Integer.parseInt(node.get("data").get("vehiculo").get("modelo").asText()));
-            setNochasis(node.get("data").get("vehiculo").get("numeroChasis").asText());
-            setMarca(node.get("data").get("vehiculo").get("marca").asText());
-            setLinea(node.get("data").get("vehiculo").get("linea").asText());
-            setClase(node.get("data").get("vehiculo").get("claseVehiculo").asText());
-            setCodigotarifa(node.get("data").get("tarifa").get("codigoTarifa").asText());
+                ObjectMapper mapper = new ObjectMapper();
+                JsonNode node = mapper.readTree(response.toString());
+                setNombres(node.get("data").get("propietarios").get(0).get("nombreCompleto").asText());
+                setModelo(Integer.parseInt(node.get("data").get("vehiculo").get("modelo").asText()));
+                setNochasis(node.get("data").get("vehiculo").get("numeroChasis").asText());
+                setMarca(node.get("data").get("vehiculo").get("marca").asText());
+                setLinea(node.get("data").get("vehiculo").get("linea").asText());
+                setClase(node.get("data").get("vehiculo").get("claseVehiculo").asText());
+                setCodigotarifa(node.get("data").get("tarifa").get("codigoTarifa").asText());
 
-            setPrima(fomatoPeso.format(Double.parseDouble(node.get("data").get("tarifa").get("prima").asText())));
-            setContribucion(fomatoPeso.format(Double.parseDouble(node.get("data").get("tarifa").get("contribucion").asText())));
-            setRunt(fomatoPeso.format(Double.parseDouble(node.get("data").get("tarifa").get("runt").asText())));
-            double costototal=Double.parseDouble(node.get("data").get("tarifa").get("costoTotal").asText());
-            setCostototal(fomatoPeso.format((costototal-(costototal* Configuracion.PORCENTAJE/100))));
-
+                setPrima(fomatoPeso.format(Double.parseDouble(node.get("data").get("tarifa").get("prima").asText())));
+                setContribucion(fomatoPeso.format(Double.parseDouble(node.get("data").get("tarifa").get("contribucion").asText())));
+                setRunt(fomatoPeso.format(Double.parseDouble(node.get("data").get("tarifa").get("runt").asText())));
+                double costototal = Double.parseDouble(node.get("data").get("tarifa").get("costoTotal").asText());
+                setCostototal(fomatoPeso.format((costototal - (costototal * Configuracion.PORCENTAJE / 100))));
+            }
         } catch (NumberFormatException | IOException e) {
             throw new RuntimeException(e);
         }
+
     }
 
 

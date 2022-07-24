@@ -31,7 +31,7 @@ public class SOAT {
             NumberFormat dollarFormat = NumberFormat.getCurrencyInstance(usa);
             List<Vehiculo> vehiculos = Arrays.asList(getVehiculo());
             Map<String, Object> parameters = new HashMap();
-            parameters.put("nonewsoat", getVehiculo().getNonewsoat());
+            parameters.put("nonewsoat","OSCAR");
             parameters.put("placa", getVehiculo().getPlaca());
             parameters.put("clase", getVehiculo().getClase());
             parameters.put("tipo", getVehiculo().getTipo());

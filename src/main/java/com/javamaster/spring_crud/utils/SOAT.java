@@ -29,7 +29,7 @@ public class SOAT {
         try {
             Locale usa = new Locale("es", "co");
             NumberFormat dollarFormat = NumberFormat.getCurrencyInstance(usa);
-            getVehiculo().setCostototal("455555");
+           // getVehiculo().setCostototal("455555");
             //getVehiculo().setPrima(dollarFormat.format(Double.parseDouble(getVehiculo().getPrima())));
             //getVehiculo().setContribucion(dollarFormat.format(Double.parseDouble(getVehiculo().getContribucion())));
             //getVehiculo().setRunt(dollarFormat.format(Double.parseDouble(getVehiculo().getRunt())));

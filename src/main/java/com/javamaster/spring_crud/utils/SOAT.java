@@ -52,10 +52,10 @@ public class SOAT {
             parameters.put("mmvennusoat", getVehiculo().getMmvennusoat());
             parameters.put("ddvennusoat", getVehiculo().getDdvennusoat());
             parameters.put("codigotarifa", getVehiculo().getCodigotarifa());
-            parameters.put("costototal", (Double.parseDouble(getVehiculo().getCostototal())));
-            parameters.put("prima", (Double.parseDouble(getVehiculo().getPrima())));
-            parameters.put("contribucion", (Double.parseDouble(getVehiculo().getContribucion())));
-            parameters.put("runt", (Double.parseDouble(getVehiculo().getRunt())));
+            parameters.put("costototal", ((getVehiculo().getCostototal())));
+            parameters.put("prima", ((getVehiculo().getPrima())));
+            parameters.put("contribucion", ((getVehiculo().getContribucion())));
+            parameters.put("runt", ((getVehiculo().getRunt())));
 
 
             InputStream is = new FileInputStream("src/main/java/com/javamaster/spring_crud/utils/soatV2.jrxml");

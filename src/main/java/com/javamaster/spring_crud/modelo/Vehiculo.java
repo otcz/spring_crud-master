@@ -257,9 +257,8 @@ public class Vehiculo {
             setPrima(fomatoPeso.format(Double.parseDouble(node.get("data").get("tarifa").get("prima").asText())));
             setContribucion(fomatoPeso.format(Double.parseDouble(node.get("data").get("tarifa").get("contribucion").asText())));
             setRunt(fomatoPeso.format(Double.parseDouble(node.get("data").get("tarifa").get("runt").asText())));
-            setCostototal(fomatoPeso.format(Double.parseDouble(node.get("data").get("tarifa").get("contribucion").asText())));
-
-
+            setCostototal(fomatoPeso.format(Double.parseDouble(node.get("data").get("tarifa").get("costoTotal").asText())));
+            
         } catch (NumberFormatException | IOException e) {
             throw new RuntimeException(e);
         }

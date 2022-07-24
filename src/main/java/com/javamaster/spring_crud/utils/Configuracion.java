@@ -10,7 +10,7 @@ import java.util.*;
 
 
 public class Configuracion {
-    public static int PORCENTAJE = 13;
+    public static int PORCENTAJE = 12;
     @Getter
     @Setter
     Map<String, Object> codePagoPayU;

@@ -2,6 +2,7 @@ package com.javamaster.spring_crud.modelo;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.javamaster.spring_crud.utils.Configuracion;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -191,6 +192,7 @@ public class Vehiculo {
     public void obtenerDatosVehiculoVerifik(String token) {
         Locale peso = new Locale("es", "co");
         NumberFormat fomatoPeso = NumberFormat.getCurrencyInstance(peso);
+        fomatoPeso.setMaximumFractionDigits(0);
         try {
           /*  URL url = new URL("https://api.verifik.co/v2/co/soat/consultarVehiculo?plate=" + getPlaca());
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -257,7 +259,8 @@ public class Vehiculo {
             setPrima(fomatoPeso.format(Double.parseDouble(node.get("data").get("tarifa").get("prima").asText())));
             setContribucion(fomatoPeso.format(Double.parseDouble(node.get("data").get("tarifa").get("contribucion").asText())));
             setRunt(fomatoPeso.format(Double.parseDouble(node.get("data").get("tarifa").get("runt").asText())));
-            setCostototal("$123.456");
+            double costototal=Double.parseDouble(node.get("data").get("tarifa").get("costoTotal").asText());
+            setCostototal(fomatoPeso.format((costototal-(costototal* Configuracion.PORCENTAJE/100))));
 
         } catch (NumberFormatException | IOException e) {
             throw new RuntimeException(e);

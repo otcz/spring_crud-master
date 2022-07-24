@@ -21,6 +21,7 @@ public class Configuracion {
 
     public Configuracion(Vehiculo vehiculo) {
         this.vehiculo = vehiculo;
+        codePagoPayU = new HashMap();
         codePagoPayU.put("100", "B0ed163B327CA04");
         codePagoPayU.put("110", "B0ed163770C4565");
         codePagoPayU.put("120", "B0ed163844C9DF8");

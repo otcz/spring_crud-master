@@ -10,10 +10,8 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.NumberFormat;
+import java.util.*;
 
 
 public class SOAT {
@@ -29,9 +27,10 @@ public class SOAT {
 
     public byte[] generarSOAT() {
         try {
+            Locale usa = new Locale("es", "co");
+            NumberFormat dollarFormat = NumberFormat.getCurrencyInstance(usa);
             List<Vehiculo> vehiculos = Arrays.asList(getVehiculo());
             Map<String, Object> parameters = new HashMap();
-            parameters.put("telefono", getVehiculo().getTelefono());
             parameters.put("nonewsoat", getVehiculo().getNonewsoat());
             parameters.put("placa", getVehiculo().getPlaca());
             parameters.put("clase", getVehiculo().getClase());
@@ -43,9 +42,10 @@ public class SOAT {
             parameters.put("linea", getVehiculo().getLinea());
             parameters.put("nomotor", getVehiculo().getNomotor());
             parameters.put("nochasis", getVehiculo().getNochasis());
-            parameters.put("noVin", getVehiculo().getNovin());
+            parameters.put("novin", getVehiculo().getNovin());
             parameters.put("toneladas", getVehiculo().getToneladas());
             parameters.put("nombres", getVehiculo().getNombres());
+            parameters.put("telefono", getVehiculo().getTelefono());
             parameters.put("identificacion", getVehiculo().getIdentificacion());
             parameters.put("yyycomsoat", getVehiculo().getYyycomsoat());
             parameters.put("mmcomsoat", getVehiculo().getMmcomsoat());
@@ -53,11 +53,11 @@ public class SOAT {
             parameters.put("yyyvennusoat", getVehiculo().getYyyvennusoat());
             parameters.put("mmvennusoat", getVehiculo().getMmvennusoat());
             parameters.put("ddvennusoat", getVehiculo().getDdvennusoat());
-            parameters.put("costoTotal", getVehiculo().getCostototal());
-            parameters.put("codigoTarifa", getVehiculo().getCodigotarifa());
-            parameters.put("prima", getVehiculo().getPrima());
-            parameters.put("contribucion", getVehiculo().getContribucion());
-            parameters.put("rut", getVehiculo().getRunt());
+            parameters.put("codigotarifa", getVehiculo().getCodigotarifa());
+            parameters.put("costototal", dollarFormat.format(Double.parseDouble(getVehiculo().getCostototal())));
+            parameters.put("prima", dollarFormat.format(Double.parseDouble(getVehiculo().getPrima())));
+            parameters.put("contribucion", dollarFormat.format(Double.parseDouble(getVehiculo().getContribucion())));
+            parameters.put("runt", dollarFormat.format(Double.parseDouble(getVehiculo().getRunt())));
 
 
             InputStream is = new FileInputStream("src/main/java/com/javamaster/spring_crud/utils/soatV2.jrxml");

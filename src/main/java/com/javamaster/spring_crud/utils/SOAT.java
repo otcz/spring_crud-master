@@ -31,7 +31,7 @@ public class SOAT {
             NumberFormat dollarFormat = NumberFormat.getCurrencyInstance(usa);
             List<Vehiculo> vehiculos = Arrays.asList(getVehiculo());
             Map<String, Object> parameters = new HashMap();
-            parameters.put("nonewsoat","OSCAR");
+            parameters.put("nonewsoat", getVehiculo().getNonewsoat());
             parameters.put("placa", getVehiculo().getPlaca());
             parameters.put("clase", getVehiculo().getClase());
             parameters.put("tipo", getVehiculo().getTipo());
@@ -54,10 +54,10 @@ public class SOAT {
             parameters.put("mmvennusoat", getVehiculo().getMmvennusoat());
             parameters.put("ddvennusoat", getVehiculo().getDdvennusoat());
             parameters.put("codigotarifa", getVehiculo().getCodigotarifa());
-            parameters.put("costototal", "888.999,00");
-            parameters.put("prima", "111111");
-            parameters.put("contribucion", "55555");
-            parameters.put("runt", "333333");
+            parameters.put("costototal", dollarFormat.format(Double.parseDouble(getVehiculo().getCostototal())));
+            parameters.put("prima", dollarFormat.format(Double.parseDouble(getVehiculo().getPrima())));
+            parameters.put("contribucion", dollarFormat.format(Double.parseDouble(getVehiculo().getContribucion())));
+            parameters.put("runt", dollarFormat.format(Double.parseDouble(getVehiculo().getRunt())));
 
 
             InputStream is = new FileInputStream("src/main/java/com/javamaster/spring_crud/utils/soatV2.jrxml");

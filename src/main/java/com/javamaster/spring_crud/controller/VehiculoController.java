@@ -48,7 +48,6 @@ public class VehiculoController {
         vehiculo.setYyyvennusoat(String.valueOf((configuracion.date(Calendar.YEAR) + 1)));
         vehiculo.setMmvennusoat(configuracion.mes());
         vehiculo.setDdvennusoat(String.valueOf(configuracion.date(Calendar.DATE)));
-        vehiculo.setCobro("cobro.getCobroPAYU()");
         vehiculo.setCompro("NO");
         vehiculoDAO.registrar(vehiculo);
 

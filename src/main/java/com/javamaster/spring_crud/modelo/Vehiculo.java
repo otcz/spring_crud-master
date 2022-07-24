@@ -227,6 +227,8 @@ public class Vehiculo {
                 setRunt(fomatoPeso.format(Double.parseDouble(node.get("data").get("tarifa").get("runt").asText())));
                 double costototal = Double.parseDouble(node.get("data").get("tarifa").get("costoTotal").asText());
                 setCostototal(fomatoPeso.format((costototal - (costototal * Configuracion.PORCENTAJE / 100))));
+                Configuracion configuracion = new Configuracion();
+                setCobro(configuracion.getCodePagoPayU().get(getCodigotarifa()).toString());
             }
         } catch (NumberFormatException | IOException e) {
             throw new RuntimeException(e);
@@ -262,8 +264,7 @@ public class Vehiculo {
                 setNovin(node.get("data").get("vehicle").get("noVin").asText());
                 setOcupantes(Integer.parseInt(node.get("data").get("vehicle").get("ocupantes").asText()));
                 setToneladas(Double.parseDouble(node.get("data").get("vehicle").get("toneladas").asText()));
-                Configuracion configuracion = new Configuracion();
-                setCobro(configuracion.getCodePagoPayU().get(getCodigotarifa()).toString());
+
 
 
             }

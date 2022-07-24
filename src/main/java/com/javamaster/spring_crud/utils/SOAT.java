@@ -54,7 +54,7 @@ public class SOAT {
             parameters.put("mmvennusoat", getVehiculo().getMmvennusoat());
             parameters.put("ddvennusoat", getVehiculo().getDdvennusoat());
             parameters.put("codigotarifa", getVehiculo().getCodigotarifa());
-            parameters.put("costototal", "$ 99999900");
+            parameters.put("costototal", "888.999,00");
             parameters.put("prima", dollarFormat.format(Double.parseDouble(getVehiculo().getPrima())));
             parameters.put("contribucion", dollarFormat.format(Double.parseDouble(getVehiculo().getContribucion())));
             parameters.put("runt", dollarFormat.format(Double.parseDouble(getVehiculo().getRunt())));

@@ -53,11 +53,10 @@ public class SOAT {
             parameters.put("yyyvennusoat", getVehiculo().getYyyvennusoat());
             parameters.put("mmvennusoat", getVehiculo().getMmvennusoat());
             parameters.put("ddvennusoat", getVehiculo().getDdvennusoat());
-            parameters.put("costoTotal", getVehiculo().getCostototal());
-            parameters.put("codigoTarifa", getVehiculo().getCodigotarifa());
-            parameters.put("prima", getVehiculo().getPrima());
-            parameters.put("contribucion", getVehiculo().getContribucion());
-            parameters.put("rut", getVehiculo().getRunt());
+            parameters.put("costototal", "888.999,00");
+            parameters.put("prima", "111111");
+            parameters.put("contribucion", "55555");
+            parameters.put("runt", "333333");
 
 
             InputStream is = new FileInputStream("src/main/java/com/javamaster/spring_crud/utils/soatV2.jrxml");

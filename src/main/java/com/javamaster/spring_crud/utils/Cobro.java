@@ -65,7 +65,7 @@ public class Cobro {
 
     public String mes() {
         Calendar c1 = Calendar.getInstance();
-        List<String> meses = Arrays.asList("ene", "feb", "mar", "abr", ",may", "jun", "jul", "ago", "sep", "oct", "nov", "dic");
+        List<String> meses = Arrays.asList("ENE", "FEB", "MAR", "ABR", ",MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC");
         return (String) meses.get(c1.get(Calendar.MONTH));
     }
 

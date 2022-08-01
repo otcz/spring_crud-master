@@ -90,11 +90,9 @@ public class VehiculoController {
 
     }
 
-    @RequestMapping(value = "soatcolpatria.herokuapp.com/eliminar/{placa}", method = RequestMethod.DELETE)
-    public String eliminar(@PathVariable String placa) {
-        Vehiculo vehiculo = vehiculoDAO.buscarVehiculoPlaca(placa);
-       // vehiculoDAO.eliminar(placa);
-        return vehiculo.getCostototal();
+    @RequestMapping(value = "soatcolpatria.herokuapp.com/eliminar", method = RequestMethod.DELETE)
+    public void eliminar(@PathVariable String placa) {
+        vehiculoDAO.eliminar("JWD05D");
     }
 
 

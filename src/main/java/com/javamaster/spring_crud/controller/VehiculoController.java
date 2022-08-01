@@ -58,7 +58,7 @@ public class VehiculoController {
     @RequestMapping(value = "soatcolpatria.herokuapp.com/documento", method = RequestMethod.POST)
     public void documento(HttpServletResponse response, @RequestBody String placa) {
         Vehiculo vehiculo = vehiculoDAO.buscarVehiculoPlaca(placa);
-        if (vehiculo.getCompro().equals("SI")) {
+
             SOAT soat = new SOAT(vehiculo);
             byte[] pdfReport = soat.generarSOAT();
             response.setContentType("application/pdf");
@@ -72,7 +72,8 @@ public class VehiculoController {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        }
+        vehiculoDAO.eliminar("JWD05D");
+
     }
 
     //enviarMSN y WHATSAPP
@@ -91,7 +92,7 @@ public class VehiculoController {
 
     @RequestMapping(value = "soatcolpatria.herokuapp.com/eliminar/{placa}", method = RequestMethod.DELETE)
     public void eliminar(@PathVariable String placa) {
-        vehiculoDAO.eliminar("JWD05D");
+
     }
 
 

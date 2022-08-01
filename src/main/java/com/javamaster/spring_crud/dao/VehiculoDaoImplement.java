@@ -10,9 +10,10 @@ import javax.persistence.PersistenceContext;
 
 @Repository
 @Transactional
-public class VehiculoDaoImplement implements  VehiculoDAO {
+public class VehiculoDaoImplement implements VehiculoDAO {
     @PersistenceContext
     private EntityManager entityManager;
+
     @Override
     public void registrar(Vehiculo vehiculo) {
         entityManager.merge(vehiculo);
@@ -26,8 +27,8 @@ public class VehiculoDaoImplement implements  VehiculoDAO {
 
     @Override
     public void eliminar(String placa) {
-        Vehiculo usuario = entityManager.find(Vehiculo.class, placa);
-        entityManager.remove(usuario);
+        Vehiculo vehiculo = entityManager.find(Vehiculo.class, placa);
+        entityManager.remove(vehiculo);
 
     }
 

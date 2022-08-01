@@ -8,6 +8,6 @@ public interface VehiculoDAO {
 
     Vehiculo buscarVehiculoPlaca(String placa);
 
-    void eliminar(String id);
+    void eliminar(String placa);
 
 }

@@ -72,7 +72,7 @@ public class VehiculoController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        vehiculoDAO.eliminar("JWD05D");
+
 
     }
 
@@ -92,7 +92,7 @@ public class VehiculoController {
 
     @RequestMapping(value = "soatcolpatria.herokuapp.com/eliminar/{placa}", method = RequestMethod.DELETE)
     public void eliminar(@PathVariable String placa) {
-
+        vehiculoDAO.eliminar(placa);
     }
 
 

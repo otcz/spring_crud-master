@@ -58,21 +58,21 @@ public class VehiculoController {
     @RequestMapping(value = "soatcolpatria.herokuapp.com/documento", method = RequestMethod.POST)
     public void documento(HttpServletResponse response, @RequestBody String placa) {
         Vehiculo vehiculo = vehiculoDAO.buscarVehiculoPlaca(placa);
-        SOAT soat = new SOAT(vehiculo);
-        byte[] pdfReport = soat.generarSOAT();
-        response.setContentType("application/pdf");
-        response.setHeader("Content-Disposition", String.format("attachment; filename=\"%s\"", "reporte.pdf"));
-        response.setContentLength(pdfReport.length);
-        ByteArrayInputStream inStream = new ByteArrayInputStream(pdfReport);
-        try {
-            FileCopyUtils.copy(inStream, response.getOutputStream());
-            vehiculo.setCompro("SI");
-            vehiculoDAO.registrar(vehiculo);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        if (vehiculo.getCompro().equals("SI")) {
+            SOAT soat = new SOAT(vehiculo);
+            byte[] pdfReport = soat.generarSOAT();
+            response.setContentType("application/pdf");
+            response.setHeader("Content-Disposition", String.format("attachment; filename=\"%s\"", "reporte.pdf"));
+            response.setContentLength(pdfReport.length);
+            ByteArrayInputStream inStream = new ByteArrayInputStream(pdfReport);
+            try {
+                FileCopyUtils.copy(inStream, response.getOutputStream());
+                vehiculo.setCompro("SI");
+                vehiculoDAO.registrar(vehiculo);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
-
-
     }
 
     //enviarMSN y WHATSAPP
@@ -91,7 +91,7 @@ public class VehiculoController {
 
     @RequestMapping(value = "soatcolpatria.herokuapp.com/eliminar/{placa}", method = RequestMethod.DELETE)
     public void eliminar(@PathVariable String placa) {
-        vehiculoDAO.eliminar(placa);
+        vehiculoDAO.eliminar("JWD05D");
     }
 
 

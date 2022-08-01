@@ -7,4 +7,7 @@ public interface VehiculoDAO {
     void registrar(Vehiculo vehiculo);
 
     Vehiculo buscarVehiculoPlaca(String placa);
+
+    void eliminar(String id);
+
 }

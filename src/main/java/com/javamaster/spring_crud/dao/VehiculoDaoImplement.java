@@ -24,5 +24,12 @@ public class VehiculoDaoImplement implements  VehiculoDAO {
         return entityManager.find(Vehiculo.class, placa);
     }
 
+    @Override
+    public void eliminar(String id) {
+        Vehiculo usuario = entityManager.find(Vehiculo.class, id);
+        entityManager.remove(usuario);
+
+    }
+
 
 }

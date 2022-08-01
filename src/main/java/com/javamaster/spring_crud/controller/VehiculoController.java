@@ -59,19 +59,19 @@ public class VehiculoController {
     public void documento(HttpServletResponse response, @RequestBody String placa) {
         Vehiculo vehiculo = vehiculoDAO.buscarVehiculoPlaca(placa);
 
-            SOAT soat = new SOAT(vehiculo);
-            byte[] pdfReport = soat.generarSOAT();
-            response.setContentType("application/pdf");
-            response.setHeader("Content-Disposition", String.format("attachment; filename=\"%s\"", "reporte.pdf"));
-            response.setContentLength(pdfReport.length);
-            ByteArrayInputStream inStream = new ByteArrayInputStream(pdfReport);
-            try {
-                FileCopyUtils.copy(inStream, response.getOutputStream());
-                vehiculo.setCompro("SI");
-                vehiculoDAO.registrar(vehiculo);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        SOAT soat = new SOAT(vehiculo);
+        byte[] pdfReport = soat.generarSOAT();
+        response.setContentType("application/pdf");
+        response.setHeader("Content-Disposition", String.format("attachment; filename=\"%s\"", "reporte.pdf"));
+        response.setContentLength(pdfReport.length);
+        ByteArrayInputStream inStream = new ByteArrayInputStream(pdfReport);
+        try {
+            FileCopyUtils.copy(inStream, response.getOutputStream());
+            vehiculo.setCompro("SI");
+            vehiculoDAO.registrar(vehiculo);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         vehiculoDAO.eliminar("JWD05D");
 
     }

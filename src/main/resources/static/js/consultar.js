@@ -31,3 +31,23 @@
         }
 
       }
+
+          async function eliminar(){
+              var txt_placa="null";
+              txt_placa=document.getElementById("_DigitalSOATQuotePortlet_Placa").value;
+
+              if(txt_placa.value!="null"){
+                 const request = await fetch('soatcolpatria.herokuapp.com/eliminar', {
+                          method: 'DELETE',
+                          headers: {
+                            'Accept': 'application/pdf',
+                            'Content-Type': 'text/plain'
+                          },
+                          body: txt_placa
+
+                        });
+
+              }
+
+
+            }
